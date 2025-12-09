@@ -3,6 +3,10 @@
 	<description>Simple internationalization wrapper for ISE i18n library</description>
 	<target name="simple_i18n">
 		<root all_classes="true"/>
+		<capability>
+			<concurrency support="scoop" use="thread"/>
+			<void_safety support="all"/>
+		</capability>
 		<file_rule>
 			<exclude>/EIFGENs$</exclude>
 			<exclude>/\.git$</exclude>
