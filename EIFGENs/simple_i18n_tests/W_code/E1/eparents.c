@@ -4016,7 +4016,127 @@ static struct eif_par_types par1001 = {1001, ptf1001, (uint16) 1, (uint16) 1, (c
 static EIF_TYPE_INDEX ptf1002[] = {464,232,0xFFFF};
 static struct eif_par_types par1002 = {1002, ptf1002, (uint16) 1, (uint16) 1, (char) 0};
 
-int egc_partab_size_init = 1002				;
+/* UTF8_READER_WRITER */
+static EIF_TYPE_INDEX ptf1003[] = {0,0xFFFF};
+static struct eif_par_types par1003 = {1003, ptf1003, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_FORMATTING_UTILITY */
+static EIF_TYPE_INDEX ptf1004[] = {0,0xFFFF};
+static struct eif_par_types par1004 = {1004, ptf1004, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_FILE_SCOPE_INFORMATION */
+static EIF_TYPE_INDEX ptf1005[] = {0,0xFFFF};
+static struct eif_par_types par1005 = {1005, ptf1005, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_URI_PARSER */
+static EIF_TYPE_INDEX ptf1006[] = {0,0xFFFF};
+static struct eif_par_types par1006 = {1006, ptf1006, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_STRING_FORMATTER */
+static EIF_TYPE_INDEX ptf1007[] = {0,0xFFFF};
+static struct eif_par_types par1007 = {1007, ptf1007, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_LOCALE */
+static EIF_TYPE_INDEX ptf1008[] = {0,0xFFFF};
+static struct eif_par_types par1008 = {1008, ptf1008, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_CURRENCY_FORMATTER */
+static EIF_TYPE_INDEX ptf1009[] = {0,0xFFFF};
+static struct eif_par_types par1009 = {1009, ptf1009, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_DATE_FORMATTER */
+static EIF_TYPE_INDEX ptf1010[] = {0,0xFFFF};
+static struct eif_par_types par1010 = {1010, ptf1010, (uint16) 1, (uint16) 0, (char) 0};
+
+/* IMPORTED_UTF8_READER_WRITER */
+static EIF_TYPE_INDEX ptf1011[] = {0,0xFFFF};
+static struct eif_par_types par1011 = {1011, ptf1011, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_FILE_HANDLER */
+static EIF_TYPE_INDEX ptf1012[] = {0,0xFFFF};
+static struct eif_par_types par1012 = {1012, ptf1012, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_MO_HANDLER */
+static EIF_TYPE_INDEX ptf1013[] = {1012,0xFFFF};
+static struct eif_par_types par1013 = {1013, ptf1013, (uint16) 1, (uint16) 0, (char) 0};
+
+/* SHARED_I18N_FORMATTING_UTILITY */
+static EIF_TYPE_INDEX ptf1014[] = {0,0xFFFF};
+static struct eif_par_types par1014 = {1014, ptf1014, (uint16) 1, (uint16) 0, (char) 0};
+
+/* SHARED_I18N_URI_PARSER */
+static EIF_TYPE_INDEX ptf1015[] = {0,0xFFFF};
+static struct eif_par_types par1015 = {1015, ptf1015, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_DATASOURCE_MANAGER */
+static EIF_TYPE_INDEX ptf1016[] = {0,0xFFFF};
+static struct eif_par_types par1016 = {1016, ptf1016, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_FILE_MANAGER */
+static EIF_TYPE_INDEX ptf1017[] = {1016,0xFFFF};
+static struct eif_par_types par1017 = {1017, ptf1017, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_VALUE_FORMATTER */
+static EIF_TYPE_INDEX ptf1018[] = {0,0xFFFF};
+static struct eif_par_types par1018 = {1018, ptf1018, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_CURRENCY_VALUE_FORMATTER */
+static EIF_TYPE_INDEX ptf1019[] = {1018,0xFFFF};
+static struct eif_par_types par1019 = {1019, ptf1019, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_FILE */
+static EIF_TYPE_INDEX ptf1020[] = {57,0xFFFF};
+static struct eif_par_types par1020 = {1020, ptf1020, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_MO_FILE */
+static EIF_TYPE_INDEX ptf1021[] = {1020,0xFFF7,1011,0xFFFF};
+static struct eif_par_types par1021 = {1021, ptf1021, (uint16) 2, (uint16) 0, (char) 0};
+
+/* I18N_DICTIONARY */
+static EIF_TYPE_INDEX ptf1022[] = {57,0xFFF7,49,0xFFFF};
+static struct eif_par_types par1022 = {1022, ptf1022, (uint16) 2, (uint16) 0, (char) 0};
+
+/* I18N_BINARY_SEARCH_ARRAY_DICTIONARY */
+static EIF_TYPE_INDEX ptf1023[] = {1022,0xFFFF};
+static struct eif_par_types par1023 = {1023, ptf1023, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_DUMMY_DICTIONARY */
+static EIF_TYPE_INDEX ptf1024[] = {1022,0xFFFF};
+static struct eif_par_types par1024 = {1024, ptf1024, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_FORMATTING_ELEMENT */
+static EIF_TYPE_INDEX ptf1025[] = {0,0xFFFF};
+static struct eif_par_types par1025 = {1025, ptf1025, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_DATE_ELEMENT */
+static EIF_TYPE_INDEX ptf1026[] = {1025,0xFFFF};
+static struct eif_par_types par1026 = {1026, ptf1026, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_USERSTRING_ELEMENT */
+static EIF_TYPE_INDEX ptf1027[] = {1025,0xFFFF};
+static struct eif_par_types par1027 = {1027, ptf1027, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_TIME_ELEMENT */
+static EIF_TYPE_INDEX ptf1028[] = {1025,0xFFFF};
+static struct eif_par_types par1028 = {1028, ptf1028, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_FORMAT_STRING */
+static EIF_TYPE_INDEX ptf1029[] = {1025,0xFFFF};
+static struct eif_par_types par1029 = {1029, ptf1029, (uint16) 1, (uint16) 0, (char) 0};
+
+/* I18N_LOCALE_MANAGER */
+static EIF_TYPE_INDEX ptf1030[] = {0,0xFFF7,1015,0xFFFF};
+static struct eif_par_types par1030 = {1030, ptf1030, (uint16) 2, (uint16) 0, (char) 0};
+
+/* I18N_FORMATTING_ACTIONS */
+static EIF_TYPE_INDEX ptf1031[] = {0,0xFFF7,1014,0xFFFF};
+static struct eif_par_types par1031 = {1031, ptf1031, (uint16) 2, (uint16) 0, (char) 0};
+
+/* I18N_FORMAT_STRING_PARSER */
+static EIF_TYPE_INDEX ptf1032[] = {0,0xFFF7,3,0xFFF7,1031,0xFFFF};
+static struct eif_par_types par1032 = {1032, ptf1032, (uint16) 3, (uint16) 0, (char) 0};
+
+int egc_partab_size_init = 1032				;
 				struct eif_par_types *egc_partab_init[] = {
 &par0,
 &par1,
@@ -5021,6 +5141,36 @@ int egc_partab_size_init = 1002				;
 &par1000,
 &par1001,
 &par1002,
+&par1003,
+&par1004,
+&par1005,
+&par1006,
+&par1007,
+&par1008,
+&par1009,
+&par1010,
+&par1011,
+&par1012,
+&par1013,
+&par1014,
+&par1015,
+&par1016,
+&par1017,
+&par1018,
+&par1019,
+&par1020,
+&par1021,
+&par1022,
+&par1023,
+&par1024,
+&par1025,
+&par1026,
+&par1027,
+&par1028,
+&par1029,
+&par1030,
+&par1031,
+&par1032,
 NULL};
 
 #ifdef __cplusplus

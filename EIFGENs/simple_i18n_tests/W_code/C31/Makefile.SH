@@ -58,7 +58,13 @@ OBJECTS = big_file_C31_c.obj
 OLDOBJECTS =  se1003.o se1003d.o rt990.o rt990d.o rt991.o rt991d.o rt992.o \
 	rt992d.o rt993.o rt993d.o rt994.o rt994d.o rt995.o rt995d.o rt996.o \
 	rt996d.o rt997.o rt997d.o rt998.o rt998d.o rt999.o rt999d.o rt1000.o \
-	rt1000d.o rt1001.o rt1001d.o rt1002.o rt1002d.o 
+	rt1000d.o rt1001.o rt1001d.o rt1002.o rt1002d.o i11011.o i11011d.o \
+	i11010.o i11010d.o i11009.o i11009d.o i11019.o i11019d.o i11020.o \
+	i11020d.o i11017.o i11017d.o sh1016.o sh1016d.o i11008.o i11008d.o \
+	i11007.o i11007d.o i11018.o i11018d.o sh1015.o sh1015d.o i11013.o \
+	i11013d.o i11006.o i11006d.o i11014.o i11014d.o i11005.o i11005d.o \
+	i11021.o i11021d.o i11022.o i11022d.o im1012.o im1012d.o ut1004.o \
+	ut1004d.o 
 
 all: Cobj31.o
 

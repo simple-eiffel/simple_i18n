@@ -223,6 +223,11 @@ char *names59 [] =
 "translations",
 "host_locale",
 "locale_info",
+"locale_manager",
+"full_locale",
+"date_formatter",
+"value_formatter",
+"currency_formatter",
 };
 
 char *names61 [] =
@@ -5787,6 +5792,172 @@ char *names1002 [] =
 char *names1003 [] =
 {
 "object_comparison",
+};
+
+char *names1006 [] =
+{
+"locale",
+"language",
+};
+
+char *names1008 [] =
+{
+"escape_character",
+};
+
+char *names1009 [] =
+{
+"info",
+"date_formatter",
+"value_formatter",
+"currency_formatter",
+"string_formatter",
+"dictionary",
+};
+
+char *names1010 [] =
+{
+"currency_symbol",
+"currency_value_formatter",
+"currency_symbol_location",
+};
+
+char *names1011 [] =
+{
+"long_date_format",
+"long_time_format",
+"date_time_format",
+};
+
+char *names1013 [] =
+{
+"next",
+"file",
+"handled",
+};
+
+char *names1014 [] =
+{
+"next",
+"file",
+"handled",
+};
+
+char *names1017 [] =
+{
+"uri",
+};
+
+char *names1018 [] =
+{
+"uri",
+"locale_file_list",
+"locale_list",
+"language_file_list",
+"language_list",
+"directory",
+"chain",
+};
+
+char *names1019 [] =
+{
+"decimal_separator",
+"group_separator",
+"positive_sign",
+"negative_sign",
+"grouping",
+"numbers_after_decimal_separator",
+};
+
+char *names1020 [] =
+{
+"decimal_separator",
+"group_separator",
+"positive_sign",
+"negative_sign",
+"grouping",
+"numbers_after_decimal_separator",
+};
+
+char *names1021 [] =
+{
+"file",
+"opened",
+"plural_form",
+"entry_count",
+};
+
+char *names1022 [] =
+{
+"file",
+"last_original",
+"last_translated",
+"opened",
+"is_big_endian_file",
+"is_little_endian_file",
+"is_big_endian_machine",
+"is_little_endian_machine",
+"plural_form",
+"entry_count",
+"version",
+"original_table_offset",
+"translated_table_offset",
+"hash_table_size",
+"hash_table_offset",
+};
+
+char *names1023 [] =
+{
+"reduction_agent",
+"plural_form",
+"nplural_max",
+};
+
+char *names1024 [] =
+{
+"reduction_agent",
+"array",
+"plural_form",
+"nplural_max",
+"current_index",
+};
+
+char *names1025 [] =
+{
+"reduction_agent",
+"plural_form",
+"nplural_max",
+};
+
+char *names1027 [] =
+{
+"date_action",
+};
+
+char *names1028 [] =
+{
+"user_string",
+};
+
+char *names1029 [] =
+{
+"time_action",
+};
+
+char *names1030 [] =
+{
+"elements_list",
+};
+
+char *names1031 [] =
+{
+"datasource_manager",
+"host_locale",
+};
+
+char *names1033 [] =
+{
+"locale_info",
 };
 
 

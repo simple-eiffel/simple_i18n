@@ -44,7 +44,13 @@ OBJECTS = big_file_C31_c.obj
 OLDOBJECTS =  se1003.obj se1003d.obj rt990.obj rt990d.obj rt991.obj rt991d.obj rt992.obj \
 	rt992d.obj rt993.obj rt993d.obj rt994.obj rt994d.obj rt995.obj rt995d.obj rt996.obj \
 	rt996d.obj rt997.obj rt997d.obj rt998.obj rt998d.obj rt999.obj rt999d.obj rt1000.obj \
-	rt1000d.obj rt1001.obj rt1001d.obj rt1002.obj rt1002d.obj 
+	rt1000d.obj rt1001.obj rt1001d.obj rt1002.obj rt1002d.obj i11011.obj i11011d.obj \
+	i11010.obj i11010d.obj i11009.obj i11009d.obj i11019.obj i11019d.obj i11020.obj \
+	i11020d.obj i11017.obj i11017d.obj sh1016.obj sh1016d.obj i11008.obj i11008d.obj \
+	i11007.obj i11007d.obj i11018.obj i11018d.obj sh1015.obj sh1015d.obj i11013.obj \
+	i11013d.obj i11006.obj i11006d.obj i11014.obj i11014d.obj i11005.obj i11005d.obj \
+	i11021.obj i11021d.obj i11022.obj i11022d.obj im1012.obj im1012d.obj ut1004.obj \
+	ut1004d.obj 
 
 all::  Cobj31.lib
 
