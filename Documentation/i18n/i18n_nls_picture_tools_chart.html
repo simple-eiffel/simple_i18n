@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Features to convert the date/time formatting strings from the NLS format to our format."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_nls_picture_tools Chart</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_nls_picture_tools_links.html">Relations</a>
+<a class="nav class" href="i18n_nls_picture_tools_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_nls_picture_tools"></span>
+</div></form><pre><span class="ekeyword">class</span>
+	<a class="eclass" href="../i18n/i18n_nls_picture_tools_chart.html">I18N_NLS_PICTURE_TOOLS</a>
+
+<span class="ekeyword">General</span>
+	<span class="eitag">cluster</span><span class="esymbol">:</span> <span class="necluster">nls_imp</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Features to convert the date/time formatting strings from the NLS format to our format.&quot;</span>
+
+<span class="ekeyword">Ancestors</span>
+	<a class="eclass" href="../base/any_chart.html">ANY</a>
+
+<span class="ekeyword">Queries</span>
+	<span title="`is_date_code_character' is declared in `Current'"><a class="efeature" href="../i18n/i18n_nls_picture_tools_short.html#f_is_date_code_character">is_date_code_character</a> <span class="esymbol">(</span><span class="elocal">c</span><span class="esymbol">:</span> <a class="eclass" href="../base/character_32_chart.html">CHARACTER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`is_time_code_character' is declared in `Current'"><a class="efeature" href="../i18n/i18n_nls_picture_tools_short.html#f_is_time_code_character">is_time_code_character</a> <span class="esymbol">(</span><span class="elocal">c</span><span class="esymbol">:</span> <a class="eclass" href="../base/character_32_chart.html">CHARACTER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`process_date_code' is declared in `Current'"><a class="efeature" href="../i18n/i18n_nls_picture_tools_short.html#f_process_date_code">process_date_code</a> <span class="esymbol">(</span><span class="elocal">code</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`process_time_code' is declared in `Current'"><a class="efeature" href="../i18n/i18n_nls_picture_tools_short.html#f_process_time_code">process_time_code</a> <span class="esymbol">(</span><span class="elocal">code</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`translate_date_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_nls_picture_tools_short.html#f_translate_date_format">translate_date_format</a> <span class="esymbol">(</span><span class="elocal">in</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`translate_picture_string' is declared in `Current'"><a class="efeature" href="../i18n/i18n_nls_picture_tools_short.html#f_translate_picture_string">translate_picture_string</a> <span class="esymbol">(</span><span class="elocal">in</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">;</span> <span class="elocal">is_code_character</span><span class="esymbol">:</span> <a class="eclass" href="../base/function_chart.html">FUNCTION</a> <span class="esymbol">[</span><a class="eclass" href="../base/character_32_chart.html">CHARACTER_32</a><span class="esymbol">,</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a><span class="esymbol">]</span><span class="esymbol">;</span> <span class="elocal">process_code</span><span class="esymbol">:</span> <a class="eclass" href="../base/function_chart.html">FUNCTION</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">,</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`translate_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_nls_picture_tools_short.html#f_translate_time_format">translate_time_format</a> <span class="esymbol">(</span><span class="elocal">in</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+
+</pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_nls_picture_tools_links.html">Relations</a>
+<a class="nav class" href="i18n_nls_picture_tools_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_nls_picture_tools"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>

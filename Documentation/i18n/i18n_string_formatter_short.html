@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Class that provides a feature to replace tokens in a string by provided values"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2013, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_string_formatter Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_string_formatter_chart.html">Chart</a>
+<a class="nav class" href="i18n_string_formatter_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_string_formatter"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Class that provides a feature to replace tokens in a string by provided values&quot;</span>
+	<span class="eitag">legal</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">status</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../i18n/i18n_string_formatter_short.html">I18N_STRING_FORMATTER</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_default_create">default_create</a><span class="esymbol">,</span>
+	<a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_make_with_escape_character">make_with_escape_character</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access</span>
+
+	<a name="f_escape_character"></a><a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_escape_character">escape_character</a><span class="esymbol">:</span> <a class="eclass" href="../base/character_8_short.html">CHARACTER_8</a>
+			<span class="ecomment">--</span><span class="ecomment"> Character used to escape replacement tokens</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Element Change</span>
+
+	<a name="f_set_escape_character"></a><a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_set_escape_character">set_escape_character</a> <span class="esymbol">(</span><span class="elocal">a_character</span><span class="esymbol">:</span> <span class="ekeyword">like</span> <a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_escape_character">escape_character</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Set </span><span class="ecomment">`</span><a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_escape_character">escape_character</a><span class="ecomment">`</span><span class="ecomment"> with </span><span class="equoted">a_character</span><span class="ecomment">.</span>
+			<span class="ecomment">--</span>
+			<span class="ecomment">--</span><span class="ecomment"> </span><span class="equoted">a_character</span><span class="ecomment">: Character used to escape replacement tokens</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">escape_character_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_escape_character">escape_character</a> <span class="esymbol">=</span> <span class="elocal">a_character</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Basic operations</span>
+
+	<a name="f_formatted_string"></a><a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_formatted_string">formatted_string</a> <span class="esymbol">(</span><span class="elocal">a_string</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">args_tuple</span><span class="esymbol">:</span> <a class="eclass" href="../base/tuple_short.html">TUPLE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> String which has it's tokens replaced by given values</span>
+			<span class="ecomment">--</span>
+			<span class="ecomment">--</span><span class="ecomment"> The string given can have token placeholders. The placeholder has</span>
+			<span class="ecomment">--</span><span class="ecomment"> the form </span><span class="equoted">a_escape_charater</span><span class="ecomment"> followed by the tuple index.</span>
+			<span class="ecomment">--</span>
+			<span class="ecomment">--</span><span class="ecomment"> </span><span class="equoted">a_string</span><span class="ecomment">: Original string with possible token placeholders</span>
+			<span class="ecomment">--</span><span class="ecomment"> </span><span class="equoted">args_tuple</span><span class="ecomment">: Values which will be replaced in the placeholders</span>
+			<span class="ecomment">--</span><span class="ecomment"> </span><span class="equoted">Result</span><span class="ecomment">: String which has token placeholders replaced with values</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_string_not_void</span><span class="esymbol">:</span> <span class="elocal">a_string</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">args_tuple_not_void</span><span class="esymbol">:</span> <span class="elocal">args_tuple</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">valid_arguments</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_valid_arguments">valid_arguments</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">args_tuple</span><span class="esymbol">)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Check functions</span>
+
+	<a name="f_valid_arguments"></a><a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_valid_arguments">valid_arguments</a> <span class="esymbol">(</span><span class="elocal">a_tuple</span><span class="esymbol">:</span> <a class="eclass" href="../base/tuple_short.html">TUPLE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Are all values in the tuple non-void?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_tuple_not_void</span><span class="esymbol">:</span> <span class="elocal">a_tuple</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_required_arguments"></a><a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_required_arguments">required_arguments</a> <span class="esymbol">(</span><span class="elocal">a_string</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> The number of arguments which </span><span class="equoted">a_string</span><span class="ecomment"> needs to have replaced</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_string_not_void</span><span class="esymbol">:</span> <span class="elocal">a_string</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_negative</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">&gt;=</a> <span class="enumber">0</span>
+			<span class="etag">result_correct</span><span class="esymbol">:</span> <span class="elocal">a_string</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_has_substring">has_substring</a><span class="esymbol"> </span><span class="esymbol">(</span><a class="efeature" href="../i18n/i18n_string_formatter_short.html#f_escape_character">escape_character</a><span class="edot">.</span><a class="efeature" href="../base/character_8_ref_short.html#f_out">out</a> <a class="esymbol" href="../base/string_8_short.html#f_plus">+</a> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/integer_32_ref_short.html#f_out">out</a><span class="esymbol">)</span>
+	
+<span class="ekeyword">note</span>
+	<span class="eitag">library</span><span class="esymbol">:</span> <span class="estring">&quot;Internationalization library&quot;</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 1984-2013, Eiffel Software and others&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;Eiffel Forum License v2 (see </span><a class="estring" href="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</a><span class="estring">)&quot;</span>
+	<span class="eitag">source</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">Eiffel Software</span>
+		<span class="estring">5949 Hollister Ave., Goleta, CA 93117 USA</span>
+		<span class="estring">Telephone 805-685-1006, Fax 805-685-6869</span>
+		<span class="estring">Website </span><a class="estring" href="http://www.eiffel.com">http://www.eiffel.com</a>
+		<span class="estring">Customer support </span><a class="estring" href="http://support.eiffel.com">http://support.eiffel.com</a>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../i18n/i18n_string_formatter_short.html">I18N_STRING_FORMATTER</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_string_formatter_chart.html">Chart</a>
+<a class="nav class" href="i18n_string_formatter_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_string_formatter"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+

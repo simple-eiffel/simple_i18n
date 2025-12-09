@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Abstract description of a container for translations"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2014, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_dictionary Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_dictionary_chart.html">Chart</a>
+<a class="nav class" href="i18n_dictionary_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_dictionary"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Abstract description of a container for translations&quot;</span>
+	<span class="eitag">legal</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">status</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">deferred</span> <span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../i18n/i18n_dictionary_short.html">I18N_DICTIONARY</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Element change</span>
+
+	<a name="f_extend"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_extend">extend</a> <span class="esymbol">(</span><span class="elocal">a_entry</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_short.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Add entry to dictinary.</span>
+			<span class="ecomment">--</span>
+			<span class="ecomment">--</span><span class="ecomment"> </span><span class="equoted">a_entry</span><span class="ecomment">: Entry which is added to dictionary</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_entry_not_void</span><span class="esymbol">:</span> <span class="elocal">a_entry</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">no_duplicate</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <a class="efeature" href="../i18n/i18n_dictionary_short.html#f_has">has</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">a_entry</span><span class="edot">.</span><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_identifier">identifier</a><span class="esymbol">)</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Status report</span>
+
+	<a name="f_has"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_has">has</a> <span class="esymbol">(</span><span class="elocal">original</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Is there an entry with this original?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_exists</span><span class="esymbol">:</span> <span class="elocal">original</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_has_plural"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_has_plural">has_plural</a> <span class="esymbol">(</span><span class="elocal">original_singular</span><span class="esymbol">,</span> <span class="elocal">original_plural</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">plural_number</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Does the dictionary have an entry with </span><span class="equoted">original_singular</span><span class="ecomment">, </span><span class="equoted">original_plural</span>
+			<span class="ecomment">--</span><span class="ecomment"> and does this entry have the </span><span class="equoted">plural_number</span><span class="ecomment">-th plural translation?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_singular_exists</span><span class="esymbol">:</span> <span class="elocal">original_singular</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">original_plural_exists</span><span class="esymbol">:</span> <span class="elocal">original_plural</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_has_in_context"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_has_in_context">has_in_context</a> <span class="esymbol">(</span><span class="elocal">original</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Is there an entry with this original?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_exists</span><span class="esymbol">:</span> <span class="elocal">original</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_has_plural_in_context"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_has_plural_in_context">has_plural_in_context</a> <span class="esymbol">(</span><span class="elocal">original_singular</span><span class="esymbol">,</span> <span class="elocal">original_plural</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">plural_number</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">;</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Does the dictionary have an entry with </span><span class="equoted">original_singular</span><span class="ecomment">, </span><span class="equoted">original_plural</span>
+			<span class="ecomment">--</span><span class="ecomment"> and does this entry have the </span><span class="equoted">plural_number</span><span class="ecomment">-th plural translation?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_singular_exists</span><span class="esymbol">:</span> <span class="elocal">original_singular</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">original_plural_exists</span><span class="esymbol">:</span> <span class="elocal">original_plural</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access</span>
+
+	<a name="f_singular"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_singular">singular</a> <span class="esymbol">(</span><span class="elocal">original</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Translation of </span><span class="equoted">original</span><span class="ecomment"> in singular form</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_exists</span><span class="esymbol">:</span> <span class="elocal">original</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_plural"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_plural">plural</a> <span class="esymbol">(</span><span class="elocal">original_singular</span><span class="esymbol">,</span> <span class="elocal">original_plural</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">plural_number</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Translation of </span><span class="equoted">original_singular</span><span class="ecomment"> in the given plural form</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_singular_exists</span><span class="esymbol">:</span> <span class="elocal">original_singular</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">original_plural_exists</span><span class="esymbol">:</span> <span class="elocal">original_plural</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_singular_in_context"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_singular_in_context">singular_in_context</a> <span class="esymbol">(</span><span class="elocal">original</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Translation of </span><span class="equoted">original</span><span class="ecomment"> in singular form</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_exists</span><span class="esymbol">:</span> <span class="elocal">original</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_plural_in_context"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_plural_in_context">plural_in_context</a> <span class="esymbol">(</span><span class="elocal">original_singular</span><span class="esymbol">,</span> <span class="elocal">original_plural</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">plural_number</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">;</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Translation of </span><span class="equoted">original_singular</span><span class="ecomment"> in the given plural form</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">original_singular_exists</span><span class="esymbol">:</span> <span class="elocal">original_singular</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">original_plural_exists</span><span class="esymbol">:</span> <span class="elocal">original_plural</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_plural_form"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_plural_form">plural_form</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> valid constant from I18N_PLURAL_TOOLS</span>
+
+	<a name="f_count"></a><a class="efeature" href="../i18n/i18n_dictionary_short.html#f_count">count</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> number of entries in the dictionary</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">count_non_negative</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">&gt;=</a> <span class="enumber">0</span>
+	
+<span class="ekeyword">note</span>
+	<span class="eitag">library</span><span class="esymbol">:</span> <span class="estring">&quot;Internationalization library&quot;</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 1984-2014, Eiffel Software and others&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;Eiffel Forum License v2 (see </span><a class="estring" href="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</a><span class="estring">)&quot;</span>
+	<span class="eitag">source</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">Eiffel Software</span>
+		<span class="estring">5949 Hollister Ave., Goleta, CA 93117 USA</span>
+		<span class="estring">Telephone 805-685-1006, Fax 805-685-6869</span>
+		<span class="estring">Website </span><a class="estring" href="http://www.eiffel.com">http://www.eiffel.com</a>
+		<span class="estring">Customer support </span><a class="estring" href="http://support.eiffel.com">http://support.eiffel.com</a>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../i18n/i18n_dictionary_short.html">I18N_DICTIONARY</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_dictionary_chart.html">Chart</a>
+<a class="nav class" href="i18n_dictionary_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_dictionary"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+

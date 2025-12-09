@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Class used for encapsulating translations of a string"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2014, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_dictionary_entry Chart</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_dictionary_entry_links.html">Relations</a>
+<a class="nav class" href="i18n_dictionary_entry_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_dictionary_entry"></span>
+</div></form><pre><span class="ekeyword">class</span>
+	<a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a>
+
+<span class="ekeyword">General</span>
+	<span class="eitag">cluster</span><span class="esymbol">:</span> <span class="necluster">dictionary</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Class used for encapsulating translations of a string&quot;</span>
+	<span class="eitag">create</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_make">make</a><span class="esymbol">,</span> <a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_make_with_plural">make_with_plural</a>
+
+<span class="ekeyword">Ancestors</span>
+	<a class="eclass" href="../base/comparable_chart.html">COMPARABLE</a><span class="echar">*</span>
+	<a class="eclass" href="../i18n/i18n_dictionary_id_builder_chart.html">I18N_DICTIONARY_ID_BUILDER</a>
+
+<span class="ekeyword">Queries</span>
+	<span title="`context' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_context">context</a><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`has_plural' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_has_plural">has_plural</a><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`id_from_original_and_context' was declared in I18N_DICTIONARY_ID_BUILDER"><a class="efeature" href="../i18n/i18n_dictionary_id_builder_short.html#f_id_from_original_and_context">id_from_original_and_context</a> <span class="esymbol">(</span><span class="elocal">a_original</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`identifier' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_identifier">identifier</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`is_equal' was declared in COMPARABLE"><a class="efeature" href="../base/comparable_short.html#f_is_equal">is_equal</a> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`is_greater' was declared in COMPARABLE"><a class="efeature" href="../base/comparable_short.html#f_is_greater">is_greater</a> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_is_greater">&gt;</a><span class="esymbol">&quot;</span> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`is_greater_equal' was declared in COMPARABLE"><a class="efeature" href="../base/comparable_short.html#f_is_greater_equal">is_greater_equal</a> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">&gt;=</a><span class="esymbol">&quot;</span> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">≥</a><span class="esymbol">&quot;</span> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`is_less' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_is_less">is_less</a> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../i18n/i18n_dictionary_entry_short.html#f_is_less">&lt;</a><span class="esymbol">&quot;</span> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`is_less_equal' was declared in COMPARABLE"><a class="efeature" href="../base/comparable_short.html#f_is_less_equal">is_less_equal</a> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_is_less_equal">&lt;=</a><span class="esymbol">&quot;</span> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_is_less_equal">≤</a><span class="esymbol">&quot;</span> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`max' was declared in COMPARABLE"><a class="efeature" href="../base/comparable_short.html#f_max">max</a> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_max">∨</a><span class="esymbol">&quot;</span> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a></span>
+	<span title="`min' was declared in COMPARABLE"><a class="efeature" href="../base/comparable_short.html#f_min">min</a> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_min">∧</a><span class="esymbol">&quot;</span> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a></span>
+	<span title="`original_plural' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_original_plural">original_plural</a><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`original_singular' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_original_singular">original_singular</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`plural_translations' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_plural_translations">plural_translations</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`singular_translation' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_singular_translation">singular_translation</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`three_way_comparison' was declared in COMPARABLE"><a class="efeature" href="../base/comparable_short.html#f_three_way_comparison">three_way_comparison</a> <span class="ekeyword">alias</span> <span class="esymbol">&quot;</span><a class="esymbol" href="../base/comparable_short.html#f_three_way_comparison">⋚</a><span class="esymbol">&quot;</span> <span class="esymbol">(</span><span class="elocal">other</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <span class="ekeyword">Current</span><span class="esymbol">]</span> <a class="eclass" href="../i18n/i18n_dictionary_entry_chart.html">I18N_DICTIONARY_ENTRY</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_chart.html">INTEGER_32</a></span>
+
+<span class="ekeyword">Commands</span>
+	<span title="`set_context' is declared in `Current'"><a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_set_context">set_context</a> <span class="esymbol">(</span><span class="elocal">a_context</span><span class="esymbol">:</span> <span class="esymbol">[</span><span class="ekeyword">like</span> <a class="efeature" href="../i18n/i18n_dictionary_entry_short.html#f_context">context</a><span class="esymbol">]</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">)</span></span>
+
+<span class="ekeyword">Constraints</span>
+	<span class="etag">original plural set</span>
+
+</pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_dictionary_entry_links.html">Relations</a>
+<a class="nav class" href="i18n_dictionary_entry_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_dictionary_entry"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>

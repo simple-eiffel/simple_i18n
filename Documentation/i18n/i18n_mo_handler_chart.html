@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Implementation of I18N_FILE_HANDLER that knows how to handle .mo files"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2012, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_mo_handler Chart</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_mo_handler_links.html">Relations</a>
+<a class="nav class" href="i18n_mo_handler_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_mo_handler"></span>
+</div></form><pre><span class="ekeyword">class</span>
+	<a class="eclass" href="../i18n/i18n_mo_handler_chart.html">I18N_MO_HANDLER</a>
+
+<span class="ekeyword">General</span>
+	<span class="eitag">cluster</span><span class="esymbol">:</span> <span class="necluster">datasource</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Implementation of I18N_FILE_HANDLER that knows how to handle .mo files&quot;</span>
+
+<span class="ekeyword">Ancestors</span>
+	<a class="eclass" href="../i18n/i18n_file_handler_chart.html">I18N_FILE_HANDLER</a><span class="echar">*</span>
+
+<span class="ekeyword">Queries</span>
+	<span title="`can_handle' is declared in `Current'"><a class="efeature" href="../i18n/i18n_mo_handler_short.html#f_can_handle">can_handle</a> <span class="esymbol">(</span><span class="elocal">a_path</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`extract_dictionary' is declared in `Current'"><a class="efeature" href="../i18n/i18n_mo_handler_short.html#f_extract_dictionary">extract_dictionary</a> <span class="esymbol">(</span><span class="elocal">a_path</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_dictionary_chart.html">I18N_DICTIONARY</a></span>
+	<span title="`extract_scope' is declared in `Current'"><a class="efeature" href="../i18n/i18n_mo_handler_short.html#f_extract_scope">extract_scope</a> <span class="esymbol">(</span><span class="elocal">a_path</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../i18n/i18n_file_scope_information_chart.html">I18N_FILE_SCOPE_INFORMATION</a></span>
+	<span title="`file' is declared in `Current'"><a class="efeature" href="../i18n/i18n_mo_handler_short.html#f_file">file</a><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../i18n/i18n_mo_file_chart.html">I18N_MO_FILE</a></span>
+	<span title="`file_scope' was declared in I18N_FILE_HANDLER"><a class="efeature" href="../i18n/i18n_file_handler_short.html#f_file_scope">file_scope</a> <span class="esymbol">(</span><span class="elocal">a_path</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../i18n/i18n_file_scope_information_chart.html">I18N_FILE_SCOPE_INFORMATION</a></span>
+	<span title="`get_file_dictionary' was declared in I18N_FILE_HANDLER"><a class="efeature" href="../i18n/i18n_file_handler_short.html#f_get_file_dictionary">get_file_dictionary</a> <span class="esymbol">(</span><span class="elocal">a_path</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../i18n/i18n_dictionary_chart.html">I18N_DICTIONARY</a></span>
+	<span title="`handled' was declared in I18N_FILE_HANDLER"><a class="efeature" href="../i18n/i18n_file_handler_short.html#f_handled">handled</a><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_chart.html">BOOLEAN</a></span>
+	<span title="`next' was declared in I18N_FILE_HANDLER"><a class="efeature" href="../i18n/i18n_file_handler_short.html#f_next">next</a><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../i18n/i18n_file_handler_chart.html">I18N_FILE_HANDLER</a></span>
+
+<span class="ekeyword">Commands</span>
+	<span title="`set_next' was declared in I18N_FILE_HANDLER"><a class="efeature" href="../i18n/i18n_file_handler_short.html#f_set_next">set_next</a> <span class="esymbol">(</span><span class="elocal">next_handler</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../i18n/i18n_file_handler_chart.html">I18N_FILE_HANDLER</a><span class="esymbol">)</span></span>
+
+</pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_mo_handler_links.html">Relations</a>
+<a class="nav class" href="i18n_mo_handler_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_mo_handler"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>

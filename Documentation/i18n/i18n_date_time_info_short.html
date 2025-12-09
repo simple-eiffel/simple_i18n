@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Encapsulates information about date and time formatting"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_date_time_info Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_date_time_info_chart.html">Chart</a>
+<a class="nav class" href="i18n_date_time_info_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_date_time_info"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Encapsulates information about date and time formatting&quot;</span>
+	<span class="eitag">legal</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">status</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../i18n/i18n_date_time_info_short.html">I18N_DATE_TIME_INFO</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_make">make</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access: Date and time formatting</span>
+
+	<a name="f_date_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_date_time_format">date_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_long_date_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_long_date_format">long_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_short_date_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_short_date_format">short_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_long_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_long_time_format">long_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_short_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_short_time_format">short_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_am_suffix"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_am_suffix">am_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_pm_suffix"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_pm_suffix">pm_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_time_separator"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_time_separator">time_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_date_separator"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_date_separator">date_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access: Day and month names</span>
+
+	<a name="f_day_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_day_names">day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+
+	<a name="f_month_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_month_names">month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+
+	<a name="f_abbreviated_day_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_abbreviated_day_names">abbreviated_day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+
+	<a name="f_abbreviated_month_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_abbreviated_month_names">abbreviated_month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Element change</span>
+
+	<a name="f_set_day_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_day_names">set_day_names</a> <span class="esymbol">(</span><span class="elocal">a_day_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the day names</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_day_names_exist</span><span class="esymbol">:</span> <span class="elocal">a_day_names</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">day_names_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_day_names">day_names</a> <span class="esymbol">=</span> <span class="elocal">a_day_names</span>
+
+	<a name="f_set_abbreviated_day_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_abbreviated_day_names">set_abbreviated_day_names</a> <span class="esymbol">(</span><span class="elocal">a_abbreviated_day_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set abbreviated day names</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_abbreviated_day_names_exists</span><span class="esymbol">:</span> <span class="elocal">a_abbreviated_day_names</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">abbreviated_day_names_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_abbreviated_day_names">abbreviated_day_names</a> <span class="esymbol">=</span> <span class="elocal">a_abbreviated_day_names</span>
+
+	<a name="f_set_month_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_month_names">set_month_names</a> <span class="esymbol">(</span><span class="elocal">a_month_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set month names</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_month_names_exists</span><span class="esymbol">:</span> <span class="elocal">a_month_names</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">minth_names_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_month_names">month_names</a> <span class="esymbol">=</span> <span class="elocal">a_month_names</span>
+
+	<a name="f_set_abbreviated_month_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_abbreviated_month_names">set_abbreviated_month_names</a> <span class="esymbol">(</span><span class="elocal">a_abbreviated_month_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Set abbreviated month names</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_abbreviated_month_names_exists</span><span class="esymbol">:</span> <span class="elocal">a_abbreviated_month_names</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">abbreviated_month_names_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_abbreviated_month_names">abbreviated_month_names</a> <span class="esymbol">=</span> <span class="elocal">a_abbreviated_month_names</span>
+
+	<a name="f_set_date_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_date_time_format">set_date_time_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the long date format string</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">format</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">long_date_format_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_date_time_format">date_time_format</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">format</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_long_date_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_long_date_format">set_long_date_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the long date format string</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">format</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">long_date_format_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_long_date_format">long_date_format</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">format</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_short_date_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_short_date_format">set_short_date_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the short date format string</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">format</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">short_date_format_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_short_date_format">short_date_format</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">format</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_long_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_long_time_format">set_long_time_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the long time format string</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">format</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">long_time_format_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_long_time_format">long_time_format</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">format</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_short_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_short_time_format">set_short_time_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the short time format string</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">format</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">short_time_format_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_short_time_format">short_time_format</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">format</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_am_suffix"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_am_suffix">set_am_suffix</a> <span class="esymbol">(</span><span class="elocal">suffix</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the am suffix</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">suffix</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">am_suffix_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_am_suffix">am_suffix</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">suffix</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_pm_suffix"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_pm_suffix">set_pm_suffix</a> <span class="esymbol">(</span><span class="elocal">suffix</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the pm suffix</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">suffix</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">pm_suffix_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_pm_suffix">pm_suffix</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">suffix</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_time_separator"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_time_separator">set_time_separator</a> <span class="esymbol">(</span><span class="elocal">sep</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the pm suffix</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">sep</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_time_separator">time_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">sep</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_date_separator"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_date_separator">set_date_separator</a> <span class="esymbol">(</span><span class="elocal">sep</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the pm suffix</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">sep</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_date_separator">date_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">sep</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access: Default Values</span>
+
+	<a name="f_default_date_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_date_time_format">Default_date_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> The ISO 8601 complete date plus hours, minutes and seconds format</span>
+			<span class="ecomment">--</span><span class="ecomment"> without timezone information</span>
+			<span class="ecomment">--</span><span class="ecomment"> YYYY-MM-DDThh:mm:ss (eg 1997-07-16T19:20:30)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_long_date_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_long_date_format">Default_long_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> The ISO 8601 Complete date:</span>
+			<span class="ecomment">--</span><span class="ecomment"> YYYY-MM-DD (eg 1997-07-16)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_short_date_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_short_date_format">Default_short_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> The ISO 8601 Year and month:</span>
+			<span class="ecomment">--</span><span class="ecomment"> YYYY-MM (eg 1997-07)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_long_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_long_time_format">Default_long_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> hh:mm:ss (eg 19:20:30)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_short_time_format"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_short_time_format">Default_short_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> hh:mm (eg 19:20)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_am_suffix"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_am_suffix">Default_am_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_pm_suffix"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_pm_suffix">Default_pm_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_day_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_day_names">Default_day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_month_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_month_names">Default_month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_abbreviated_day_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_abbreviated_day_names">Default_abbreviated_day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_abbreviated_month_names"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_abbreviated_month_names">Default_abbreviated_month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_short.html">STRING_32</a><span class="esymbol">]</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_date_separator"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_date_separator">Default_date_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_default_time_separator"></a><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_time_separator">Default_time_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">note</span>
+	<span class="eitag">library</span><span class="esymbol">:</span> <span class="estring">&quot;Internationalization library&quot;</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 1984-2009, Eiffel Software and others&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;Eiffel Forum License v2 (see </span><a class="estring" href="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</a><span class="estring">)&quot;</span>
+	<span class="eitag">source</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">Eiffel Software</span>
+		<span class="estring">5949 Hollister Ave., Goleta, CA 93117 USA</span>
+		<span class="estring">Telephone 805-685-1006, Fax 805-685-6869</span>
+		<span class="estring">Website </span><a class="estring" href="http://www.eiffel.com">http://www.eiffel.com</a>
+		<span class="estring">Customer support </span><a class="estring" href="http://support.eiffel.com">http://support.eiffel.com</a>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../i18n/i18n_date_time_info_short.html">I18N_DATE_TIME_INFO</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_date_time_info_chart.html">Chart</a>
+<a class="nav class" href="i18n_date_time_info_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_date_time_info"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+

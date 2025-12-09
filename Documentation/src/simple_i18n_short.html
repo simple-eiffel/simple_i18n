@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="TTSimple internationalization wrapper for ISE i18n library.  TTFeatures: TT- In-memory programmatic translation registration TT- .mo file loading via I18N_LOCALE_MANAGER TT- Context-aware translations TT- Full plural form support (not just English-like) TT- Locale-aware date/time/number/currency formatting via ISE formatters TT- System locale detection"/>
+<meta name="author" content="Larry Rix"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 2024-2025, Larry Rix"/>
+<meta name="license" content="MIT License"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>simple_i18n Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="simple_i18n_chart.html">Chart</a>
+<a class="nav class" href="simple_i18n_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="simple_i18n"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">		Simple internationalization wrapper for ISE i18n library.</span>
+		
+		<span class="estring">		Features:</span>
+		<span class="estring">		- In-memory programmatic translation registration</span>
+		<span class="estring">		- .mo file loading via I18N_LOCALE_MANAGER</span>
+		<span class="estring">		- Context-aware translations</span>
+		<span class="estring">		- Full plural form support (not just English-like)</span>
+		<span class="estring">		- Locale-aware date/time/number/currency formatting via ISE formatters</span>
+		<span class="estring">		- System locale detection</span>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+	<span class="eitag">author</span><span class="esymbol">:</span> <span class="estring">&quot;Larry Rix&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../src/simple_i18n_short.html">SIMPLE_I18N</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../src/simple_i18n_short.html#f_make">make</a><span class="esymbol">,</span>
+	<a class="efeature" href="../src/simple_i18n_short.html#f_make_with_locale">make_with_locale</a><span class="esymbol">,</span>
+	<a class="efeature" href="../src/simple_i18n_short.html#f_make_from_directory">make_from_directory</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access</span>
+
+	<a name="f_current_locale_id"></a><a class="efeature" href="../src/simple_i18n_short.html#f_current_locale_id">current_locale_id</a><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a>
+			<span class="ecomment">--</span><span class="ecomment"> Current locale identifier</span>
+
+	<a name="f_language"></a><a class="efeature" href="../src/simple_i18n_short.html#f_language">language</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Current language code (e.g., &quot;en&quot;, &quot;fr&quot;)</span>
+
+	<a name="f_region"></a><a class="efeature" href="../src/simple_i18n_short.html#f_region">region</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Current region code (e.g., &quot;US&quot;, &quot;FR&quot;)</span>
+
+	<a name="f_locale_name"></a><a class="efeature" href="../src/simple_i18n_short.html#f_locale_name">locale_name</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Full locale name (e.g., &quot;en_US&quot;)</span>
+
+	<a name="f_translation_count"></a><a class="efeature" href="../src/simple_i18n_short.html#f_translation_count">translation_count</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Number of registered translations</span>
+
+	<a name="f_available_locales"></a><a class="efeature" href="../src/simple_i18n_short.html#f_available_locales">available_locales</a><span class="esymbol">:</span> <a class="eclass" href="../base/list_short.html">LIST</a> <span class="esymbol">[</span><a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a><span class="esymbol">]</span>
+			<span class="ecomment">--</span><span class="ecomment"> List of available locales from host system</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Locale Management</span>
+
+	<a name="f_set_locale"></a><a class="efeature" href="../src/simple_i18n_short.html#f_set_locale">set_locale</a> <span class="esymbol">(</span><span class="elocal">a_locale_code</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_8_short.html">STRING_8</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Change to a different locale.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">locale_code_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_locale_code</span><span class="edot">.</span><a class="efeature" href="../base/finite_short.html#f_is_empty">is_empty</a>
+
+	<a name="f_has_locale"></a><a class="efeature" href="../src/simple_i18n_short.html#f_has_locale">has_locale</a> <span class="esymbol">(</span><span class="elocal">a_locale_code</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_8_short.html">STRING_8</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Is the specified locale available?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">locale_code_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_locale_code</span><span class="edot">.</span><a class="efeature" href="../base/finite_short.html#f_is_empty">is_empty</a>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Translation Registration (Programmatic)</span>
+
+	<a name="f_register_translation"></a><a class="efeature" href="../src/simple_i18n_short.html#f_register_translation">register_translation</a> <span class="esymbol">(</span><span class="elocal">a_key</span><span class="esymbol">,</span> <span class="elocal">a_translation</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Register a simple translation.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">translation_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_translation</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">registered</span><span class="esymbol">:</span> <a class="efeature" href="../src/simple_i18n_short.html#f_has_translation">has_translation</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">a_key</span><span class="esymbol">)</span>
+
+	<a name="f_register_translation_with_context"></a><a class="efeature" href="../src/simple_i18n_short.html#f_register_translation_with_context">register_translation_with_context</a> <span class="esymbol">(</span><span class="elocal">a_key</span><span class="esymbol">,</span> <span class="elocal">a_translation</span><span class="esymbol">,</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Register a translation with context disambiguation.</span>
+			<span class="ecomment">--</span><span class="ecomment"> Context allows the same key to have different translations in different contexts.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">translation_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_translation</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">context_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_context</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+
+	<a name="f_register_plural_translation"></a><a class="efeature" href="../src/simple_i18n_short.html#f_register_plural_translation">register_plural_translation</a> <span class="esymbol">(</span><span class="elocal">a_singular_key</span><span class="esymbol">,</span> <span class="elocal">a_plural_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_singular_translation</span><span class="esymbol">,</span> <span class="elocal">a_plural_translation</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Register a translation with singular and plural forms.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">singular_key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_singular_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">plural_key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_plural_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">singular_translation_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_singular_translation</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">plural_translation_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_plural_translation</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+
+	<a name="f_register_plural_forms"></a><a class="efeature" href="../src/simple_i18n_short.html#f_register_plural_forms">register_plural_forms</a> <span class="esymbol">(</span><span class="elocal">a_singular_key</span><span class="esymbol">,</span> <span class="elocal">a_plural_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_forms</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_8_short.html">STRING_8</a><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Register plural forms for languages with more than 2 forms.</span>
+			<span class="ecomment">--</span><span class="ecomment"> a_forms should contain translations for each plural form index (0, 1, 2, 3).</span>
+			<span class="ecomment">--</span><span class="ecomment"> Example for Russian: [&quot;ÃÂÃÂ±ÃÂ»ÃÂ¾ÃÂºÃÂ¾&quot;, &quot;ÃÂÃÂ±ÃÂ»ÃÂ¾ÃÂºÃÂ°&quot;, &quot;ÃÂÃÂ±ÃÂ»ÃÂ¾ÃÂº&quot;] (1, 2-4, 5+)</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">singular_key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_singular_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">plural_key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_plural_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+			<span class="etag">forms_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_forms</span><span class="edot">.</span><a class="efeature" href="../base/finite_short.html#f_is_empty">is_empty</a>
+
+	<a name="f_register_translations"></a><a class="efeature" href="../src/simple_i18n_short.html#f_register_translations">register_translations</a> <span class="esymbol">(</span><span class="elocal">a_pairs</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/tuple_short.html">TUPLE</a> <span class="esymbol">[</span><span class="elocal">key</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_8_short.html">STRING_8</a><span class="esymbol">;</span> <span class="elocal">translation</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_8_short.html">STRING_8</a><span class="esymbol">]</span><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Register multiple translations at once.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">pairs_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_pairs</span><span class="edot">.</span><a class="efeature" href="../base/finite_short.html#f_is_empty">is_empty</a>
+
+	<a name="f_clear_translations"></a><a class="efeature" href="../src/simple_i18n_short.html#f_clear_translations">clear_translations</a>
+			<span class="ecomment">--</span><span class="ecomment"> Remove all registered translations.</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">empty</span><span class="esymbol">:</span> <a class="efeature" href="../src/simple_i18n_short.html#f_translation_count">translation_count</a> <span class="esymbol">=</span> <span class="enumber">0</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Translation Lookup</span>
+
+	<a name="f_translate"></a><a class="efeature" href="../src/simple_i18n_short.html#f_translate">translate</a> <span class="esymbol">(</span><span class="elocal">a_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Get translation for </span><span class="equoted">a_key</span><span class="ecomment">, or return the key if not found.</span>
+			<span class="ecomment">--</span><span class="ecomment"> First checks full locale (from .mo files), then in-memory translations.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_translate_in_context"></a><a class="efeature" href="../src/simple_i18n_short.html#f_translate_in_context">translate_in_context</a> <span class="esymbol">(</span><span class="elocal">a_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Get translation for </span><span class="equoted">a_key</span><span class="ecomment"> in the given context.</span>
+			<span class="ecomment">--</span><span class="ecomment"> Context disambiguates when the same key has different meanings.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_translate_plural"></a><a class="efeature" href="../src/simple_i18n_short.html#f_translate_plural">translate_plural</a> <span class="esymbol">(</span><span class="elocal">a_singular_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_count</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Get singular or plural translation based on count.</span>
+			<span class="ecomment">--</span><span class="ecomment"> Uses proper plural rules for the current locale.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_singular_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_translate_plural_in_context"></a><a class="efeature" href="../src/simple_i18n_short.html#f_translate_plural_in_context">translate_plural_in_context</a> <span class="esymbol">(</span><span class="elocal">a_singular_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_context</span><span class="esymbol">:</span> <span class="ekeyword">detachable</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_count</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Get plural translation in context based on count.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_singular_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_has_translation"></a><a class="efeature" href="../src/simple_i18n_short.html#f_has_translation">has_translation</a> <span class="esymbol">(</span><span class="elocal">a_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Is there a translation for </span><span class="equoted">a_key</span><span class="ecomment">?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> String Formatting</span>
+
+	<a name="f_format"></a><a class="efeature" href="../src/simple_i18n_short.html#f_format">format</a> <span class="esymbol">(</span><span class="elocal">a_template</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_args</span><span class="esymbol">:</span> <a class="eclass" href="../base/tuple_short.html">TUPLE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Format string with placeholder substitution.</span>
+			<span class="ecomment">--</span><span class="ecomment"> Placeholders: $1, $2, etc. for positional arguments.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">template_not_void</span><span class="esymbol">:</span> <span class="elocal">a_template</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_translate_format"></a><a class="efeature" href="../src/simple_i18n_short.html#f_translate_format">translate_format</a> <span class="esymbol">(</span><span class="elocal">a_key</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">;</span> <span class="elocal">a_args</span><span class="esymbol">:</span> <a class="eclass" href="../base/tuple_short.html">TUPLE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Translate key and format with arguments.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">key_not_empty</span><span class="esymbol">:</span> <a class="ekeyword" href="../base/boolean_short.html#f_negated">not</a> <span class="elocal">a_key</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_is_empty">is_empty</a>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Date/Time Formatting (via ISE formatters)</span>
+
+	<a name="f_format_date"></a><a class="efeature" href="../src/simple_i18n_short.html#f_format_date">format_date</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Format date according to current locale using ISE formatter.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">date_not_void</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_format_time"></a><a class="efeature" href="../src/simple_i18n_short.html#f_format_time">format_time</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Format time according to current locale using ISE formatter.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">time_not_void</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_format_date_time"></a><a class="efeature" href="../src/simple_i18n_short.html#f_format_date_time">format_date_time</a> <span class="esymbol">(</span><span class="elocal">a_date_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_time_short.html">DATE_TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Format date and time according to current locale using ISE formatter.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">date_time_not_void</span><span class="esymbol">:</span> <span class="elocal">a_date_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Number Formatting (via ISE formatters)</span>
+
+	<a name="f_format_number"></a><a class="efeature" href="../src/simple_i18n_short.html#f_format_number">format_number</a> <span class="esymbol">(</span><span class="elocal">a_value</span><span class="esymbol">:</span> <a class="eclass" href="../base/real_64_short.html">REAL_64</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Format number with locale-specific decimal separator.</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_format_integer"></a><a class="efeature" href="../src/simple_i18n_short.html#f_format_integer">format_integer</a> <span class="esymbol">(</span><span class="elocal">a_value</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Format integer with locale-specific thousands separator.</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_format_currency"></a><a class="efeature" href="../src/simple_i18n_short.html#f_format_currency">format_currency</a> <span class="esymbol">(</span><span class="elocal">a_value</span><span class="esymbol">:</span> <a class="eclass" href="../base/real_64_short.html">REAL_64</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Format currency value with locale-specific symbol.</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Locale Information</span>
+
+	<a name="f_decimal_separator"></a><a class="efeature" href="../src/simple_i18n_short.html#f_decimal_separator">decimal_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale-specific decimal separator.</span>
+
+	<a name="f_thousands_separator"></a><a class="efeature" href="../src/simple_i18n_short.html#f_thousands_separator">thousands_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale-specific thousands separator.</span>
+
+	<a name="f_currency_symbol"></a><a class="efeature" href="../src/simple_i18n_short.html#f_currency_symbol">currency_symbol</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale-specific currency symbol.</span>
+
+	<a name="f_date_format"></a><a class="efeature" href="../src/simple_i18n_short.html#f_date_format">date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale-specific date format pattern.</span>
+
+	<a name="f_time_format"></a><a class="efeature" href="../src/simple_i18n_short.html#f_time_format">time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale-specific time format pattern.</span>
+
+	<a name="f_short_date_format"></a><a class="efeature" href="../src/simple_i18n_short.html#f_short_date_format">short_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale-specific short date format pattern.</span>
+
+	<a name="f_short_time_format"></a><a class="efeature" href="../src/simple_i18n_short.html#f_short_time_format">short_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale-specific short time format pattern.</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Status Report</span>
+
+	<a name="f_is_system_locale"></a><a class="efeature" href="../src/simple_i18n_short.html#f_is_system_locale">is_system_locale</a><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Is using the system default locale?</span>
+
+	<a name="f_has_mo_translations"></a><a class="efeature" href="../src/simple_i18n_short.html#f_has_mo_translations">has_mo_translations</a><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Were translations loaded from .mo files?</span>
+	
+<span class="ekeyword">invariant</span>
+	<span class="etag">translations_not_void</span><span class="esymbol">:</span> <a class="efeature" href="../src/simple_i18n_short.html#f_translations">translations</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	<span class="etag">host_locale_not_void</span><span class="esymbol">:</span> <a class="efeature" href="../src/simple_i18n_short.html#f_host_locale">host_locale</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	<span class="etag">current_locale_id_not_void</span><span class="esymbol">:</span> <a class="efeature" href="../src/simple_i18n_short.html#f_current_locale_id">current_locale_id</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	<span class="etag">locale_info_not_void</span><span class="esymbol">:</span> <a class="efeature" href="../src/simple_i18n_short.html#f_locale_info">locale_info</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+<span class="ekeyword">note</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 2024-2025, Larry Rix&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;MIT License&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../src/simple_i18n_short.html">SIMPLE_I18N</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="simple_i18n_chart.html">Chart</a>
+<a class="nav class" href="simple_i18n_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="simple_i18n"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+

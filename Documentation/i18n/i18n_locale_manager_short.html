@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Class that presents information about available locales and generates I18N_LOCALE objects."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2016, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_locale_manager Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_locale_manager_chart.html">Chart</a>
+<a class="nav class" href="i18n_locale_manager_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_locale_manager"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Class that presents information about available locales and generates I18N_LOCALE objects.&quot;</span>
+	<span class="eitag">legal</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">status</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../i18n/i18n_locale_manager_short.html">I18N_LOCALE_MANAGER</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_make">make</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access</span>
+
+	<a name="f_locale"></a><a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_locale">locale</a> <span class="esymbol">(</span><span class="elocal">a_locale_id</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_short.html">I18N_LOCALE</a>
+			<span class="ecomment">--</span><span class="ecomment"> Locale object that corresponds to </span><span class="equoted">a_locale_id</span>
+			<span class="ecomment">--</span>
+			<span class="ecomment">--</span><span class="ecomment"> </span><span class="equoted">a_locale_id</span><span class="ecomment">: Locale ID for which the locale object is returned</span>
+			<span class="ecomment">--</span><span class="ecomment"> </span><span class="equoted">Result</span><span class="ecomment">: Locale object corresponding to </span><span class="equoted">a_locale_id</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_locale_id_exists</span><span class="esymbol">:</span> <span class="elocal">a_locale_id</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">locale_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_system_locale"></a><a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_system_locale">system_locale</a><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_short.html">I18N_LOCALE</a>
+			<span class="ecomment">--</span><span class="ecomment"> Default locale in system</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">system_locale_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_available_locales"></a><a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_available_locales">available_locales</a><span class="esymbol">:</span> <a class="eclass" href="../base/list_short.html">LIST</a> <span class="esymbol">[</span><a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a><span class="esymbol">]</span>
+			<span class="ecomment">--</span><span class="ecomment"> List of available locales</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">available_locales_not_void</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Status report</span>
+
+	<a name="f_has_translations"></a><a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_has_translations">has_translations</a> <span class="esymbol">(</span><span class="elocal">a_locale_id</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Are there translations for locale </span><span class="equoted">a_locale_id</span><span class="ecomment">?</span>
+			<span class="ecomment">--</span>
+			<span class="ecomment">--</span><span class="ecomment"> This checks the datasource for the locale with and without region information.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_locale_id_not_void</span><span class="esymbol">:</span> <span class="elocal">a_locale_id</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_has_localised_translations"></a><a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_has_localised_translations">has_localised_translations</a> <span class="esymbol">(</span><span class="elocal">a_locale_id</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Are there localized translations for locale </span><span class="equoted">a_locale_id</span><span class="ecomment">?</span>
+			<span class="ecomment">--</span>
+			<span class="ecomment">--</span><span class="ecomment"> This checks the datasource for the locale with region information.</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_locale_id_not_void</span><span class="esymbol">:</span> <span class="elocal">a_locale_id</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_has_formatting_info"></a><a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_has_formatting_info">has_formatting_info</a> <span class="esymbol">(</span><span class="elocal">a_locale_id</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Are there informations on formatting for locale </span><span class="equoted">a_locale_id</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_locale_id_not_void</span><span class="esymbol">:</span> <span class="elocal">a_locale_id</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_has_locale"></a><a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_has_locale">has_locale</a> <span class="esymbol">(</span><span class="elocal">a_locale_id</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_id_short.html">I18N_LOCALE_ID</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/boolean_short.html">BOOLEAN</a>
+			<span class="ecomment">--</span><span class="ecomment"> Is locale </span><span class="equoted">a_locale_id</span><span class="ecomment"> available?</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_locale_id_not_void</span><span class="esymbol">:</span> <span class="elocal">a_locale_id</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">invariant</span>
+	<span class="etag">datasource_manager_not_void</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_datasource_manager">datasource_manager</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	<span class="etag">host_locale_not_void</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_locale_manager_short.html#f_host_locale">host_locale</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+<span class="ekeyword">note</span>
+	<span class="eitag">library</span><span class="esymbol">:</span> <span class="estring">&quot;Internationalization library&quot;</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 1984-2016, Eiffel Software and others&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;Eiffel Forum License v2 (see </span><a class="estring" href="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</a><span class="estring">)&quot;</span>
+	<span class="eitag">source</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">Eiffel Software</span>
+		<span class="estring">5949 Hollister Ave., Goleta, CA 93117 USA</span>
+		<span class="estring">Telephone 805-685-1006, Fax 805-685-6869</span>
+		<span class="estring">Website </span><a class="estring" href="http://www.eiffel.com">http://www.eiffel.com</a>
+		<span class="estring">Customer support </span><a class="estring" href="http://support.eiffel.com">http://support.eiffel.com</a>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../i18n/i18n_locale_manager_short.html">I18N_LOCALE_MANAGER</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_locale_manager_chart.html">Chart</a>
+<a class="nav class" href="i18n_locale_manager_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_locale_manager"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+

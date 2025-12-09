@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Class that allows formatting of the numerical part of a monetary quantity"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_currency_value_formatter Chart</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_currency_value_formatter_links.html">Relations</a>
+<a class="nav class" href="i18n_currency_value_formatter_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_currency_value_formatter"></span>
+</div></form><pre><span class="ekeyword">class</span>
+	<a class="eclass" href="../i18n/i18n_currency_value_formatter_chart.html">I18N_CURRENCY_VALUE_FORMATTER</a>
+
+<span class="ekeyword">General</span>
+	<span class="eitag">cluster</span><span class="esymbol">:</span> <span class="necluster">formatter</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Class that allows formatting of the numerical part of a monetary quantity&quot;</span>
+	<span class="eitag">create</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_value_formatter_short.html#f_make_from_locale_info">make_from_locale_info</a><span class="esymbol">,</span> <a class="efeature" href="../i18n/i18n_currency_value_formatter_short.html#f_make_from_currency_info">make_from_currency_info</a>
+
+<span class="ekeyword">Ancestors</span>
+	<a class="eclass" href="../i18n/i18n_value_formatter_chart.html">I18N_VALUE_FORMATTER</a>
+
+<span class="ekeyword">Queries</span>
+	<span title="`format_integer_16' was declared in I18N_VALUE_FORMATTER"><a class="efeature" href="../i18n/i18n_value_formatter_short.html#f_format_integer_16">format_integer_16</a> <span class="esymbol">(</span><span class="elocal">a_integer_16</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_16_chart.html">INTEGER_16</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`format_integer_32' was declared in I18N_VALUE_FORMATTER"><a class="efeature" href="../i18n/i18n_value_formatter_short.html#f_format_integer_32">format_integer_32</a> <span class="esymbol">(</span><span class="elocal">a_integer_32</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_chart.html">INTEGER_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`format_integer_64' was declared in I18N_VALUE_FORMATTER"><a class="efeature" href="../i18n/i18n_value_formatter_short.html#f_format_integer_64">format_integer_64</a> <span class="esymbol">(</span><span class="elocal">a_integer_64</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_64_chart.html">INTEGER_64</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`format_integer_8' was declared in I18N_VALUE_FORMATTER"><a class="efeature" href="../i18n/i18n_value_formatter_short.html#f_format_integer_8">format_integer_8</a> <span class="esymbol">(</span><span class="elocal">a_integer_8</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_8_chart.html">INTEGER_8</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`format_real_32' was declared in I18N_VALUE_FORMATTER"><a class="efeature" href="../i18n/i18n_value_formatter_short.html#f_format_real_32">format_real_32</a> <span class="esymbol">(</span><span class="elocal">a_real_32</span><span class="esymbol">:</span> <a class="eclass" href="../base/real_32_chart.html">REAL_32</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`format_real_64' was declared in I18N_VALUE_FORMATTER"><a class="efeature" href="../i18n/i18n_value_formatter_short.html#f_format_real_64">format_real_64</a> <span class="esymbol">(</span><span class="elocal">a_real_64</span><span class="esymbol">:</span> <a class="eclass" href="../base/real_64_chart.html">REAL_64</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+
+<span class="ekeyword">Commands</span>
+	<span title="`make_from_locale_info' is declared in `Current'"><a class="efeature" href="../i18n/i18n_currency_value_formatter_short.html#f_make_from_locale_info">make_from_locale_info</a> <span class="esymbol">(</span><span class="elocal">a_locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_chart.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span></span>
+
+</pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_currency_value_formatter_links.html">Relations</a>
+<a class="nav class" href="i18n_currency_value_formatter_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_currency_value_formatter"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>

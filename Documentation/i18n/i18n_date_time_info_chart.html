@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Encapsulates information about date and time formatting"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_date_time_info Chart</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_date_time_info_links.html">Relations</a>
+<a class="nav class" href="i18n_date_time_info_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_date_time_info"></span>
+</div></form><pre><span class="ekeyword">class</span>
+	<a class="eclass" href="../i18n/i18n_date_time_info_chart.html">I18N_DATE_TIME_INFO</a>
+
+<span class="ekeyword">General</span>
+	<span class="eitag">cluster</span><span class="esymbol">:</span> <span class="necluster">locale_info</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Encapsulates information about date and time formatting&quot;</span>
+	<span class="eitag">create</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_make">make</a>
+
+<span class="ekeyword">Ancestors</span>
+	<a class="eclass" href="../base/any_chart.html">ANY</a>
+
+<span class="ekeyword">Queries</span>
+	<span title="`abbreviated_day_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_abbreviated_day_names">abbreviated_day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`abbreviated_month_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_abbreviated_month_names">abbreviated_month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`am_suffix' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_am_suffix">am_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`date_separator' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_date_separator">date_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`date_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_date_time_format">date_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`day_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_day_names">day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`default_abbreviated_day_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_abbreviated_day_names">Default_abbreviated_day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`default_abbreviated_month_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_abbreviated_month_names">Default_abbreviated_month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`default_am_suffix' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_am_suffix">Default_am_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_date_separator' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_date_separator">Default_date_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_date_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_date_time_format">Default_date_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_day_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_day_names">Default_day_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`default_long_date_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_long_date_format">Default_long_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_long_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_long_time_format">Default_long_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_month_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_month_names">Default_month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`default_pm_suffix' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_pm_suffix">Default_pm_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_short_date_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_short_date_format">Default_short_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_short_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_short_time_format">Default_short_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`default_time_separator' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_default_time_separator">Default_time_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`long_date_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_long_date_format">long_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`long_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_long_time_format">long_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`month_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_month_names">month_names</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span></span>
+	<span title="`pm_suffix' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_pm_suffix">pm_suffix</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`short_date_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_short_date_format">short_date_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`short_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_short_time_format">short_time_format</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+	<span title="`time_separator' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_time_separator">time_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_chart.html">STRING_32</a></span>
+
+<span class="ekeyword">Commands</span>
+	<span title="`set_abbreviated_day_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_abbreviated_day_names">set_abbreviated_day_names</a> <span class="esymbol">(</span><span class="elocal">a_abbreviated_day_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span></span>
+	<span title="`set_abbreviated_month_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_abbreviated_month_names">set_abbreviated_month_names</a> <span class="esymbol">(</span><span class="elocal">a_abbreviated_month_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span></span>
+	<span title="`set_am_suffix' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_am_suffix">set_am_suffix</a> <span class="esymbol">(</span><span class="elocal">suffix</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_date_separator' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_date_separator">set_date_separator</a> <span class="esymbol">(</span><span class="elocal">sep</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_date_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_date_time_format">set_date_time_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_day_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_day_names">set_day_names</a> <span class="esymbol">(</span><span class="elocal">a_day_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span></span>
+	<span title="`set_long_date_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_long_date_format">set_long_date_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_long_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_long_time_format">set_long_time_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_month_names' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_month_names">set_month_names</a> <span class="esymbol">(</span><span class="elocal">a_month_names</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_chart.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/string_32_chart.html">STRING_32</a><span class="esymbol">]</span><span class="esymbol">)</span></span>
+	<span title="`set_pm_suffix' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_pm_suffix">set_pm_suffix</a> <span class="esymbol">(</span><span class="elocal">suffix</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_short_date_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_short_date_format">set_short_date_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_short_time_format' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_short_time_format">set_short_time_format</a> <span class="esymbol">(</span><span class="elocal">format</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+	<span title="`set_time_separator' is declared in `Current'"><a class="efeature" href="../i18n/i18n_date_time_info_short.html#f_set_time_separator">set_time_separator</a> <span class="esymbol">(</span><span class="elocal">sep</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_chart.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span></span>
+
+</pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<span class="nav class selected">Chart</span>
+<a class="nav class" href="i18n_date_time_info_links.html">Relations</a>
+<a class="nav class" href="i18n_date_time_info_short.html">Contracts</a>
+<span class="nav class goto">Go to: <input name="c" value="i18n_date_time_info"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>

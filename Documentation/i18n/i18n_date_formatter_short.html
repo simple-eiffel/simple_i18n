@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Class that allows formatting of a DATE, TIME, or DATE_TIME according to the information in a I18N_DATE_TIME_INFO"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_date_formatter Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_date_formatter_chart.html">Chart</a>
+<a class="nav class" href="i18n_date_formatter_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_date_formatter"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Class that allows formatting of a DATE, TIME, or DATE_TIME according to the information in a I18N_DATE_TIME_INFO&quot;</span>
+	<span class="eitag">legal</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">status</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../i18n/i18n_date_formatter_short.html">I18N_DATE_FORMATTER</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_make">make</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Creation</span>
+
+	<a name="f_make"></a><a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_make">make</a> <span class="esymbol">(</span><span class="elocal">locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_short.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> Initialize with informations &nbsp;in </span><span class="equoted">locale_info</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">locale_info_exists</span><span class="esymbol">:</span> <span class="elocal">locale_info</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access</span>
+
+	<a name="f_format_date"></a><a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_format_date">format_date</a> <span class="esymbol">(</span><span class="elocal">date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> formats an EiffelTime date according to the long date format</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">date_not_void</span><span class="esymbol">:</span> <span class="elocal">date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_format_time"></a><a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_format_time">format_time</a> <span class="esymbol">(</span><span class="elocal">time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> formats an EiffelTime time according to the long time format</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">time_not_void</span><span class="esymbol">:</span> <span class="elocal">time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_format_date_time"></a><a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_format_date_time">format_date_time</a> <span class="esymbol">(</span><span class="elocal">date_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_time_short.html">DATE_TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment">formats an EiffelTime time according to the date time format</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">date_time_not_void</span><span class="esymbol">:</span> <span class="elocal">date_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">invariant</span>
+	<span class="etag">long_date_format_exists</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_long_date_format">long_date_format</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	<span class="etag">long_time_format_exists</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_long_time_format">long_time_format</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	<span class="etag">date_time_format_exists</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_date_formatter_short.html#f_date_time_format">date_time_format</a> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+<span class="ekeyword">note</span>
+	<span class="eitag">library</span><span class="esymbol">:</span> <span class="estring">&quot;Internationalization library&quot;</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 1984-2009, Eiffel Software and others&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;Eiffel Forum License v2 (see </span><a class="estring" href="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</a><span class="estring">)&quot;</span>
+	<span class="eitag">source</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">Eiffel Software</span>
+		<span class="estring">5949 Hollister Ave., Goleta, CA 93117 USA</span>
+		<span class="estring">Telephone 805-685-1006, Fax 805-685-6869</span>
+		<span class="estring">Website </span><a class="estring" href="http://www.eiffel.com">http://www.eiffel.com</a>
+		<span class="estring">Customer support </span><a class="estring" href="http://support.eiffel.com">http://support.eiffel.com</a>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../i18n/i18n_date_formatter_short.html">I18N_DATE_FORMATTER</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_date_formatter_chart.html">Chart</a>
+<a class="nav class" href="i18n_date_formatter_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_date_formatter"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Encapsulates information about currency formatting"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2010, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_currency_info Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_currency_info_chart.html">Chart</a>
+<a class="nav class" href="i18n_currency_info_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_currency_info"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Encapsulates information about currency formatting&quot;</span>
+	<span class="eitag">legal</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">status</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../i18n/i18n_currency_info_short.html">I18N_CURRENCY_INFO</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../i18n/i18n_currency_info_short.html#f_make">make</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access: Normal currency informations</span>
+
+	<a name="f_currency_symbol"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_symbol">currency_symbol</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_symbol_location"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_symbol_location">currency_symbol_location</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+
+	<a name="f_currency_symbol_prefixed"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_symbol_prefixed">Currency_symbol_prefixed</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">0</span>
+
+	<a name="f_currency_symbol_appended"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_symbol_appended">Currency_symbol_appended</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">1</span>
+
+	<a name="f_currency_symbol_radix"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_symbol_radix">Currency_symbol_radix</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">2</span>
+
+	<a name="f_currency_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_decimal_separator">currency_decimal_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_numbers_after_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_numbers_after_decimal_separator">currency_numbers_after_decimal_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+
+	<a name="f_currency_group_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_group_separator">currency_group_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_number_list_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_number_list_separator">currency_number_list_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_positive_sign"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_positive_sign">currency_positive_sign</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_negative_sign"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_negative_sign">currency_negative_sign</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_grouping"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_grouping">currency_grouping</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">]</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access: International currency informations</span>
+
+	<a name="f_currency_international_symbol"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_symbol">currency_international_symbol</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_international_symbol_location"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_symbol_location">currency_international_symbol_location</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+
+	<a name="f_currency_international_symbol_prefixed"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_symbol_prefixed">Currency_international_symbol_prefixed</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">0</span>
+
+	<a name="f_currency_international_symbol_appended"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_symbol_appended">Currency_international_symbol_appended</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">1</span>
+
+	<a name="f_currency_international_symbol_radix"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_symbol_radix">Currency_international_symbol_radix</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">2</span>
+
+	<a name="f_currency_international_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_decimal_separator">currency_international_decimal_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_international_numbers_after_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_numbers_after_decimal_separator">currency_international_numbers_after_decimal_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a>
+
+	<a name="f_currency_international_group_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_group_separator">currency_international_group_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_international_number_list_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_number_list_separator">currency_international_number_list_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_currency_international_grouping"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_grouping">currency_international_grouping</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">]</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Access: Default values</span>
+
+	<a name="f_default_currency_symbol"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_symbol">Default_currency_symbol</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_default_currency_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_decimal_separator">Default_currency_decimal_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_default_currency_symbol_location"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_symbol_location">Default_currency_symbol_location</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">0</span>
+
+	<a name="f_default_currency_numbers_after_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_numbers_after_decimal_separator">Default_currency_numbers_after_decimal_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a> <span class="esymbol">=</span> <span class="enumber">2</span>
+
+	<a name="f_default_currency_group_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_group_separator">Default_currency_group_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_default_currency_number_list_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_number_list_separator">Default_currency_number_list_separator</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_default_currency_positive_sign"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_positive_sign">Default_currency_positive_sign</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_default_currency_negative_sign"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_negative_sign">Default_currency_negative_sign</a><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+
+	<a name="f_default_currency_grouping"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_default_currency_grouping">Default_currency_grouping</a><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">]</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Element change: Normal values</span>
+
+	<a name="f_set_currency_symbol"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_symbol">set_currency_symbol</a> <span class="esymbol">(</span><span class="elocal">a_currency_symbol</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the currency symbol</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_currency_symbol_exists</span><span class="esymbol">:</span> <span class="elocal">a_currency_symbol</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">symbol_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_symbol">currency_symbol</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_same_string">same_string_general</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">a_currency_symbol</span><span class="esymbol">)</span>
+
+	<a name="f_set_currency_symbol_location"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_symbol_location">set_currency_symbol_location</a> <span class="esymbol">(</span><span class="elocal">a_location</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the currency symbol location</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_location_valid</span><span class="esymbol">:</span> <span class="esymbol">(</span><span class="elocal">a_location</span> <a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">&gt;=</a> <span class="enumber">0</span><span class="esymbol">)</span> <a class="ekeyword" href="../base/boolean_short.html#f_conjuncted">and</a> <span class="esymbol">(</span><span class="elocal">a_location</span> <a class="esymbol" href="../base/comparable_short.html#f_is_less_equal">&lt;=</a> <span class="enumber">2</span><span class="esymbol">)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">symbol_location_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_symbol_location">currency_symbol_location</a> <span class="esymbol">=</span> <span class="elocal">a_location</span>
+
+	<a name="f_set_currency_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_decimal_separator">set_currency_decimal_separator</a> <span class="esymbol">(</span><span class="elocal">separator</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the decimal separator for currency values</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">separator</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_decimal_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_decimal_separator">currency_decimal_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">separator</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_currency_numbers_after_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_numbers_after_decimal_separator">set_currency_numbers_after_decimal_separator</a> <span class="esymbol">(</span><span class="elocal">numbers</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the amount of numbers after a decimal separator in a currency value</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">numbers_positive</span><span class="esymbol">:</span> <span class="elocal">numbers</span> <a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">&gt;=</a> <span class="enumber">0</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_numbers_after_decimal_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_numbers_after_decimal_separator">currency_numbers_after_decimal_separator</a> <span class="esymbol">=</span> <span class="elocal">numbers</span>
+
+	<a name="f_set_currency_group_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_group_separator">set_currency_group_separator</a> <span class="esymbol">(</span><span class="elocal">separator</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the group separator for curency values - sometimes called &quot;thousands separator&quot;</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">separator</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_group_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_group_separator">currency_group_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">separator</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_currency_number_list_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_number_list_separator">set_currency_number_list_separator</a> <span class="esymbol">(</span><span class="elocal">separator</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the &nbsp;separator for lists of currency values</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">separator</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_number_list_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_number_list_separator">currency_number_list_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">separator</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_currency_positive_sign"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_positive_sign">set_currency_positive_sign</a> <span class="esymbol">(</span><span class="elocal">a_string</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set positive sign used</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">a_string</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_positive_sign_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_positive_sign">currency_positive_sign</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">a_string</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_currency_negative_sign"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_negative_sign">set_currency_negative_sign</a> <span class="esymbol">(</span><span class="elocal">a_string</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set negative sign used</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">a_string</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_negative_sign_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_negative_sign">currency_negative_sign</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">a_string</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_currency_grouping"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_currency_grouping">set_currency_grouping</a> <span class="esymbol">(</span><span class="elocal">a_array</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the grouping rules</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_array_exists</span><span class="esymbol">:</span> <span class="elocal">a_array</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">grouping_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_grouping">currency_grouping</a> <span class="esymbol">=</span> <span class="elocal">a_array</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Element change: International values</span>
+
+	<a name="f_set_international_currency_symbol"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_international_currency_symbol">set_international_currency_symbol</a> <span class="esymbol">(</span><span class="elocal">a_currency_symbol</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the international currency symbol</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_currency_symbol_exists</span><span class="esymbol">:</span> <span class="elocal">a_currency_symbol</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">symbol_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_symbol">currency_international_symbol</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_same_string">same_string_general</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">a_currency_symbol</span><span class="esymbol">)</span>
+
+	<a name="f_set_international_currency_symbol_location"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_international_currency_symbol_location">set_international_currency_symbol_location</a> <span class="esymbol">(</span><span class="elocal">a_location</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the international currency symbol location</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_location_valid</span><span class="esymbol">:</span> <span class="esymbol">(</span><span class="elocal">a_location</span> <a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">&gt;=</a> <span class="enumber">0</span><span class="esymbol">)</span> <a class="ekeyword" href="../base/boolean_short.html#f_conjuncted">and</a> <span class="esymbol">(</span><span class="elocal">a_location</span> <a class="esymbol" href="../base/comparable_short.html#f_is_less_equal">&lt;=</a> <span class="enumber">2</span><span class="esymbol">)</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">symbol_location_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_symbol_location">currency_international_symbol_location</a> <span class="esymbol">=</span> <span class="elocal">a_location</span>
+
+	<a name="f_set_international_currency_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_international_currency_decimal_separator">set_international_currency_decimal_separator</a> <span class="esymbol">(</span><span class="elocal">separator</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the decimal separator for currency values</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">separator</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_decimal_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_decimal_separator">currency_international_decimal_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">separator</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_international_currency_numbers_after_decimal_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_international_currency_numbers_after_decimal_separator">set_international_currency_numbers_after_decimal_separator</a> <span class="esymbol">(</span><span class="elocal">numbers</span><span class="esymbol">:</span> <a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the amount of numbers after a decimal separator in a currency value</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">numbers_positive</span><span class="esymbol">:</span> <span class="elocal">numbers</span> <a class="esymbol" href="../base/comparable_short.html#f_is_greater_equal">&gt;=</a> <span class="enumber">0</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_international_numbers_after_decimal_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_numbers_after_decimal_separator">currency_international_numbers_after_decimal_separator</a> <span class="esymbol">=</span> <span class="elocal">numbers</span>
+
+	<a name="f_set_international_currency_group_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_international_currency_group_separator">set_international_currency_group_separator</a> <span class="esymbol">(</span><span class="elocal">separator</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the group separator for curency values - sometimes called &quot;thousands separator&quot;</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">separator</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_group_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_group_separator">currency_international_group_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">separator</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_international_currency_number_list_separator"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_international_currency_number_list_separator">set_international_currency_number_list_separator</a> <span class="esymbol">(</span><span class="elocal">separator</span><span class="esymbol">:</span> <a class="eclass" href="../base/readable_string_general_short.html">READABLE_STRING_GENERAL</a><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the &nbsp;separator for lists of currency values</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">argument_not_void</span><span class="esymbol">:</span> <span class="elocal">separator</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">currency_number_list_separator_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_number_list_separator">currency_international_number_list_separator</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="elocal">separator</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_as_string_32">as_string_32</a><span class="esymbol">)</span>
+
+	<a name="f_set_international_currency_grouping"></a><a class="efeature" href="../i18n/i18n_currency_info_short.html#f_set_international_currency_grouping">set_international_currency_grouping</a> <span class="esymbol">(</span><span class="elocal">a_array</span><span class="esymbol">:</span> <a class="eclass" href="../base/array_short.html">ARRAY</a> <span class="esymbol">[</span><a class="eclass" href="../base/integer_32_short.html">INTEGER_32</a><span class="esymbol">]</span><span class="esymbol">)</span>
+			<span class="ecomment">--</span><span class="ecomment"> set the grouping rules</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_array_exists</span><span class="esymbol">:</span> <span class="elocal">a_array</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">grouping_set</span><span class="esymbol">:</span> <a class="efeature" href="../i18n/i18n_currency_info_short.html#f_currency_international_grouping">currency_international_grouping</a> <span class="esymbol">=</span> <span class="elocal">a_array</span>
+	
+<span class="ekeyword">note</span>
+	<span class="eitag">library</span><span class="esymbol">:</span> <span class="estring">&quot;Internationalization library&quot;</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 1984-2010, Eiffel Software and others&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;Eiffel Forum License v2 (see </span><a class="estring" href="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</a><span class="estring">)&quot;</span>
+	<span class="eitag">source</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">Eiffel Software</span>
+		<span class="estring">5949 Hollister Ave., Goleta, CA 93117 USA</span>
+		<span class="estring">Telephone 805-685-1006, Fax 805-685-6869</span>
+		<span class="estring">Website </span><a class="estring" href="http://www.eiffel.com">http://www.eiffel.com</a>
+		<span class="estring">Customer support </span><a class="estring" href="http://support.eiffel.com">http://support.eiffel.com</a>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../i18n/i18n_currency_info_short.html">I18N_CURRENCY_INFO</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_currency_info_chart.html">Chart</a>
+<a class="nav class" href="i18n_currency_info_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_currency_info"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+

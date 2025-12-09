@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="generator" content="ISE EiffelStudio version 25.02.9.8732 - win64">
+<meta name="description" content="Actions used by the various 'formatting' elements"/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="library" content="Internationalization library"/>
+<meta name="copyright" content="Copyright (c) 1984-2009, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 5949 Hollister Ave., Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+<title>i18n_formatting_actions Contracts</title>
+<link rel="stylesheet" href="../default.css" type="text/css">
+<script type="text/javascript" src="../goto.html"></script>
+</head>
+<body>
+<pre></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_formatting_actions_chart.html">Chart</a>
+<a class="nav class" href="i18n_formatting_actions_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_formatting_actions"></span>
+</div></form><pre><span class="ekeyword">note</span>
+	<span class="eitag">description</span><span class="esymbol">:</span> <span class="estring">&quot;Actions used by the various 'formatting' elements&quot;</span>
+	<span class="eitag">legal</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">status</span><span class="esymbol">:</span> <span class="estring">&quot;See notice at end of class.&quot;</span>
+	<span class="eitag">date</span><span class="esymbol">:</span> <span class="estring">&quot;$Date$&quot;</span>
+	<span class="eitag">revision</span><span class="esymbol">:</span> <span class="estring">&quot;$Revision$&quot;</span>
+
+<span class="ekeyword">class</span> <span class="ekeyword">interface</span>
+	<a class="eclass" href="../i18n/i18n_formatting_actions_short.html">I18N_FORMATTING_ACTIONS</a>
+
+<span class="ekeyword">create</span> 
+	<a class="efeature" href="../base/any_short.html#f_default_create">default_create</a>
+
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Time related actions</span>
+
+	<a name="f_hour_12_padded_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_hour_12_padded_action">hour_12_padded_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns &nbsp;Hours with leading zeros for</span>
+			<span class="ecomment">--</span><span class="ecomment"> single-digit hours (12-hour clock).</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">hour_12_padded</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_hour_12_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_hour_12_action">hour_12_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns Hours without leading zeros</span>
+			<span class="ecomment">--</span><span class="ecomment"> for single-digit hours (12-hour clock).</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">hour_12</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_hour_24_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_hour_24_action">hour_24_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns Hours without leading zeros</span>
+			<span class="ecomment">--</span><span class="ecomment"> for single-digit hours (24-hour clock)</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">hour_24</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_hour_24_padded_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_hour_24_padded_action">hour_24_padded_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns Hours with leading zeros</span>
+			<span class="ecomment">--</span><span class="ecomment"> for single-digit hours (24-hour clock)</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to `'</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">hour_24_padded</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_minutes_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_minutes_action">minutes_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns &nbsp;Minutes without leading</span>
+			<span class="ecomment">--</span><span class="ecomment"> zeros for single-digit minutes.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">minutes</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_minutes_padded_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_minutes_padded_action">minutes_padded_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the minute as a decimal number</span>
+			<span class="ecomment">--</span><span class="ecomment"> with leading zeros for single-digit minutes.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">minutes_padded</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_seconds_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_seconds_action">seconds_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns seconds without leading zeros for single-digit seconds.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">seconds</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_seconds_padded_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_seconds_padded_action">seconds_padded_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns seconds with leading zeros for single-digit seconds.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">seconds_padded</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_am_pm_1_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_am_pm_1_action">am_pm_1_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns one-character time marker string. (Am/pm -&gt; a/p)</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">am_pm_1</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">correct_result</span><span class="esymbol">:</span> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="edot">.</span><a class="efeature" href="../time/time_value_short.html#f_hour">hour</a> <a class="esymbol" href="../base/comparable_short.html#f_is_less_equal">&lt;=</a> <span class="enumber">12</span> <a class="ekeyword" href="../base/boolean_short.html#f_implication">implies</a> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_same_string">same_string_general</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;a&quot;<span class="esymbol">)</span><span class="esymbol">)</span> <a class="ekeyword" href="../base/boolean_short.html#f_disjuncted_exclusive">xor</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="edot">.</span><a class="efeature" href="../time/time_value_short.html#f_hour">hour</a> <a class="esymbol" href="../base/comparable_short.html#f_is_greater">&gt;</a> <span class="enumber">12</span> <a class="ekeyword" href="../base/boolean_short.html#f_implication">implies</a> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_general_short.html#f_same_string">same_string_general</a><span class="esymbol"> </span><span class="esymbol">(</span>&quot;p&quot;<span class="esymbol">)</span><span class="esymbol">)</span>
+
+	<a name="f_am_pm_lowercase_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_am_pm_lowercase_action">am_pm_lowercase_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">;</span> <span class="elocal">a_locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_short.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns multi-character time marker string &nbsp;Lowercase</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">am_pm_lowercase</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">a_locale_info_exists</span><span class="esymbol">:</span> <span class="elocal">a_locale_info</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">is_lower</span><span class="esymbol">:</span> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_valid_as_string_8">is_valid_as_string_8</a> <a class="ekeyword" href="../base/boolean_short.html#f_implication">implies</a> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/string_32_short.html#f_as_lower">as_lower</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="ekeyword">Result</span><span class="esymbol">)</span>
+
+	<a name="f_am_pm_uppercase_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_am_pm_uppercase_action">am_pm_uppercase_action</a> <span class="esymbol">(</span><span class="elocal">a_time</span><span class="esymbol">:</span> <a class="eclass" href="../time/time_short.html">TIME</a><span class="esymbol">;</span> <span class="elocal">a_locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_short.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns multi-character time marker string (Uppercase)</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">am_pm_uppercase</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_time_exists</span><span class="esymbol">:</span> <span class="elocal">a_time</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">a_locale_info_exists</span><span class="esymbol">:</span> <span class="elocal">a_locale_info</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">is_upper</span><span class="esymbol">:</span> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_valid_as_string_8">is_valid_as_string_8</a> <a class="ekeyword" href="../base/boolean_short.html#f_implication">implies</a> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/string_32_short.html#f_as_upper">as_upper</a><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_is_equal">is_equal</a><span class="esymbol"> </span><span class="esymbol">(</span><span class="ekeyword">Result</span><span class="esymbol">)</span>
+	
+<span class="ekeyword">feature</span> <span class="ecomment">--</span><span class="ecomment"> Date related actions</span>
+
+	<a name="f_day_of_month_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_day_of_month_action">day_of_month_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns day of the month as digits without</span>
+			<span class="ecomment">--</span><span class="ecomment"> leading zeros for single digit days.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">day_of_month</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_day_of_month_padded_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_day_of_month_padded_action">day_of_month_padded_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the day of the month as a decimal number (range 01 to 31)</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">day_of_month_padded</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_abbreviated_day_name_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_abbreviated_day_name_action">abbreviated_day_name_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">;</span> <span class="elocal">a_locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_short.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the abbreviated day name</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">abbreviated_day_name</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">a_locale_info_exists</span><span class="esymbol">:</span> <span class="elocal">a_locale_info</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_day_name_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_day_name_action">day_name_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">;</span> <span class="elocal">a_locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_short.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the abbreviated day name</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">day_name</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">a_locale_info_exists</span><span class="esymbol">:</span> <span class="elocal">a_locale_info</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_day_of_year_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_day_of_year_action">day_of_year_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the day of the year as a decimal number (range 001 366)</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">day_of_year</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_day_of_week_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_day_of_week_action">day_of_week_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Retunr the fay of the weel as a decimal number,</span>
+			<span class="ecomment">--</span><span class="ecomment"> range 1 to 7, Monday being 1</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">day_of_week</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_day_of_week_0_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_day_of_week_0_action">day_of_week_0_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the day of the week as a decimal,</span>
+			<span class="ecomment">--</span><span class="ecomment"> range 0 to 6, Sunday being 0.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">day_of_week_0</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_month_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_month_action">month_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns month as digits without leading zeros for single digit months.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">month</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_month_padded_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_month_padded_action">month_padded_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the month as a decimal number (range 01 to 12).</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">month_padded</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_abbreviated_month_name_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_abbreviated_month_name_action">abbreviated_month_name_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">;</span> <span class="elocal">a_locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_short.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the abbreviated month name</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">abbreviated_month_name</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">a_locale_info_exists</span><span class="esymbol">:</span> <span class="elocal">a_locale_info</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_month_name_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_month_name_action">month_name_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">;</span> <span class="elocal">a_locale_info</span><span class="esymbol">:</span> <a class="eclass" href="../i18n/i18n_locale_info_short.html">I18N_LOCALE_INFO</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the full month name</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">month_name</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">a_locale_info_exists</span><span class="esymbol">:</span> <span class="elocal">a_locale_info</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_century_number_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_century_number_action">century_number_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the century number (year/100) as a 2-digit integer</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">century_number</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_week_number_iso_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_week_number_iso_action">week_number_iso_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the ISO 8601:1988 week number of the current year as a decimal number,</span>
+			<span class="ecomment">--</span><span class="ecomment"> range 01 to 53, where week 1 is the first</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">week_number_iso</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_week_number_sunday_as_first_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_week_number_sunday_as_first_action">week_number_sunday_as_first_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the week number of the current year as a decimal number, range 00 to 53,</span>
+			<span class="ecomment">--</span><span class="ecomment"> starting with the first Monday as the first day of week 01</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">week_number_sunday</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_week_number_monday_as_first_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_week_number_monday_as_first_action">week_number_monday_as_first_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Not supported, result is the same as </span><span class="ecomment">`</span><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_week_number_sunday_as_first_action">week_number_sunday_as_first_action</a><span class="ecomment">`</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">week_number_monday</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_iso_year_with_century_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_iso_year_with_century_action">iso_year_with_century_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Same result as Year_4_action</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">iso_year_with_century</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_iso_year_without_century_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_iso_year_without_century_action">iso_year_without_century_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Same result as Year_2_action</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">iso_year_without_century</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+
+	<a name="f_year_1_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_year_1_action">year_1_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> &nbsp;Year represented only by the last digit.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">year_1</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">correct_lenght</span><span class="esymbol">:</span> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_count">count</a> <span class="esymbol">=</span> <span class="enumber">1</span>
+
+	<a name="f_year_2_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_year_2_action">year_2_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> &nbsp;Returns the year as a decimal number without a century (range 00 to 99).</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">year_2</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+			<span class="etag">correct_lenght</span><span class="esymbol">:</span> <span class="ekeyword">Result</span><span class="edot">.</span><a class="efeature" href="../base/readable_string_32_short.html#f_count">count</a> <span class="esymbol">=</span> <span class="enumber">2</span>
+
+	<a name="f_year_4_action"></a><a class="efeature" href="../i18n/i18n_formatting_actions_short.html#f_year_4_action">year_4_action</a> <span class="esymbol">(</span><span class="elocal">a_date</span><span class="esymbol">:</span> <a class="eclass" href="../time/date_short.html">DATE</a><span class="esymbol">)</span><span class="esymbol">:</span> <a class="eclass" href="../base/string_32_short.html">STRING_32</a>
+			<span class="ecomment">--</span><span class="ecomment"> Returns the Year represented by full four or five digits, depending on the calendar used.</span>
+			<span class="ecomment">--</span><span class="ecomment"> associated to formatting character </span><span class="equoted">year_4</span>
+		<span class="ekeyword">require</span>
+			<span class="etag">a_date_exists</span><span class="esymbol">:</span> <span class="elocal">a_date</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+		<span class="ekeyword">ensure</span>
+			<span class="etag">result_exists</span><span class="esymbol">:</span> <span class="ekeyword">Result</span> <span class="esymbol">/=</span> <span class="ekeyword">Void</span>
+	
+<span class="ekeyword">note</span>
+	<span class="eitag">library</span><span class="esymbol">:</span> <span class="estring">&quot;Internationalization library&quot;</span>
+	<span class="eitag">copyright</span><span class="esymbol">:</span> <span class="estring">&quot;Copyright (c) 1984-2009, Eiffel Software and others&quot;</span>
+	<span class="eitag">license</span><span class="esymbol">:</span> <span class="estring">&quot;Eiffel Forum License v2 (see </span><a class="estring" href="http://www.eiffel.com/licensing/forum.txt">http://www.eiffel.com/licensing/forum.txt</a><span class="estring">)&quot;</span>
+	<span class="eitag">source</span><span class="esymbol">:</span> <span class="estring">&quot;</span><span class="estring">[</span>
+		<span class="estring">Eiffel Software</span>
+		<span class="estring">5949 Hollister Ave., Goleta, CA 93117 USA</span>
+		<span class="estring">Telephone 805-685-1006, Fax 805-685-6869</span>
+		<span class="estring">Website </span><a class="estring" href="http://www.eiffel.com">http://www.eiffel.com</a>
+		<span class="estring">Customer support </span><a class="estring" href="http://support.eiffel.com">http://support.eiffel.com</a>
+	<span class="estring">]</span><span class="estring">&quot;</span>
+
+<span class="ekeyword">end</span> <span class="ecomment">--</span> <span class="ecomment">class </span><a class="eclass" href="../i18n/i18n_formatting_actions_short.html">I18N_FORMATTING_ACTIONS</a></pre><form class="nav" onsubmit="go_to('../',this.c.value);return false;">
+<div class="nav">
+<a class="nav hierarchy" href="../class_list.html">Classes</a>
+<a class="nav hierarchy" href="../cluster_list.html">Clusters</a>
+<a class="nav hierarchy" href="../cluster_hierarchy.html">Cluster hierarchy</a>
+<a class="nav class" href="i18n_formatting_actions_chart.html">Chart</a>
+<a class="nav class" href="i18n_formatting_actions_links.html">Relations</a>
+<span class="nav class selected">Contracts</span>
+<span class="nav class goto">Go to: <input name="c" value="i18n_formatting_actions"></span>
+</div></form><pre></pre>
+<p style="text-align:center;">Generated by <a href="http://www.eiffel.com">ISE EiffelStudio</a></p>
+</body>
+</html>
+
