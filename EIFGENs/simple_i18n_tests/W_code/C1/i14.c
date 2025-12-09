@@ -1,0 +1,732 @@
+/*
+ * Code for class I18N_FORMATTING_CHARACTERS
+ */
+
+#include "eif_eiffel.h"
+#include "../E1/estructure.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern EIF_TYPED_VALUE F4_147(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_148(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_149(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_150(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_151(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_152(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_153(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_154(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_155(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_156(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_157(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_158(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_159(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_160(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_161(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_162(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_163(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_164(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_165(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_166(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_167(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_168(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_169(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_170(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_171(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_172(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_173(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_174(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_175(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_176(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_177(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_178(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_179(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_180(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_181(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_182(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_183(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_184(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_185(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_186(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_187(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_188(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_189(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_190(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_191(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_192(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_193(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_194(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_195(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_196(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_197(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_198(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_199(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_200(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_201(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_202(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_203(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_204(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_205(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_206(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_207(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_208(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_209(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_210(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_211(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_212(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_213(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_214(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F4_215(EIF_REFERENCE);
+extern void EIF_Minit4(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* {I18N_FORMATTING_CHARACTERS}.abbreviated_day_name */
+EIF_TYPED_VALUE F4_147 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'a';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.abbreviated_month_name1 */
+EIF_TYPED_VALUE F4_148 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'b';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.abbreviated_month_name2 */
+EIF_TYPED_VALUE F4_149 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'h';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.am_pm_1 */
+EIF_TYPED_VALUE F4_150 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '8';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.am_pm_lowercase */
+EIF_TYPED_VALUE F4_151 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '9';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.am_pm_time */
+EIF_TYPED_VALUE F4_152 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'r';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.am_pm_uppercase */
+EIF_TYPED_VALUE F4_153 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'P';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.century_number */
+EIF_TYPED_VALUE F4_154 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'C';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.day_name */
+EIF_TYPED_VALUE F4_155 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'A';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.day_of_month */
+EIF_TYPED_VALUE F4_156 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'e';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.day_of_month_padded */
+EIF_TYPED_VALUE F4_157 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'd';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.day_of_week */
+EIF_TYPED_VALUE F4_158 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'u';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.day_of_week_0 */
+EIF_TYPED_VALUE F4_159 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'w';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.day_of_year */
+EIF_TYPED_VALUE F4_160 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'j';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.era */
+EIF_TYPED_VALUE F4_161 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '3';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.hour_12 */
+EIF_TYPED_VALUE F4_162 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'I';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.hour_12_padded */
+EIF_TYPED_VALUE F4_163 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'l';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.hour_24 */
+EIF_TYPED_VALUE F4_164 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'k';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.hour_24_padded */
+EIF_TYPED_VALUE F4_165 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'H';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.iso_date */
+EIF_TYPED_VALUE F4_166 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'F';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.iso_year_with_century */
+EIF_TYPED_VALUE F4_167 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'G';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.iso_year_without_century */
+EIF_TYPED_VALUE F4_168 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'g';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.local_date */
+EIF_TYPED_VALUE F4_169 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'x';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.local_date_time */
+EIF_TYPED_VALUE F4_170 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'c';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.locale_time */
+EIF_TYPED_VALUE F4_171 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'X';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.minutes */
+EIF_TYPED_VALUE F4_172 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '4';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.minutes_padded */
+EIF_TYPED_VALUE F4_173 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'M';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.month */
+EIF_TYPED_VALUE F4_174 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '1';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.month_name */
+EIF_TYPED_VALUE F4_175 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'B';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.month_padded */
+EIF_TYPED_VALUE F4_176 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'm';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.new_line */
+EIF_TYPED_VALUE F4_177 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'n';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.seconds */
+EIF_TYPED_VALUE F4_178 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'S';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.seconds_padded */
+EIF_TYPED_VALUE F4_179 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '5';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.short_time_24h */
+EIF_TYPED_VALUE F4_180 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'R';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.tab */
+EIF_TYPED_VALUE F4_181 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 't';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.time_24h */
+EIF_TYPED_VALUE F4_182 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'T';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.time_zone_name */
+EIF_TYPED_VALUE F4_183 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'Z';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.time_zone_offset */
+EIF_TYPED_VALUE F4_184 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'z';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.usa_date */
+EIF_TYPED_VALUE F4_185 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'D';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.week_number_iso */
+EIF_TYPED_VALUE F4_186 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'V';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.week_number_monday_as_first */
+EIF_TYPED_VALUE F4_187 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'W';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.week_number_sunday_as_first */
+EIF_TYPED_VALUE F4_188 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'U';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.year_1 */
+EIF_TYPED_VALUE F4_189 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '2';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.year_2 */
+EIF_TYPED_VALUE F4_190 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'y';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.year_4 */
+EIF_TYPED_VALUE F4_191 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'Y';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.time_separator */
+EIF_TYPED_VALUE F4_192 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) ':';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.date_separator */
+EIF_TYPED_VALUE F4_193 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '/';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_base_year_name */
+EIF_TYPED_VALUE F4_194 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'C';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_base_year_offset */
+EIF_TYPED_VALUE F4_195 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'y';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_date */
+EIF_TYPED_VALUE F4_196 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'x';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_date_time */
+EIF_TYPED_VALUE F4_197 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'c';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_time */
+EIF_TYPED_VALUE F4_198 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'X';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_year */
+EIF_TYPED_VALUE F4_199 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'Y';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modifier_character_1 */
+EIF_TYPED_VALUE F4_200 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'E';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.escape_character */
+EIF_TYPED_VALUE F4_201 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) '&';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_day_of_month_0_padded */
+EIF_TYPED_VALUE F4_202 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'd';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_day_of_month_space_padded */
+EIF_TYPED_VALUE F4_203 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'e';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_era */
+EIF_TYPED_VALUE F4_204 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'y';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_minutes */
+EIF_TYPED_VALUE F4_205 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'M';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_month */
+EIF_TYPED_VALUE F4_206 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'm';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_seconds */
+EIF_TYPED_VALUE F4_207 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'S';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_time_12h */
+EIF_TYPED_VALUE F4_208 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'I';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_time_24h */
+EIF_TYPED_VALUE F4_209 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'H';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_week_number */
+EIF_TYPED_VALUE F4_210 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'U';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_week_number_monday_as_first_1 */
+EIF_TYPED_VALUE F4_211 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'V';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_week_number_monday_as_first_2 */
+EIF_TYPED_VALUE F4_212 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'W';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_week_number_sunday_as_first */
+EIF_TYPED_VALUE F4_213 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'w';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modified_weekday */
+EIF_TYPED_VALUE F4_214 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'u';
+	return r;
+}
+
+/* {I18N_FORMATTING_CHARACTERS}.modifier_character_2 */
+EIF_TYPED_VALUE F4_215 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_CHAR8;
+	r.it_c1 = (EIF_CHARACTER_8) (EIF_CHARACTER_8) 'O';
+	return r;
+}
+
+void EIF_Minit4 (void)
+{
+	GTCX
+}
+
+
+#ifdef __cplusplus
+}
+#endif
