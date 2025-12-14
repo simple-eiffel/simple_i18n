@@ -409,41 +409,41 @@ feature -- String Formatting
 
 feature -- Date/Time Formatting (via ISE formatters)
 
-	format_date (a_date: DATE): STRING_32
+	format_date (a_date: SIMPLE_DATE): STRING_32
 			-- Format date according to current locale using ISE formatter.
 		require
 			date_not_void: a_date /= Void
 		do
 			if attached date_formatter as df then
-				Result := df.format_date (a_date)
+				Result := df.format_date (a_date.to_date)
 			else
-				Result := a_date.formatted_out (locale_info.long_date_format.to_string_8)
+				Result := a_date.to_date.formatted_out (locale_info.long_date_format.to_string_8)
 			end
 		ensure
 			result_not_void: Result /= Void
 		end
 
-	format_time (a_time: TIME): STRING_32
+	format_time (a_time: SIMPLE_TIME): STRING_32
 			-- Format time according to current locale using ISE formatter.
 		require
 			time_not_void: a_time /= Void
 		do
 			if attached date_formatter as df then
-				Result := df.format_time (a_time)
+				Result := df.format_time (a_time.to_time)
 			else
-				Result := a_time.formatted_out (locale_info.long_time_format.to_string_8)
+				Result := a_time.to_time.formatted_out (locale_info.long_time_format.to_string_8)
 			end
 		ensure
 			result_not_void: Result /= Void
 		end
 
-	format_date_time (a_date_time: DATE_TIME): STRING_32
+	format_date_time (a_date_time: SIMPLE_DATE_TIME): STRING_32
 			-- Format date and time according to current locale using ISE formatter.
 		require
 			date_time_not_void: a_date_time /= Void
 		do
 			if attached date_formatter as df then
-				Result := df.format_date_time (a_date_time)
+				Result := df.format_date_time (a_date_time.to_date_time)
 			else
 				Result := format_date (a_date_time.date)
 				Result.append_character (' ')
