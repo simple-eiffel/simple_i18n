@@ -1,0 +1,9 @@
+{
+  "name": "simple_i18n",
+  "version": "0.1.0",
+  "description": "Simple internationalization wrapper for ISE i18n library",
+  "author": "Larry Rix",
+  "license": "MIT",
+  "category": "utilities",
+  "keywords": ["i18n", "internationalization", "localization"]
+}
