@@ -17,12 +17,12 @@ Simple internationalization wrapper for the ISE i18n library.
 Add to your ECF file:
 
 ```xml
-<library name="simple_i18n" location="$SIMPLE_I18N/simple_i18n.ecf"/>
+<library name="simple_i18n" location="$SIMPLE_EIFFEL/simple_i18n/simple_i18n.ecf"/>
 ```
 
-Set the environment variable:
+Set the environment variable (one-time setup for all simple_* libraries):
 ```
-SIMPLE_I18N=/path/to/simple_i18n
+SIMPLE_EIFFEL=D:\prod
 ```
 
 ## Quick Start
