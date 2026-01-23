@@ -24,7 +24,7 @@
 		<cluster name="src" location=".\src\" recursive="true"/>
 	</target>
 	<target name="simple_i18n_tests" extends="simple_i18n">
-		<root class="I18N_TEST_APP" feature="make"/>
+		<root class="TEST_APP" feature="make"/>
 		<library name="ise_testing" location="$ISE_LIBRARY\library\testing\testing.ecf"/>
 		<library name="simple_testing" location="$SIMPLE_EIFFEL/simple_testing/simple_testing.ecf"/>
 		<cluster name="i18n_tests" location=".\testing\"/>
