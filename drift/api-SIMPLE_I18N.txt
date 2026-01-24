@@ -1,0 +1,470 @@
+note
+	description: "[
+				Simple internationalization wrapper for ISE i18n library.
+		
+				Features:
+				- In-memory programmatic translation registration
+				- .mo file loading via I18N_LOCALE_MANAGER
+				- Context-aware translations
+				- Full plural form support (not just English-like)
+				- Locale-aware date/time/number/currency formatting via ISE formatters
+				- System locale detection
+	]"
+	author: "Larry Rix"
+	date: "$Date$"
+	revision: "$Revision$"
+
+class interface
+	SIMPLE_I18N
+
+create 
+	make
+			-- Create i18n helper with system locale.
+
+	make_with_locale (a_locale_code: STRING_8)
+			-- Create i18n helper with specified locale (e.g., "en_US", "fr_FR").
+		require
+			locale_code_not_empty: not a_locale_code.is_empty
+
+	make_from_directory (a_translations_dir: STRING_8)
+			-- Create i18n helper loading translations from .mo files in `a_translations_dir`.
+			-- Directory should contain files named after locale (e.g., en_US.mo, fr_FR.mo).
+		require
+			directory_not_empty: not a_translations_dir.is_empty
+
+feature -- Access
+
+	available_locales: LIST [I18N_LOCALE_ID]
+			-- List of available locales from host system
+
+	current_locale_id: I18N_LOCALE_ID
+			-- Current locale identifier
+
+	generating_type: TYPE [detachable SIMPLE_I18N]
+			-- Type of current object
+			-- (type of which it is a direct instance)
+			-- (from ANY)
+		ensure -- from ANY
+			generating_type_not_void: Result /= Void
+
+	generator: STRING_8
+			-- Name of current object's generating class
+			-- (base class of the type of which it is a direct instance)
+			-- (from ANY)
+		ensure -- from ANY
+			generator_not_void: Result /= Void
+			generator_not_empty: not Result.is_empty
+
+	language: STRING_32
+			-- Current language code (e.g., "en", "fr")
+
+	locale_name: STRING_32
+			-- Full locale name (e.g., "en_US")
+
+	region: STRING_32
+			-- Current region code (e.g., "US", "FR")
+
+	translation_count: INTEGER_32
+			-- Number of registered translations
+	
+feature -- Comparison
+
+	frozen deep_equal (a: detachable ANY; b: like arg #1): BOOLEAN
+			-- Are `a` and `b` either both void
+			-- or attached to isomorphic object structures?
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+			shallow_implies_deep: standard_equal (a, b) implies Result
+			both_or_none_void: (a = Void) implies (Result = (b = Void))
+			same_type: (Result and (a /= Void)) implies (b /= Void and then a.same_type (b))
+			symmetric: Result implies deep_equal (b, a)
+
+	frozen equal (a: detachable ANY; b: like arg #1): BOOLEAN
+			-- Are `a` and `b` either both void or attached
+			-- to objects considered equal?
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+			definition: Result = (a = Void and b = Void) or else ((a /= Void and b /= Void) and then a.is_equal (b))
+
+	frozen is_deep_equal alias "≡≡≡" (other: SIMPLE_I18N): BOOLEAN
+			-- Are `Current` and `other` attached to isomorphic object structures?
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+		ensure -- from ANY
+			shallow_implies_deep: standard_is_equal (other) implies Result
+			same_type: Result implies same_type (other)
+			symmetric: Result implies other.is_deep_equal (Current)
+
+	is_equal (other: SIMPLE_I18N): BOOLEAN
+			-- Is `other` attached to an object considered
+			-- equal to current object?
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+		ensure -- from ANY
+			symmetric: Result implies other ~ Current
+			consistent: standard_is_equal (other) implies Result
+
+	frozen standard_equal (a: detachable ANY; b: like arg #1): BOOLEAN
+			-- Are `a` and `b` either both void or attached to
+			-- field-by-field identical objects of the same type?
+			-- Always uses default object comparison criterion.
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+			definition: Result = (a = Void and b = Void) or else ((a /= Void and b /= Void) and then a.standard_is_equal (b))
+
+	frozen standard_is_equal alias "≜" (other: SIMPLE_I18N): BOOLEAN
+			-- Is `other` attached to an object of the same type
+			-- as current object, and field-by-field identical to it?
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+		ensure -- from ANY
+			same_type: Result implies same_type (other)
+			symmetric: Result implies other.standard_is_equal (Current)
+	
+feature -- Status report
+
+	conforms_to (other: ANY): BOOLEAN
+			-- Does type of current object conform to type
+			-- of `other` (as per Eiffel: The Language, chapter 13)?
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+
+	same_type (other: ANY): BOOLEAN
+			-- Is type of current object identical to type of `other`?
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+		ensure -- from ANY
+			definition: Result = (conforms_to (other) and other.conforms_to (Current))
+	
+feature -- Duplication
+
+	copy (other: SIMPLE_I18N)
+			-- Update current object using fields of object attached
+			-- to `other`, so as to yield equal objects.
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+			type_identity: same_type (other)
+		ensure -- from ANY
+			is_equal: Current ~ other
+
+	frozen deep_copy (other: SIMPLE_I18N)
+			-- Effect equivalent to that of:
+			--		`copy` (`other` . `deep_twin`)
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+		ensure -- from ANY
+			deep_equal: deep_equal (Current, other)
+
+	frozen deep_twin: SIMPLE_I18N
+			-- New object structure recursively duplicated from Current.
+			-- (from ANY)
+		ensure -- from ANY
+			deep_twin_not_void: Result /= Void
+			deep_equal: deep_equal (Current, Result)
+
+	frozen standard_copy (other: SIMPLE_I18N)
+			-- Copy every field of `other` onto corresponding field
+			-- of current object.
+			-- (from ANY)
+		require -- from ANY
+			other_not_void: other /= Void
+			type_identity: same_type (other)
+		ensure -- from ANY
+			is_standard_equal: standard_is_equal (other)
+
+	frozen standard_twin: SIMPLE_I18N
+			-- New object field-by-field identical to `other`.
+			-- Always uses default copying semantics.
+			-- (from ANY)
+		ensure -- from ANY
+			standard_twin_not_void: Result /= Void
+			equal: standard_equal (Result, Current)
+
+	frozen twin: SIMPLE_I18N
+			-- New object equal to `Current`
+			-- `twin` calls `copy`; to change copying/twinning semantics, redefine `copy`.
+			-- (from ANY)
+		ensure -- from ANY
+			twin_not_void: Result /= Void
+			is_equal: Result ~ Current
+	
+feature -- Basic operations
+
+	frozen default: detachable SIMPLE_I18N
+			-- Default value of object's type
+			-- (from ANY)
+
+	frozen default_pointer: POINTER
+			-- Default value of type `POINTER`
+			-- (Avoid the need to write `p`.`default` for
+			-- some `p` of type `POINTER`.)
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+
+	default_rescue
+			-- Process exception for routines with no Rescue clause.
+			-- (Default: do nothing.)
+			-- (from ANY)
+
+	frozen do_nothing
+			-- Execute a null action.
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+	
+feature -- Date/Time Formatting (via ISE formatters)
+
+	format_date (a_date: SIMPLE_DATE): STRING_32
+			-- Format date according to current locale using ISE formatter.
+		require
+			date_not_void: a_date /= Void
+		ensure
+			result_not_void: Result /= Void
+
+	format_date_time (a_date_time: SIMPLE_DATE_TIME): STRING_32
+			-- Format date and time according to current locale using ISE formatter.
+		require
+			date_time_not_void: a_date_time /= Void
+		ensure
+			result_not_void: Result /= Void
+
+	format_time (a_time: SIMPLE_TIME): STRING_32
+			-- Format time according to current locale using ISE formatter.
+		require
+			time_not_void: a_time /= Void
+		ensure
+			result_not_void: Result /= Void
+	
+feature -- Locale Information
+
+	currency_symbol: STRING_32
+			-- Locale-specific currency symbol.
+
+	date_format: STRING_32
+			-- Locale-specific date format pattern.
+
+	decimal_separator: STRING_32
+			-- Locale-specific decimal separator.
+
+	short_date_format: STRING_32
+			-- Locale-specific short date format pattern.
+
+	short_time_format: STRING_32
+			-- Locale-specific short time format pattern.
+
+	thousands_separator: STRING_32
+			-- Locale-specific thousands separator.
+
+	time_format: STRING_32
+			-- Locale-specific time format pattern.
+	
+feature -- Locale Management
+
+	has_locale (a_locale_code: STRING_8): BOOLEAN
+			-- Is the specified locale available?
+		require
+			locale_code_not_empty: not a_locale_code.is_empty
+
+	set_locale (a_locale_code: STRING_8)
+			-- Change to a different locale.
+		require
+			locale_code_not_empty: not a_locale_code.is_empty
+	
+feature -- Number Formatting (via ISE formatters)
+
+	format_currency (a_value: REAL_64): STRING_32
+			-- Format currency value with locale-specific symbol.
+		ensure
+			result_not_void: Result /= Void
+
+	format_integer (a_value: INTEGER_32): STRING_32
+			-- Format integer with locale-specific thousands separator.
+		ensure
+			result_not_void: Result /= Void
+
+	format_number (a_value: REAL_64): STRING_32
+			-- Format number with locale-specific decimal separator.
+		ensure
+			result_not_void: Result /= Void
+	
+feature -- Output
+
+	Io: STD_FILES
+			-- Handle to standard file setup
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+			io_not_void: Result /= Void
+
+	out: STRING_8
+			-- New string containing terse printable representation
+			-- of current object
+			-- (from ANY)
+		ensure -- from ANY
+			out_not_void: Result /= Void
+
+	print (o: detachable ANY)
+			-- Write terse external representation of `o`
+			-- on standard output.
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+
+	frozen tagged_out: STRING_8
+			-- New string containing terse printable representation
+			-- of current object
+			-- (from ANY)
+		ensure -- from ANY
+			tagged_out_not_void: Result /= Void
+	
+feature -- Platform
+
+	Operating_environment: OPERATING_ENVIRONMENT
+			-- Objects available from the operating system
+			-- (from ANY)
+		ensure -- from ANY
+			instance_free: class
+			operating_environment_not_void: Result /= Void
+	
+feature -- Shared object
+
+	Plural_tools: I18N_PLURAL_TOOLS
+			-- (from SHARED_I18N_PLURAL_TOOLS)
+		ensure -- from SHARED_I18N_PLURAL_TOOLS
+			result_exists: Result /= Void
+	
+feature -- Status Report
+
+	has_mo_translations: BOOLEAN
+			-- Were translations loaded from .mo files?
+
+	is_system_locale: BOOLEAN
+			-- Is using the system default locale?
+	
+feature -- String Formatting
+
+	format (a_template: READABLE_STRING_GENERAL; a_args: TUPLE): STRING_32
+			-- Format string with placeholder substitution.
+			-- Placeholders: $1, $2, etc. for positional arguments.
+		require
+			template_not_void: a_template /= Void
+		ensure
+			result_not_void: Result /= Void
+
+	translate_format (a_key: READABLE_STRING_GENERAL; a_args: TUPLE): STRING_32
+			-- Translate key and format with arguments.
+		require
+			key_not_empty: not a_key.is_empty
+		ensure
+			result_not_void: Result /= Void
+	
+feature -- Translation Lookup
+
+	has_translation (a_key: READABLE_STRING_GENERAL): BOOLEAN
+			-- Is there a translation for `a_key`?
+		require
+			key_not_empty: not a_key.is_empty
+
+	translate (a_key: READABLE_STRING_GENERAL): STRING_32
+			-- Get translation for `a_key`, or return the key if not found.
+			-- First checks full locale (from .mo files), then in-memory translations.
+		require
+			key_not_empty: not a_key.is_empty
+		ensure
+			result_not_void: Result /= Void
+
+	translate_in_context (a_key: READABLE_STRING_GENERAL; a_context: detachable READABLE_STRING_GENERAL): STRING_32
+			-- Get translation for `a_key` in the given context.
+			-- Context disambiguates when the same key has different meanings.
+		require
+			key_not_empty: not a_key.is_empty
+		ensure
+			result_not_void: Result /= Void
+
+	translate_plural (a_singular_key: READABLE_STRING_GENERAL; a_count: INTEGER_32): STRING_32
+			-- Get singular or plural translation based on count.
+			-- Uses proper plural rules for the current locale.
+		require
+			key_not_empty: not a_singular_key.is_empty
+		ensure
+			result_not_void: Result /= Void
+
+	translate_plural_in_context (a_singular_key: READABLE_STRING_GENERAL; a_context: detachable READABLE_STRING_GENERAL; a_count: INTEGER_32): STRING_32
+			-- Get plural translation in context based on count.
+		require
+			key_not_empty: not a_singular_key.is_empty
+		ensure
+			result_not_void: Result /= Void
+	
+feature -- Translation Registration (Programmatic)
+
+	clear_translations
+			-- Remove all registered translations.
+		ensure
+			empty: translation_count = 0
+
+	register_plural_forms (a_singular_key, a_plural_key: READABLE_STRING_GENERAL; a_forms: ARRAY [STRING_8])
+			-- Register plural forms for languages with more than 2 forms.
+			-- a_forms should contain translations for each plural form index (0, 1, 2, 3).
+			-- Example for Russian: ["ÃÂÃÂ±ÃÂ»ÃÂ¾ÃÂºÃÂ¾", "ÃÂÃÂ±ÃÂ»ÃÂ¾ÃÂºÃÂ°", "ÃÂÃÂ±ÃÂ»ÃÂ¾ÃÂº"] (1, 2-4, 5+)
+		require
+			singular_key_not_empty: not a_singular_key.is_empty
+			plural_key_not_empty: not a_plural_key.is_empty
+			forms_not_empty: not a_forms.is_empty
+
+	register_plural_translation (a_singular_key, a_plural_key: READABLE_STRING_GENERAL; a_singular_translation, a_plural_translation: READABLE_STRING_GENERAL)
+			-- Register a translation with singular and plural forms.
+		require
+			singular_key_not_empty: not a_singular_key.is_empty
+			plural_key_not_empty: not a_plural_key.is_empty
+			singular_translation_not_empty: not a_singular_translation.is_empty
+			plural_translation_not_empty: not a_plural_translation.is_empty
+
+	register_translation (a_key, a_translation: READABLE_STRING_GENERAL)
+			-- Register a simple translation.
+		require
+			key_not_empty: not a_key.is_empty
+			translation_not_empty: not a_translation.is_empty
+		ensure
+			registered: has_translation (a_key)
+
+	register_translation_with_context (a_key, a_translation, a_context: READABLE_STRING_GENERAL)
+			-- Register a translation with context disambiguation.
+			-- Context allows the same key to have different translations in different contexts.
+		require
+			key_not_empty: not a_key.is_empty
+			translation_not_empty: not a_translation.is_empty
+			context_not_empty: not a_context.is_empty
+
+	register_translations (a_pairs: ARRAY [TUPLE [key: STRING_8; translation: STRING_8]])
+			-- Register multiple translations at once.
+		require
+			pairs_not_empty: not a_pairs.is_empty
+	
+invariant
+	translations_not_void: translations /= Void
+	host_locale_not_void: host_locale /= Void
+	current_locale_id_not_void: current_locale_id /= Void
+	locale_info_not_void: locale_info /= Void
+
+		-- from ANY
+	reflexive_equality: standard_is_equal (Current)
+	reflexive_conformance: conforms_to (Current)
+
+note
+	copyright: "Copyright (c) 2024-2025, Larry Rix"
+	license: "MIT License"
+
+end -- class SIMPLE_I18N
+
