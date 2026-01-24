@@ -1,5 +1,8 @@
 # SIMPLE_I18N Research Report
 
+
+**Date**: 2025-12-08
+
 **Date:** 2025-12-08
 **Library:** simple_i18n
 **Wraps:** ISE i18n library (`$ISE_LIBRARY/library/i18n/i18n.ecf`)
