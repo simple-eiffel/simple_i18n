@@ -157,19 +157,30 @@ feature {NONE} -- Locale data
 			l_digits: INTEGER
 			l_number_check: SIMPLE_I18N_NUMBER_PATTERN
 			l_date_check: SIMPLE_I18N_DATE_PATTERN
+			l_chain: ARRAYED_LIST [STRING_8]
 		do
-			l_numbers := object_at (read_json ("cldr-numbers-full/package/main/" + a_source + "/numbers.json"),
-				{STRING_32} "main/" + a_source + "/numbers")
-			l_currencies := object_at (read_json ("cldr-numbers-full/package/main/" + a_source + "/currencies.json"),
-				{STRING_32} "main/" + a_source + "/numbers/currencies")
-			l_gregorian := object_at (read_json ("cldr-dates-full/package/main/" + a_source + "/ca-gregorian.json"),
-				{STRING_32} "main/" + a_source + "/dates/calendars/gregorian")
+				-- CLDR inheritance: a locale has only what differs from its parent (de-CH has no
+				-- CHF symbol of its own; it is de's). Each lookup takes the first locale of the
+				-- chain that has the key: the locale, then its parents (parentLocales.json, else
+				-- the code less its last subtag).
+			l_chain := source_chain (a_source)
+			l_numbers := merged (l_chain, "cldr-numbers-full/package/main/", "/numbers.json", "/numbers")
+			l_currencies := merged (l_chain, "cldr-numbers-full/package/main/", "/currencies.json", "/numbers/currencies")
+			l_gregorian := merged (l_chain, "cldr-dates-full/package/main/", "/ca-gregorian.json", "/dates/calendars/gregorian")
 			l_symbols := object_at (l_numbers, {STRING_32} "symbols-numberSystem-latn")
 
 				-- Currency: the region's one current legal tender.
 			l_region := a_name.substring (a_name.index_of ('_', 1) + 1, a_name.count)
 			l_code := current_currency (array_at (a_currency_data, {STRING_32} "region/" + l_region), a_name)
-			l_symbol := string_at (l_currencies, l_code.to_string_32 + "/symbol")
+				-- No locale of the chain may have a symbol for it (de and de-CH have none for CHF):
+				-- then CLDR's root rule, the currency's code.
+			if attached l_currencies.item (l_code.to_string_32) as al_entry and then al_entry.is_object
+				and then attached al_entry.as_object.string_item ({STRING_32} "symbol") as al_symbol then
+				l_symbol := al_symbol
+			else
+				l_symbol := l_code.to_string_32
+				notes.extend (a_name.to_string_32 + ": no " + l_code + " symbol in CLDR's chain; the code itself, as CLDR's root has it")
+			end
 			l_digits := currency_digits (object_at (a_currency_data, {STRING_32} "fractions"), l_code)
 
 				-- Number patterns.
@@ -449,6 +460,71 @@ feature {NONE} -- Class text
 		end
 
 feature {NONE} -- JSON access
+
+	parent_locales: SIMPLE_JSON_OBJECT
+			-- CLDR's parentLocales map (supplemental/parentLocales.json), child to parent.
+		once
+			Result := object_at (read_json ("cldr-core/package/supplemental/parentLocales.json"), {STRING_32} "supplemental/parentLocales/parentLocale")
+		end
+
+	source_chain (a_source: STRING_8): ARRAYED_LIST [STRING_8]
+			-- `a_source' and its CLDR parents, nearest first, while their data exist: a parent is
+			-- the parentLocales map's, else the code less its last subtag ("de-CH" to "de").
+			-- The packages hold no root locale, so a chain ends at a bare language.
+		local
+			l_code: STRING_8
+			l_dash: INTEGER
+		do
+			create Result.make (4)
+			from l_code := a_source until l_code.is_empty or Result.count > 6 loop
+				Result.extend (l_code)
+				if attached parent_locales.string_item (l_code.to_string_32) as al_parent and then not al_parent.same_string ("root") then
+					l_code := al_parent.to_string_8
+				else
+					l_dash := l_code.last_index_of ('-', l_code.count)
+					if l_dash > 0 then
+						l_code := l_code.substring (1, l_dash - 1)
+					else
+						l_code := ""
+					end
+				end
+			end
+		ensure
+			starts_with_itself: Result.first.same_string (a_source)
+		end
+
+	merged (a_chain: LIST [STRING_8]; a_folder, a_file, a_inner: STRING_8): SIMPLE_JSON_OBJECT
+			-- One object of the chain's data in `a_file': each locale's object at
+			-- main/<locale>`a_inner', merged so that a nearer locale's keys win, at every depth.
+			-- Locales whose file is missing are skipped; the first must have one.
+		local
+			l_path: STRING_32
+		do
+			create Result.make
+			across a_chain.new_cursor.reversed as ic loop
+				l_path := cldr_root.twin
+				l_path.append_string_general ("/" + a_folder + ic + a_file)
+				if (create {RAW_FILE}.make_with_name (l_path)).exists then
+					merge_into (Result, object_at (read_json (a_folder + ic + a_file), {STRING_32} "main/" + ic.to_string_32 + a_inner.to_string_32))
+				elseif ic = a_chain.first then
+					fail ({STRING_32} "missing " + l_path)
+				end
+			end
+		end
+
+	merge_into (a_target, a_source: SIMPLE_JSON_OBJECT)
+			-- Put `a_source''s keys into `a_target': objects merged key by key, anything else replaced.
+		do
+			across a_source.keys as ic_key loop
+				if attached a_source.item (ic_key) as al_new then
+					if al_new.is_object and then attached a_target.item (ic_key) as al_old and then al_old.is_object then
+						merge_into (al_old.as_object, al_new.as_object)
+					else
+						a_target.put_value (al_new, ic_key).do_nothing
+					end
+				end
+			end
+		end
 
 	read_json (a_relative: READABLE_STRING_GENERAL): SIMPLE_JSON_OBJECT
 			-- The JSON object in file `a_relative' under `cldr_root'.
