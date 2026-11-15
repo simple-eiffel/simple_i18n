@@ -152,6 +152,52 @@ feature -- Names
 			-- period rules: minutes since midnight. A period with
 			-- `from_minute' = `before_minute' is an exact moment ("midnight").
 
+	alpha_currency_pattern: STRING_32
+			-- CLDR's "alphaNextToNumber" currency pattern: `currency_pattern' with a space
+			-- for a symbol whose letter would touch the digits ("CHF 12.50").
+		attribute
+			Result := currency_pattern
+		end
+
+	currency_symbols: HASH_TABLE [STRING_32, STRING_32]
+			-- The locale's symbols for other currencies, by code, where the symbol is not
+			-- the code itself (en's "%/8364/" for EUR).
+		attribute
+			create Result.make (0)
+		end
+
+	symbol_for (a_code: READABLE_STRING_GENERAL): STRING_32
+			-- How this locale writes currency `a_code': its own symbol, a listed one, or the
+			-- code itself (CLDR's root rule).
+		do
+			if a_code.same_string (currency_code) then
+				Result := currency_symbol
+			elseif attached currency_symbols.item (a_code.to_string_32) as al_symbol then
+				Result := al_symbol
+			else
+				Result := a_code.to_string_32
+			end
+		ensure
+			not_empty: not a_code.is_empty implies not Result.is_empty
+		end
+
+	currency_pattern_for (a_symbol: READABLE_STRING_32): STRING_32
+			-- `currency_pattern', or `alpha_currency_pattern' when `a_symbol' would put a
+			-- letter against the digits (CLDR's currency spacing).
+		local
+			l_sign: INTEGER
+		do
+			Result := currency_pattern
+			l_sign := currency_pattern.index_of ('%/164/', 1)
+			if l_sign > 0 and not a_symbol.is_empty then
+				if (l_sign < currency_pattern.count and then is_digit_place (currency_pattern [l_sign + 1]) and then a_symbol [a_symbol.count].is_alpha)
+					or (l_sign > 1 and then is_digit_place (currency_pattern [l_sign - 1]) and then a_symbol [1].is_alpha)
+				then
+					Result := alpha_currency_pattern
+				end
+			end
+		end
+
 	has_day_periods: BOOLEAN
 			-- Does the locale define flexible day periods?
 		do
@@ -201,6 +247,29 @@ feature {SIMPLE_I18N_LOCALE_TABLE} -- Building
 		ensure
 			decimal_pattern_set: decimal_pattern = a_decimal_pattern
 			currency_pattern_set: currency_pattern = a_currency_pattern
+		end
+
+	set_alpha_currency_pattern (a_pattern: STRING_32)
+			-- Set `alpha_currency_pattern'.
+		require
+			valid: (create {SIMPLE_I18N_NUMBER_PATTERN}.make_default).is_valid_pattern (a_pattern)
+		do
+			alpha_currency_pattern := a_pattern
+		ensure
+			set: alpha_currency_pattern = a_pattern
+		end
+
+	set_currency_symbols (a_pairs: ARRAY [TUPLE [code, symbol: STRING_32]])
+			-- Set `currency_symbols' from code and symbol pairs.
+		require
+			codes_are_three_letters: across a_pairs as ic all ic.code.count = 3 and not ic.symbol.is_empty end
+		do
+			create currency_symbols.make (a_pairs.count)
+			across a_pairs as ic loop
+				currency_symbols.force (ic.symbol, ic.code)
+			end
+		ensure
+			count: currency_symbols.count <= a_pairs.count
 		end
 
 	set_currency (a_code, a_symbol: STRING_32; a_digits: INTEGER)
@@ -302,6 +371,14 @@ feature {SIMPLE_I18N_LOCALE_TABLE} -- Checking
 			-- Interpreter used to check date and time patterns.
 		once
 			create Result
+		end
+
+feature {NONE} -- Implementation
+
+	is_digit_place (a_char: CHARACTER_32): BOOLEAN
+			-- Does `a_char' stand for a digit in a number pattern?
+		do
+			Result := a_char = '#' or ('0' <= a_char and a_char <= '9')
 		end
 
 invariant

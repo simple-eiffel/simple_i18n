@@ -75,10 +75,12 @@ feature -- Access
 				["de_CH", "de-CH", "", ""],
 				["de_DE", "de", "de-DE", ""],
 				["el_GR", "el", "el-GR", ""],
+				["en_001", "en-001", "", ""],
 				["en_AU", "en-AU", "", ""],
 				["en_CA", "en-CA", "", ""],
 				["en_GB", "en-GB", "", ""],
 				["en_US", "en", "en-US", ""],
+				["es_419", "es-419", "", ""],
 				["es_ES", "es", "es-ES", ""],
 				["es_MX", "es-MX", "", ""],
 				["fi_FI", "fi", "fi-FI", ""],
@@ -152,12 +154,15 @@ feature {NONE} -- Locale data
 			-- Text of the feature building locale `a_name' from CLDR `a_source'.
 		local
 			l_numbers, l_symbols, l_currencies, l_gregorian, l_months, l_periods: SIMPLE_JSON_OBJECT
-			l_region, l_code, l_symbol, l_currency_pattern, l_decimal_pattern: STRING_32
+			l_region, l_code, l_symbol, l_decimal_pattern: STRING_32
 			l_short_date, l_medium_date, l_long_date, l_short_time, l_medium_time, l_date_time: STRING_32
 			l_digits: INTEGER
 			l_number_check: SIMPLE_I18N_NUMBER_PATTERN
 			l_date_check: SIMPLE_I18N_DATE_PATTERN
 			l_chain: ARRAYED_LIST [STRING_8]
+			l_is_area: BOOLEAN
+			l_formats: SIMPLE_JSON_OBJECT
+			l_standard_currency, l_alpha_currency: STRING_32
 		do
 				-- CLDR inheritance: a locale has only what differs from its parent (de-CH has no
 				-- CHF symbol of its own; it is de's). Each lookup takes the first locale of the
@@ -169,12 +174,21 @@ feature {NONE} -- Locale data
 			l_gregorian := merged (l_chain, "cldr-dates-full/package/main/", "/ca-gregorian.json", "/dates/calendars/gregorian")
 			l_symbols := object_at (l_numbers, {STRING_32} "symbols-numberSystem-latn")
 
-				-- Currency: the region's one current legal tender.
+				-- Currency: the region's one current legal tender. An area (en_001 "world",
+				-- es_419 "Latin America") has none: such a locale formats a currency only for
+				-- a requested region's (SIMPLE_I18N takes it from `region_currencies').
 			l_region := a_name.substring (a_name.index_of ('_', 1) + 1, a_name.count)
-			l_code := current_currency (array_at (a_currency_data, {STRING_32} "region/" + l_region), a_name)
+			l_is_area := l_region.is_natural
+			if l_is_area then
+				l_code := {STRING_32} "XXX"
+			else
+				l_code := current_currency (array_at (a_currency_data, {STRING_32} "region/" + l_region), a_name)
+			end
 				-- No locale of the chain may have a symbol for it (de and de-CH have none for CHF):
 				-- then CLDR's root rule, the currency's code.
-			if attached l_currencies.item (l_code.to_string_32) as al_entry and then al_entry.is_object
+			if l_is_area then
+				l_symbol := {STRING_32} "%/164/"
+			elseif attached l_currencies.item (l_code.to_string_32) as al_entry and then al_entry.is_object
 				and then attached al_entry.as_object.string_item ({STRING_32} "symbol") as al_symbol then
 				l_symbol := al_symbol
 			else
@@ -185,10 +199,18 @@ feature {NONE} -- Locale data
 
 				-- Number patterns.
 			l_decimal_pattern := string_at (l_numbers, {STRING_32} "decimalFormats-numberSystem-latn/standard")
-			l_currency_pattern := currency_pattern (object_at (l_numbers, {STRING_32} "currencyFormats-numberSystem-latn"), l_symbol, a_name)
+			l_formats := object_at (l_numbers, {STRING_32} "currencyFormats-numberSystem-latn")
+			l_standard_currency := string_at (l_formats, {STRING_32} "standard")
+			if attached l_formats.string_item ({STRING_32} "standard-alphaNextToNumber") as al_alpha then
+				l_alpha_currency := al_alpha
+			else
+				l_alpha_currency := l_standard_currency
+			end
 			create l_number_check.make_default
-			if not l_number_check.is_valid_pattern (l_decimal_pattern) or not l_number_check.is_valid_pattern (l_currency_pattern) then
-				fail (a_name.to_string_32 + ": unsupported number pattern " + l_decimal_pattern + " or " + l_currency_pattern)
+			across << l_decimal_pattern, l_standard_currency, l_alpha_currency >> as ic_pattern loop
+				if not l_number_check.is_valid_pattern (ic_pattern) then
+					fail (a_name.to_string_32 + ": unsupported number pattern " + ic_pattern)
+				end
 			end
 
 				-- Date and time patterns.
@@ -223,8 +245,12 @@ feature {NONE} -- Locale data
 			Result.append (literal (string_at (l_symbols, {STRING_32} "infinity")) + ", ")
 			Result.append (literal (string_at (l_symbols, {STRING_32} "nan")) + ", ")
 			Result.append (natural_text (string_at (l_numbers, {STRING_32} "minimumGroupingDigits"), a_name) + ")%N")
-			Result.append ({STRING_32} "%T%T%TResult.set_number_patterns (" + literal (l_decimal_pattern) + ", " + literal (l_currency_pattern) + ")%N")
-			Result.append ({STRING_32} "%T%T%TResult.set_currency (" + literal (l_code) + ", " + literal (l_symbol) + ", " + l_digits.out + ")%N")
+			Result.append ({STRING_32} "%T%T%TResult.set_number_patterns (" + literal (l_decimal_pattern) + ", " + literal (l_standard_currency) + ")%N")
+			Result.append ({STRING_32} "%T%T%TResult.set_alpha_currency_pattern (" + literal (l_alpha_currency) + ")%N")
+			if not l_is_area then
+				Result.append ({STRING_32} "%T%T%TResult.set_currency (" + literal (l_code) + ", " + literal (l_symbol) + ", " + l_digits.out + ")%N")
+			end
+			Result.append (currency_symbol_lines (l_currencies, l_code))
 			Result.append ({STRING_32} "%T%T%TResult.set_date_patterns (" + literal (l_short_date) + ",%N%T%T%T%T" + literal (l_medium_date)
 				+ ",%N%T%T%T%T" + literal (l_long_date) + ")%N")
 			Result.append ({STRING_32} "%T%T%TResult.set_time_patterns (" + literal (l_short_time) + ", " + literal (l_medium_time)
@@ -240,6 +266,150 @@ feature {NONE} -- Locale data
 				Result.append (day_period_lines (a_name, a_source, a_day_period_rules, l_periods))
 			end
 			Result.append ({STRING_32} "%T%Tend%N%N")
+		end
+
+	currency_symbol_lines (a_currencies: SIMPLE_JSON_OBJECT; a_own: STRING_32): STRING_32
+			-- The locale's symbols for the other currencies of `region_currency_codes' where
+			-- the symbol is not the code itself (en's "%/8364/" for EUR; fr's CHF is "CHF").
+		local
+			l_pairs: STRING_32
+		do
+			create l_pairs.make (2_000)
+			across region_currency_codes as ic_code loop
+				if not ic_code.same_string (a_own) and then attached a_currencies.item (ic_code) as al_entry and then al_entry.is_object
+					and then attached al_entry.as_object.string_item ({STRING_32} "symbol") as al_symbol
+					and then not al_symbol.same_string (ic_code)
+				then
+					if not l_pairs.is_empty then
+						l_pairs.append ({STRING_32} ",%N%T%T%T%T")
+					end
+					l_pairs.append ({STRING_32} "[" + literal (ic_code) + ", " + literal (al_symbol) + "]")
+				end
+			end
+			create Result.make (l_pairs.count + 64)
+			if not l_pairs.is_empty then
+				Result.append ({STRING_32} "%T%T%TResult.set_currency_symbols (<<%N%T%T%T%T" + l_pairs + ">>)%N")
+			end
+		end
+
+	region_currencies: ARRAYED_LIST [TUPLE [region, code: STRING_32; digits: INTEGER]]
+			-- Every region with exactly one current legal tender, sorted by region.
+		local
+			l_data, l_regions, l_fractions: SIMPLE_JSON_OBJECT
+			l_keys: ARRAYED_LIST [STRING_32]
+			l_found: ARRAYED_LIST [STRING_32]
+		once
+			l_data := object_at (read_json ("cldr-core/package/supplemental/currencyData.json"), {STRING_32} "supplemental/currencyData")
+			l_regions := object_at (l_data, {STRING_32} "region")
+			l_fractions := object_at (l_data, {STRING_32} "fractions")
+			l_keys := sorted (l_regions.keys)
+			create Result.make (l_keys.count)
+			across l_keys as ic_region loop
+				l_found := current_tenders (array_at (l_regions, ic_region))
+				if l_found.count = 1 and ic_region.count = 2 then
+					Result.extend ([ic_region, l_found.first, currency_digits (l_fractions, l_found.first)])
+				end
+			end
+		end
+
+	region_currency_codes: ARRAYED_LIST [STRING_32]
+			-- The distinct codes of `region_currencies', sorted.
+		local
+		once
+			create Result.make (200)
+			Result.compare_objects
+			across region_currencies as ic loop
+				if not Result.has (ic.code) then
+					Result.extend (ic.code)
+				end
+			end
+			Result := sorted (Result)
+		end
+
+	parent_links: ARRAYED_LIST [TUPLE [child, parent: STRING_8]]
+			-- CLDR's parentLocales from a language-and-region child (en-IE, es-AR, pt-AO)
+			-- followed up the chain (en-AT, en-150, en-001) to a table locale, sorted by
+			-- child; children the table lists themselves are left out.
+		local
+			l_code, l_name: STRING_8
+			l_steps: INTEGER
+			l_keys: ARRAYED_LIST [STRING_32]
+		once
+			l_keys := sorted (parent_locales.keys)
+			create Result.make (200)
+			across l_keys as ic_child loop
+				if ic_child.occurrences ('-') = 1 then
+					from
+						l_code := ic_child.to_string_8
+						l_name := ""
+						l_steps := 0
+					until
+						not l_name.is_empty or l_steps > 6 or not attached parent_locales.string_item (l_code.to_string_32)
+					loop
+						if attached parent_locales.string_item (l_code.to_string_32) as al_parent then
+							l_code := al_parent.to_string_8
+							if is_table_locale (l_code) then
+								l_name := l_code.twin
+								l_name.replace_substring_all ("-", "_")
+							end
+						end
+						l_steps := l_steps + 1
+					end
+					if not l_name.is_empty and then not is_table_locale (ic_child.to_string_8) then
+						l_code := ic_child.to_string_8
+						l_code.replace_substring_all ("-", "_")
+						Result.extend ([l_code, l_name])
+					end
+				end
+			end
+		end
+
+	sorted (a_items: ITERABLE [STRING_32]): ARRAYED_LIST [STRING_32]
+			-- `a_items' in ascending order (insertion; the lists are a few hundred long).
+		local
+			i: INTEGER
+		do
+			create Result.make (256)
+			across a_items as ic loop
+				from i := Result.count until i = 0 or else Result [i] <= ic loop
+					i := i - 1
+				end
+				Result.go_i_th (i)
+				Result.put_right (ic)
+			end
+		ensure
+			ascending: across 2 |..| Result.count as ic all Result [ic - 1] <= Result [ic] end
+		end
+
+	is_table_locale (a_cldr: STRING_8): BOOLEAN
+			-- Is CLDR locale `a_cldr' ("en-001", "pt-PT") one of the table's, by name?
+		local
+			l_name: STRING_8
+		do
+			l_name := a_cldr.twin
+			l_name.replace_substring_all ("-", "_")
+			Result := across locales as ic some ic.name.same_string (l_name) end
+		end
+
+	current_tenders (a_entries: SIMPLE_JSON_ARRAY): ARRAYED_LIST [STRING_32]
+			-- The current legal tenders among a region's `a_entries'.
+		local
+			l_entry: SIMPLE_JSON_OBJECT
+			i: INTEGER
+		do
+			create Result.make (1)
+			from i := 1 until i > a_entries.count loop
+				l_entry := as_object (a_entries [i], "currency entry")
+				across l_entry.keys as ic_code loop
+					if attached l_entry.item (ic_code) as al_value and then al_value.is_object
+						and then not al_value.as_object.has_key ("_to")
+						and then not (attached al_value.as_object.string_item ("_tender") as al_tender and then al_tender.same_string ("false"))
+					then
+						Result.extend (ic_code)
+					end
+				end
+				i := i + 1
+			end
 		end
 
 	current_currency (a_entries: SIMPLE_JSON_ARRAY; a_name: STRING_8): STRING_32
@@ -377,8 +547,9 @@ feature {NONE} -- Class text
 			Result.append ({STRING_32} "%T%TLocale formatting data for SIMPLE_I18N, generated from CLDR " + version + "%N")
 			Result.append ({STRING_32} "%T%T(the Unicode Common Locale Data Repository) by tools/cldr_generator.%N")
 			Result.append ({STRING_32} "%T%TDo not edit by hand: change the generator and run it again (see README).%N%N")
-			Result.append ({STRING_32} "%T%TNumbers use CLDR's %"latn%" numbering system. Currency is each locale's%N")
-			Result.append ({STRING_32} "%T%Town current currency in CLDR's standard currency format. Patterns are%N")
+			Result.append ({STRING_32} "%T%TNumbers use CLDR's %"latn%" numbering system. A currency is the requested%N")
+			Result.append ({STRING_32} "%T%Tregion's (`region_currencies'), shown with the table locale's symbol for it%N")
+			Result.append ({STRING_32} "%T%Tin CLDR's standard currency format. Patterns are%N")
 			Result.append ({STRING_32} "%T%TCLDR's own; the bidirectional marks of the Hebrew and Arabic data are kept%N")
 			Result.append ({STRING_32} "%T%Tas CLDR has them. Every character outside ASCII is written as a%N")
 			Result.append ({STRING_32} "%T%T%%/code/ escape (its Unicode code point), so the compiler reads the%N")
@@ -409,6 +580,24 @@ feature {NONE} -- Class text
 			Result.append ({STRING_32} "%T%Tonce%N")
 			Result.append ({STRING_32} "%T%T%Tcreate Result.make (32)%N")
 			Result.append (a_language_entries)
+			Result.append ({STRING_32} "%T%Tend%N%N")
+			Result.append ({STRING_32} "%Tparent_locales: HASH_TABLE [STRING_8, STRING_8]%N")
+			Result.append ({STRING_32} "%T%T%T-- Table locale for a language and region the table does not list, from%N")
+			Result.append ({STRING_32} "%T%T%T-- CLDR's parentLocales followed to a table locale (en_IE to en_001).%N")
+			Result.append ({STRING_32} "%T%Tonce%N")
+			Result.append ({STRING_32} "%T%T%Tcreate Result.make (" + parent_links.count.out + ")%N")
+			across parent_links as ic loop
+				Result.append ({STRING_32} "%T%T%TResult.put (%"" + ic.parent + "%", %"" + ic.child + "%")%N")
+			end
+			Result.append ({STRING_32} "%T%Tend%N%N")
+			Result.append ({STRING_32} "%Tregion_currencies: HASH_TABLE [TUPLE [code: STRING_32; digits: INTEGER], STRING_8]%N")
+			Result.append ({STRING_32} "%T%T%T-- Each region's one current legal tender and its fraction digits, from%N")
+			Result.append ({STRING_32} "%T%T%T-- CLDR's currencyData (regions with more than one are left out).%N")
+			Result.append ({STRING_32} "%T%Tonce%N")
+			Result.append ({STRING_32} "%T%T%Tcreate Result.make (" + region_currencies.count.out + ")%N")
+			across region_currencies as ic loop
+				Result.append ({STRING_32} "%T%T%TResult.put ([" + literal (ic.code) + ", " + ic.digits.out + "], %"" + ic.region + "%")%N")
+			end
 			Result.append ({STRING_32} "%T%Tend%N%N")
 			Result.append ({STRING_32} "feature {NONE} -- Locales%N%N")
 			Result.append (a_locale_features)

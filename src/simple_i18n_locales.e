@@ -58,15 +58,18 @@ feature -- Access
 
 	table_name (a_code: READABLE_STRING_GENERAL): detachable STRING_8
 			-- Table locale for `a_code', or Void if the table has none for its language.
-			-- Language first (Larry, 2026-11-14): the locale itself when the table lists it;
-			-- else, as CLDR's parent chain ends at the language, the language's (and script's)
-			-- default locale, so de_AT formats as de_DE and fr_BE as fr_FR.
+			-- Language first (Larry, 2026-11-14), along CLDR's parent chain: the locale itself
+			-- when the table lists it; else its CLDR parent in the table (en_IE to en_001,
+			-- es_AR to es_419, pt_AO to pt_PT); else the language's (and script's) default
+			-- locale, so de_AT formats as de_DE and fr_BE as fr_FR.
 		local
 			l_parts: like code_parts
 		do
 			l_parts := code_parts (a_code)
 			if not l_parts.region.is_empty and then table.locales.has (l_parts.language + "_" + l_parts.region) then
 				Result := l_parts.language + "_" + l_parts.region
+			elseif not l_parts.region.is_empty and then attached table.parent_locales.item (l_parts.language + "_" + l_parts.region) as al_parent then
+				Result := al_parent
 			elseif not l_parts.script.is_empty and then attached table.language_defaults.item (l_parts.language + "_" + l_parts.script) as al_name then
 				Result := al_name
 			elseif not l_parts.language.is_empty then
@@ -93,6 +96,18 @@ feature -- Access
 			-- Does the table have a locale for `a_code''s language?
 		do
 			Result := table_name (a_code) /= Void
+		end
+
+	region_currency (a_code: READABLE_STRING_GENERAL): detachable TUPLE [code: STRING_32; digits: INTEGER]
+			-- The current currency of `a_code''s region and its digits; Void with no region,
+			-- an area (419), or a region of several tenders.
+		local
+			l_region: STRING_8
+		do
+			l_region := code_parts (a_code).region
+			if l_region.count = 2 then
+				Result := table.region_currencies.item (l_region)
+			end
 		end
 
 	is_listed (a_code: READABLE_STRING_GENERAL): BOOLEAN

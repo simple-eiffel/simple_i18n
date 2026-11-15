@@ -479,10 +479,11 @@ feature -- Number Formatting (CLDR)
 		end
 
 	format_currency (a_value: DOUBLE): STRING_32
-			-- `a_value' in the locale's own currency, in its currency pattern, with the
-			-- currency's digits (for example "1 234,50 €" in fr_FR, "¥1,235" in ja_JP).
+			-- `a_value' in the requested region's currency (`currency_code'), written the way
+			-- `formatting_locale_name' writes it, with the currency's digits: "1 234,50 €" in
+			-- fr_FR, "1 234,50 CHF" in fr_CH, "€1,234.50" in en_IE.
 		do
-			Result := currency_number_pattern.formatted_real (a_value, locale_data.currency_digits, locale_data, locale_data.currency_symbol)
+			Result := currency_number_pattern.formatted_real (a_value, currency_digits, locale_data, currency_symbol)
 		ensure
 			result_not_void: Result /= Void
 		end
@@ -523,16 +524,14 @@ feature -- Locale Information
 		end
 
 	currency_symbol: STRING_32
-			-- Symbol of the locale's own currency.
-		do
-			Result := locale_data.currency_symbol
-		end
+			-- Symbol of `currency_code' as the formatting locale writes it.
 
 	currency_code: STRING_32
-			-- ISO 4217 code of the locale's own currency.
-		do
-			Result := locale_data.currency_code
-		end
+			-- ISO 4217 code of the requested region's currency (the formatting locale's own
+			-- when the request names no region, or an area such as 419; "XXX" for none).
+
+	currency_digits: INTEGER
+			-- Fraction digits of `currency_code'.
 
 	date_format: STRING_32
 			-- The locale's long date pattern, in CLDR's syntax (for example "d MMMM y").
@@ -613,7 +612,15 @@ feature {NONE} -- Implementation
 			is_fallback_locale := not locales.is_listed (a_code)
 			locale_data := locales.data (l_name)
 			create decimal_number_pattern.make (locale_data.decimal_pattern)
-			create currency_number_pattern.make (locale_data.currency_pattern)
+			if attached locales.region_currency (a_code) as al_currency then
+				currency_code := al_currency.code
+				currency_digits := al_currency.digits
+			else
+				currency_code := locale_data.currency_code
+				currency_digits := locale_data.currency_digits
+			end
+			currency_symbol := locale_data.symbol_for (currency_code)
+			create currency_number_pattern.make (locale_data.currency_pattern_for (currency_symbol))
 		ensure
 			fallback_when_not_listed: is_fallback_locale = not locales.is_listed (a_code)
 			en_us_for_unknown_language: not locales.is_known (a_code) implies formatting_locale_name.same_string (Fallback_locale_name)

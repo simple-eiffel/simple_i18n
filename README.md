@@ -10,7 +10,7 @@ Simple internationalization wrapper for the ISE i18n library.
 - .mo file loading via ISE I18N_LOCALE_MANAGER
 - Context-aware translations
 - Full plural form support (not just English-like)
-- Locale-aware date/time/number/currency formatting from simple_i18n's own locale table (30 locales, from CLDR)
+- Locale-aware date/time/number/currency formatting from simple_i18n's own locale table (32 locales, from CLDR)
 - System locale detection: the operating system gives only the locale's name
 - String formatting with placeholders
 
@@ -113,12 +113,16 @@ user default locale; `LC_ALL`, `LC_NUMERIC` or `LANG` elsewhere). Names such as
 A locale the table does not list formats as its language's table locale,
 the way CLDR's parent chain ends at the language: `de_AT` formats as `de_DE`,
 `fr_BE` as `fr_FR`, `zh_Hant_HK` as `zh_TW` ("language first", Larry's ruling).
+CLDR's parent links come first: English outside the United States (`en_IE`,
+`en_IN`, `en_NZ`, ...) formats as `en_001`, and Latin American Spanish
+(`es_AR`, `es_CO`, `es_US`, ...) as `es_419`. The money is always the requested
+region's: `fr_CH` writes `1 234,50 CHF`, the French way.
 Only a language the table lacks formats as `en_US`. The program can see which
 was used: `is_fallback_locale` is true and `formatting_locale_name` names the
 table locale, while `locale_name` still gives the name that was asked for.
 
-The table's 30 locales: ar_SA, cs_CZ, da_DK, de_CH, de_DE, el_GR, en_AU, en_CA,
-en_GB, en_US, es_ES, es_MX, fi_FI, fr_CA, fr_FR, he_IL, it_IT, ja_JP, ko_KR,
+The table's 32 locales: ar_SA, cs_CZ, da_DK, de_CH, de_DE, el_GR, en_001, en_AU,
+en_CA, en_GB, en_US, es_419, es_ES, es_MX, fi_FI, fr_CA, fr_FR, he_IL, it_IT, ja_JP, ko_KR,
 nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, tr_TR, uk_UA, zh_CN, zh_TW.
 
 Patterns are CLDR's own syntax, so `date_format` gives, for example, `d MMMM y`.

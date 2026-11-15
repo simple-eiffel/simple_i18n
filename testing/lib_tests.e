@@ -241,14 +241,79 @@ feature -- Tests: the CLDR table (own locale data)
 			assert_text ("fr_BE formats as", "fr_FR", l.formatting_locale_name)
 			assert_text ("fr_BE number", {STRING_32} "1%/8239/234,5", l.format_number (1234.5))
 			create l.make_with_locale ("en_IE")
-			assert_text ("en_IE formats as", "en_US", l.formatting_locale_name)
+			assert_text ("en_IE formats as", "en_001", l.formatting_locale_name)
 			assert_true ("en_IE is still a fallback", l.is_fallback_locale)
+			create l.make_with_locale ("xx_IE")
+			assert_text ("an unknown language", "en_US", l.formatting_locale_name)
 			create l.make_with_locale ("zh_Hant_HK")
 			assert_text ("script first", "zh_TW", l.formatting_locale_name)
 			create l.make_with_locale ("de_CH")
 			assert_false ("a listed locale is its own", l.is_fallback_locale)
 			assert_text ("de_CH", "de_CH", l.formatting_locale_name)
 			assert_true ("has_locale by language", l.has_locale ("de_AT"))
+		end
+
+	test_en_001_for_english_outside_the_us
+			-- CLDR's parent chain: en_IE, en_IN and en_AT (through en_150) format as en_001,
+			-- English as written outside the United States, in their own region's currency.
+		local
+			l: SIMPLE_I18N
+		do
+			create l.make_with_locale ("en_IE")
+			assert_text ("en_IE formats as", "en_001", l.formatting_locale_name)
+			assert_text ("en_IE currency", "EUR", l.currency_code)
+			assert_text ("en_IE money", {STRING_32} "%/8364/1,234.50", l.format_currency (1234.5))
+			assert_text ("en_IE long date", "14 November 2026", l.format_date (create {SIMPLE_DATE}.make (2026, 11, 14)))
+			assert_text ("en_IE short date", "14/11/2026", l.format_short_date (create {SIMPLE_DATE}.make (2026, 11, 14)))
+			create l.make_with_locale ("en_IN")
+			assert_text ("en_IN formats as", "en_001", l.formatting_locale_name)
+			assert_text ("en_IN money", {STRING_32} "%/8377/1,234.50", l.format_currency (1234.5))
+			create l.make_with_locale ("en_AT")
+			assert_text ("en_AT through en_150", "en_001", l.formatting_locale_name)
+			assert_text ("en_AT money", {STRING_32} "%/8364/1,234.50", l.format_currency (1234.5))
+			create l.make_with_locale ("en_AU")
+			assert_false ("en_AU is listed", l.is_fallback_locale)
+			assert_text ("en_AU long date", "14 November 2026", l.format_date (create {SIMPLE_DATE}.make (2026, 11, 14)))
+			assert_text ("en_AU money", "$1,234.50", l.format_currency (1234.5))
+		end
+
+	test_es_419_for_latin_american_spanish
+			-- es_AR and es_US format as es_419, Latin American Spanish; a symbol of letters
+			-- takes CLDR's alphaNextToNumber pattern, with U+00A0 before the digits.
+		local
+			l: SIMPLE_I18N
+		do
+			create l.make_with_locale ("es_AR")
+			assert_text ("es_AR formats as", "es_419", l.formatting_locale_name)
+			assert_text ("es_AR currency", "ARS", l.currency_code)
+			assert_text ("es_AR money", {STRING_32} "ARS%/160/1,234.50", l.format_currency (1234.5))
+			assert_text ("es_AR number", "1,234.5", l.format_number (1234.5))
+			assert_text ("es_AR long date", "14 de noviembre de 2026", l.format_date (create {SIMPLE_DATE}.make (2026, 11, 14)))
+			create l.make_with_locale ("es_US")
+			assert_text ("es_US formats as", "es_419", l.formatting_locale_name)
+			assert_text ("es_US money", {STRING_32} "USD%/160/1,234.50", l.format_currency (1234.5))
+			create l.make_with_locale ("es_MX")
+			assert_false ("es_MX is listed", l.is_fallback_locale)
+			assert_text ("es_MX money", "$1,234.50", l.format_currency (1234.5))
+		end
+
+	test_currency_follows_the_region
+			-- A locale formatted as another's keeps its own region's money: fr_CH pays in
+			-- CHF, written fr_FR's way; pt_AO in AOA; de_AT stays in EUR.
+		local
+			l: SIMPLE_I18N
+		do
+			create l.make_with_locale ("fr_CH")
+			assert_text ("fr_CH formats as", "fr_FR", l.formatting_locale_name)
+			assert_text ("fr_CH money", {STRING_32} "1%/8239/234,50%/160/CHF", l.format_currency (1234.5))
+			create l.make_with_locale ("pt_AO")
+			assert_text ("pt_AO formats as", "pt_PT", l.formatting_locale_name)
+			assert_text ("pt_AO money, pt_PT's minimum grouping of 2", {STRING_32} "1234,50%/160/AOA", l.format_currency (1234.5))
+			assert_text ("pt_AO money, grouped", {STRING_32} "12%/160/345,50%/160/AOA", l.format_currency (12345.5))
+			create l.make_with_locale ("de_AT")
+			assert_text ("de_AT money", {STRING_32} "1.234,50%/160/%/8364/", l.format_currency (1234.5))
+			create l.make_with_locale ("fr")
+			assert_text ("no region: the locale's own", "EUR", l.currency_code)
 		end
 
 	test_os_style_names_resolve
@@ -282,7 +347,7 @@ feature -- Tests: the CLDR table (own locale data)
 				assert_false ("date " + ic, l.format_date_time (create {SIMPLE_DATE_TIME}.make (2026, 1, 2, 3, 4, 5)).is_empty)
 				assert_false ("short " + ic, l.format_short_date (create {SIMPLE_DATE}.make (2026, 12, 31)).is_empty)
 			end
-			assert_integers_equal ("thirty", 30, (create {SIMPLE_I18N_LOCALES}).locale_names.count)
+			assert_integers_equal ("thirty-two", 32, (create {SIMPLE_I18N_LOCALES}).locale_names.count)
 		end
 
 feature {NONE} -- Exact text
