@@ -7,10 +7,12 @@ note
 		Numbers use CLDR's "latn" numbering system. Currency is each locale's
 		own current currency in CLDR's standard currency format. Patterns are
 		CLDR's own; the bidirectional marks of the Hebrew and Arabic data are kept
-		as CLDR has them. Invisible characters are written as %/code/ escapes.
+		as CLDR has them. Every character outside ASCII is written as a
+		%/code/ escape (its Unicode code point), so the compiler reads the
+		same text whatever encoding it takes the file to be in.
 	]"
 	cldr_version: "48.2.0"
-	cldr_license: "Unicode License v3 (SPDX-License-Identifier: Unicode-3.0), Copyright (c) 1991-2026 Unicode, Inc.; full text in LICENSE-CLDR.txt"
+	cldr_license: "Unicode License v3 (SPDX-License-Identifier: Unicode-3.0), Copyright (c) 2004-2026 Unicode, Inc.; full text in LICENSE-CLDR.txt"
 	generated_by: "tools/cldr_generator"
 
 class
@@ -106,17 +108,17 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("ar_SA", "ar-SA")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "%/8206/-", {STRING_32} "%/8206/+",
-				{STRING_32} "∞", {STRING_32} "ليس%/160/رقمًا", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/8207/#,##0.00%/160/¤;%/8207/-#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "SAR", {STRING_32} "ر.س.%/8207/", 2)
+				{STRING_32} "%/8734/", {STRING_32} "%/1604/%/1610/%/1587/%/160/%/1585/%/1602/%/1605/%/1611/%/1575/", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/8207/#,##0.00%/160/%/164/;%/8207/-#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "SAR", {STRING_32} "%/1585/.%/1587/.%/8207/", 2)
 			Result.set_date_patterns ({STRING_32} "d%/8207//M%/8207//y",
 				{STRING_32} "dd%/8207//MM%/8207//y",
 				{STRING_32} "d MMMM y")
-			Result.set_time_patterns ({STRING_32} "h:mm a", {STRING_32} "h:mm:ss a", {STRING_32} "{1}، {0}")
+			Result.set_time_patterns ({STRING_32} "h:mm a", {STRING_32} "h:mm:ss a", {STRING_32} "{1}%/1548/ {0}")
 			Result.set_month_names (
-				<<{STRING_32} "يناير", {STRING_32} "فبراير", {STRING_32} "مارس", {STRING_32} "أبريل", {STRING_32} "مايو", {STRING_32} "يونيو", {STRING_32} "يوليو", {STRING_32} "أغسطس", {STRING_32} "سبتمبر", {STRING_32} "أكتوبر", {STRING_32} "نوفمبر", {STRING_32} "ديسمبر">>,
-				<<{STRING_32} "يناير", {STRING_32} "فبراير", {STRING_32} "مارس", {STRING_32} "أبريل", {STRING_32} "مايو", {STRING_32} "يونيو", {STRING_32} "يوليو", {STRING_32} "أغسطس", {STRING_32} "سبتمبر", {STRING_32} "أكتوبر", {STRING_32} "نوفمبر", {STRING_32} "ديسمبر">>)
-			Result.set_am_pm ({STRING_32} "ص", {STRING_32} "م")
+				<<{STRING_32} "%/1610/%/1606/%/1575/%/1610/%/1585/", {STRING_32} "%/1601/%/1576/%/1585/%/1575/%/1610/%/1585/", {STRING_32} "%/1605/%/1575/%/1585/%/1587/", {STRING_32} "%/1571/%/1576/%/1585/%/1610/%/1604/", {STRING_32} "%/1605/%/1575/%/1610/%/1608/", {STRING_32} "%/1610/%/1608/%/1606/%/1610/%/1608/", {STRING_32} "%/1610/%/1608/%/1604/%/1610/%/1608/", {STRING_32} "%/1571/%/1594/%/1587/%/1591/%/1587/", {STRING_32} "%/1587/%/1576/%/1578/%/1605/%/1576/%/1585/", {STRING_32} "%/1571/%/1603/%/1578/%/1608/%/1576/%/1585/", {STRING_32} "%/1606/%/1608/%/1601/%/1605/%/1576/%/1585/", {STRING_32} "%/1583/%/1610/%/1587/%/1605/%/1576/%/1585/">>,
+				<<{STRING_32} "%/1610/%/1606/%/1575/%/1610/%/1585/", {STRING_32} "%/1601/%/1576/%/1585/%/1575/%/1610/%/1585/", {STRING_32} "%/1605/%/1575/%/1585/%/1587/", {STRING_32} "%/1571/%/1576/%/1585/%/1610/%/1604/", {STRING_32} "%/1605/%/1575/%/1610/%/1608/", {STRING_32} "%/1610/%/1608/%/1606/%/1610/%/1608/", {STRING_32} "%/1610/%/1608/%/1604/%/1610/%/1608/", {STRING_32} "%/1571/%/1594/%/1587/%/1591/%/1587/", {STRING_32} "%/1587/%/1576/%/1578/%/1605/%/1576/%/1585/", {STRING_32} "%/1571/%/1603/%/1578/%/1608/%/1576/%/1585/", {STRING_32} "%/1606/%/1608/%/1601/%/1605/%/1576/%/1585/", {STRING_32} "%/1583/%/1610/%/1587/%/1605/%/1576/%/1585/">>)
+			Result.set_am_pm ({STRING_32} "%/1589/", {STRING_32} "%/1605/")
 		end
 
 	locale_cs_cz: SIMPLE_I18N_LOCALE_DATA
@@ -124,16 +126,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("cs_CZ", "cs")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "CZK", {STRING_32} "Kč", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "CZK", {STRING_32} "K%/269/", 2)
 			Result.set_date_patterns ({STRING_32} "dd.MM.yy",
 				{STRING_32} "d. M. y",
 				{STRING_32} "d. MMMM y")
 			Result.set_time_patterns ({STRING_32} "H:mm", {STRING_32} "H:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "ledna", {STRING_32} "února", {STRING_32} "března", {STRING_32} "dubna", {STRING_32} "května", {STRING_32} "června", {STRING_32} "července", {STRING_32} "srpna", {STRING_32} "září", {STRING_32} "října", {STRING_32} "listopadu", {STRING_32} "prosince">>,
-				<<{STRING_32} "led", {STRING_32} "úno", {STRING_32} "bře", {STRING_32} "dub", {STRING_32} "kvě", {STRING_32} "čvn", {STRING_32} "čvc", {STRING_32} "srp", {STRING_32} "zář", {STRING_32} "říj", {STRING_32} "lis", {STRING_32} "pro">>)
+				<<{STRING_32} "ledna", {STRING_32} "%/250/nora", {STRING_32} "b%/345/ezna", {STRING_32} "dubna", {STRING_32} "kv%/283/tna", {STRING_32} "%/269/ervna", {STRING_32} "%/269/ervence", {STRING_32} "srpna", {STRING_32} "z%/225/%/345/%/237/", {STRING_32} "%/345/%/237/jna", {STRING_32} "listopadu", {STRING_32} "prosince">>,
+				<<{STRING_32} "led", {STRING_32} "%/250/no", {STRING_32} "b%/345/e", {STRING_32} "dub", {STRING_32} "kv%/283/", {STRING_32} "%/269/vn", {STRING_32} "%/269/vc", {STRING_32} "srp", {STRING_32} "z%/225/%/345/", {STRING_32} "%/345/%/237/j", {STRING_32} "lis", {STRING_32} "pro">>)
 			Result.set_am_pm ({STRING_32} "dop.", {STRING_32} "odp.")
 		end
 
@@ -142,8 +144,8 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("da_DK", "da")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
 			Result.set_currency ({STRING_32} "DKK", {STRING_32} "kr.", 2)
 			Result.set_date_patterns ({STRING_32} "dd.MM.y",
 				{STRING_32} "d. MMM y",
@@ -160,16 +162,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("de_CH", "de-CH")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} "'", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤%/160/#,##0.00;¤-#,##0.00")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/%/160/#,##0.00;%/164/-#,##0.00")
 			Result.set_currency ({STRING_32} "CHF", {STRING_32} "CHF", 2)
 			Result.set_date_patterns ({STRING_32} "dd.MM.yy",
 				{STRING_32} "dd.MM.y",
 				{STRING_32} "d. MMMM y")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "Januar", {STRING_32} "Februar", {STRING_32} "März", {STRING_32} "April", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "August", {STRING_32} "September", {STRING_32} "Oktober", {STRING_32} "November", {STRING_32} "Dezember">>,
-				<<{STRING_32} "Jan.", {STRING_32} "Feb.", {STRING_32} "März", {STRING_32} "Apr.", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "Aug.", {STRING_32} "Sept.", {STRING_32} "Okt.", {STRING_32} "Nov.", {STRING_32} "Dez.">>)
+				<<{STRING_32} "Januar", {STRING_32} "Februar", {STRING_32} "M%/228/rz", {STRING_32} "April", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "August", {STRING_32} "September", {STRING_32} "Oktober", {STRING_32} "November", {STRING_32} "Dezember">>,
+				<<{STRING_32} "Jan.", {STRING_32} "Feb.", {STRING_32} "M%/228/rz", {STRING_32} "Apr.", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "Aug.", {STRING_32} "Sept.", {STRING_32} "Okt.", {STRING_32} "Nov.", {STRING_32} "Dez.">>)
 			Result.set_am_pm ({STRING_32} "AM", {STRING_32} "PM")
 		end
 
@@ -178,16 +180,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("de_DE", "de")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "dd.MM.yy",
 				{STRING_32} "dd.MM.y",
 				{STRING_32} "d. MMMM y")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "Januar", {STRING_32} "Februar", {STRING_32} "März", {STRING_32} "April", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "August", {STRING_32} "September", {STRING_32} "Oktober", {STRING_32} "November", {STRING_32} "Dezember">>,
-				<<{STRING_32} "Jan.", {STRING_32} "Feb.", {STRING_32} "März", {STRING_32} "Apr.", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "Aug.", {STRING_32} "Sept.", {STRING_32} "Okt.", {STRING_32} "Nov.", {STRING_32} "Dez.">>)
+				<<{STRING_32} "Januar", {STRING_32} "Februar", {STRING_32} "M%/228/rz", {STRING_32} "April", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "August", {STRING_32} "September", {STRING_32} "Oktober", {STRING_32} "November", {STRING_32} "Dezember">>,
+				<<{STRING_32} "Jan.", {STRING_32} "Feb.", {STRING_32} "M%/228/rz", {STRING_32} "Apr.", {STRING_32} "Mai", {STRING_32} "Juni", {STRING_32} "Juli", {STRING_32} "Aug.", {STRING_32} "Sept.", {STRING_32} "Okt.", {STRING_32} "Nov.", {STRING_32} "Dez.">>)
 			Result.set_am_pm ({STRING_32} "AM", {STRING_32} "PM")
 		end
 
@@ -196,17 +198,17 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("el_GR", "el")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "d/M/yy",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
 			Result.set_time_patterns ({STRING_32} "h:mm%/8239/a", {STRING_32} "h:mm:ss%/8239/a", {STRING_32} "{1} - {0}")
 			Result.set_month_names (
-				<<{STRING_32} "Ιανουαρίου", {STRING_32} "Φεβρουαρίου", {STRING_32} "Μαρτίου", {STRING_32} "Απριλίου", {STRING_32} "Μαΐου", {STRING_32} "Ιουνίου", {STRING_32} "Ιουλίου", {STRING_32} "Αυγούστου", {STRING_32} "Σεπτεμβρίου", {STRING_32} "Οκτωβρίου", {STRING_32} "Νοεμβρίου", {STRING_32} "Δεκεμβρίου">>,
-				<<{STRING_32} "Ιαν", {STRING_32} "Φεβ", {STRING_32} "Μαρ", {STRING_32} "Απρ", {STRING_32} "Μαΐ", {STRING_32} "Ιουν", {STRING_32} "Ιουλ", {STRING_32} "Αυγ", {STRING_32} "Σεπ", {STRING_32} "Οκτ", {STRING_32} "Νοε", {STRING_32} "Δεκ">>)
-			Result.set_am_pm ({STRING_32} "π.μ.", {STRING_32} "μ.μ.")
+				<<{STRING_32} "%/921/%/945/%/957/%/959/%/965/%/945/%/961/%/943/%/959/%/965/", {STRING_32} "%/934/%/949/%/946/%/961/%/959/%/965/%/945/%/961/%/943/%/959/%/965/", {STRING_32} "%/924/%/945/%/961/%/964/%/943/%/959/%/965/", {STRING_32} "%/913/%/960/%/961/%/953/%/955/%/943/%/959/%/965/", {STRING_32} "%/924/%/945/%/912/%/959/%/965/", {STRING_32} "%/921/%/959/%/965/%/957/%/943/%/959/%/965/", {STRING_32} "%/921/%/959/%/965/%/955/%/943/%/959/%/965/", {STRING_32} "%/913/%/965/%/947/%/959/%/973/%/963/%/964/%/959/%/965/", {STRING_32} "%/931/%/949/%/960/%/964/%/949/%/956/%/946/%/961/%/943/%/959/%/965/", {STRING_32} "%/927/%/954/%/964/%/969/%/946/%/961/%/943/%/959/%/965/", {STRING_32} "%/925/%/959/%/949/%/956/%/946/%/961/%/943/%/959/%/965/", {STRING_32} "%/916/%/949/%/954/%/949/%/956/%/946/%/961/%/943/%/959/%/965/">>,
+				<<{STRING_32} "%/921/%/945/%/957/", {STRING_32} "%/934/%/949/%/946/", {STRING_32} "%/924/%/945/%/961/", {STRING_32} "%/913/%/960/%/961/", {STRING_32} "%/924/%/945/%/912/", {STRING_32} "%/921/%/959/%/965/%/957/", {STRING_32} "%/921/%/959/%/965/%/955/", {STRING_32} "%/913/%/965/%/947/", {STRING_32} "%/931/%/949/%/960/", {STRING_32} "%/927/%/954/%/964/", {STRING_32} "%/925/%/959/%/949/", {STRING_32} "%/916/%/949/%/954/">>)
+			Result.set_am_pm ({STRING_32} "%/960/.%/956/.", {STRING_32} "%/956/.%/956/.")
 		end
 
 	locale_en_au: SIMPLE_I18N_LOCALE_DATA
@@ -214,8 +216,8 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("en_AU", "en-AU")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
 			Result.set_currency ({STRING_32} "AUD", {STRING_32} "$", 2)
 			Result.set_date_patterns ({STRING_32} "d/M/yy",
 				{STRING_32} "d MMM y",
@@ -232,8 +234,8 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("en_CA", "en-CA")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
 			Result.set_currency ({STRING_32} "CAD", {STRING_32} "$", 2)
 			Result.set_date_patterns ({STRING_32} "y-MM-dd",
 				{STRING_32} "MMM d, y",
@@ -250,9 +252,9 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("en_GB", "en-GB")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
-			Result.set_currency ({STRING_32} "GBP", {STRING_32} "£", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
+			Result.set_currency ({STRING_32} "GBP", {STRING_32} "%/163/", 2)
 			Result.set_date_patterns ({STRING_32} "dd/MM/y",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
@@ -268,8 +270,8 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("en_US", "en")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
 			Result.set_currency ({STRING_32} "USD", {STRING_32} "$", 2)
 			Result.set_date_patterns ({STRING_32} "M/d/yy",
 				{STRING_32} "MMM d, y",
@@ -286,9 +288,9 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("es_ES", "es")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 2)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 2)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "d/M/yy",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d 'de' MMMM 'de' y")
@@ -304,8 +306,8 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("es_MX", "es-MX")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
 			Result.set_currency ({STRING_32} "MXN", {STRING_32} "$", 2)
 			Result.set_date_patterns ({STRING_32} "dd/MM/yy",
 				{STRING_32} "d MMM y",
@@ -321,17 +323,17 @@ feature {NONE} -- Locales
 			-- fi_FI, from CLDR locale "fi".
 		do
 			create Result.make ("fi_FI", "fi")
-			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "−", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "epäluku", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "%/8722/", {STRING_32} "+",
+				{STRING_32} "%/8734/", {STRING_32} "ep%/228/luku", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "d.M.y",
 				{STRING_32} "d.M.y",
 				{STRING_32} "d. MMMM y")
 			Result.set_time_patterns ({STRING_32} "H.mm", {STRING_32} "H.mm.ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "tammikuuta", {STRING_32} "helmikuuta", {STRING_32} "maaliskuuta", {STRING_32} "huhtikuuta", {STRING_32} "toukokuuta", {STRING_32} "kesäkuuta", {STRING_32} "heinäkuuta", {STRING_32} "elokuuta", {STRING_32} "syyskuuta", {STRING_32} "lokakuuta", {STRING_32} "marraskuuta", {STRING_32} "joulukuuta">>,
-				<<{STRING_32} "tammi", {STRING_32} "helmi", {STRING_32} "maalis", {STRING_32} "huhti", {STRING_32} "touko", {STRING_32} "kesä", {STRING_32} "heinä", {STRING_32} "elo", {STRING_32} "syys", {STRING_32} "loka", {STRING_32} "marras", {STRING_32} "joulu">>)
+				<<{STRING_32} "tammikuuta", {STRING_32} "helmikuuta", {STRING_32} "maaliskuuta", {STRING_32} "huhtikuuta", {STRING_32} "toukokuuta", {STRING_32} "kes%/228/kuuta", {STRING_32} "hein%/228/kuuta", {STRING_32} "elokuuta", {STRING_32} "syyskuuta", {STRING_32} "lokakuuta", {STRING_32} "marraskuuta", {STRING_32} "joulukuuta">>,
+				<<{STRING_32} "tammi", {STRING_32} "helmi", {STRING_32} "maalis", {STRING_32} "huhti", {STRING_32} "touko", {STRING_32} "kes%/228/", {STRING_32} "hein%/228/", {STRING_32} "elo", {STRING_32} "syys", {STRING_32} "loka", {STRING_32} "marras", {STRING_32} "joulu">>)
 			Result.set_am_pm ({STRING_32} "ap.", {STRING_32} "ip.")
 		end
 
@@ -340,16 +342,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("fr_CA", "fr-CA")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
 			Result.set_currency ({STRING_32} "CAD", {STRING_32} "$", 2)
 			Result.set_date_patterns ({STRING_32} "y-MM-dd",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
 			Result.set_time_patterns ({STRING_32} "HH 'h' mm", {STRING_32} "HH 'h' mm 'min' ss 's'", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "janvier", {STRING_32} "février", {STRING_32} "mars", {STRING_32} "avril", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juillet", {STRING_32} "août", {STRING_32} "septembre", {STRING_32} "octobre", {STRING_32} "novembre", {STRING_32} "décembre">>,
-				<<{STRING_32} "janv.", {STRING_32} "févr.", {STRING_32} "mars", {STRING_32} "avr.", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juill.", {STRING_32} "août", {STRING_32} "sept.", {STRING_32} "oct.", {STRING_32} "nov.", {STRING_32} "déc.">>)
+				<<{STRING_32} "janvier", {STRING_32} "f%/233/vrier", {STRING_32} "mars", {STRING_32} "avril", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juillet", {STRING_32} "ao%/251/t", {STRING_32} "septembre", {STRING_32} "octobre", {STRING_32} "novembre", {STRING_32} "d%/233/cembre">>,
+				<<{STRING_32} "janv.", {STRING_32} "f%/233/vr.", {STRING_32} "mars", {STRING_32} "avr.", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juill.", {STRING_32} "ao%/251/t", {STRING_32} "sept.", {STRING_32} "oct.", {STRING_32} "nov.", {STRING_32} "d%/233/c.">>)
 			Result.set_am_pm ({STRING_32} "a.m.", {STRING_32} "p.m.")
 		end
 
@@ -358,16 +360,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("fr_FR", "fr")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/8239/", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "dd/MM/y",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "janvier", {STRING_32} "février", {STRING_32} "mars", {STRING_32} "avril", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juillet", {STRING_32} "août", {STRING_32} "septembre", {STRING_32} "octobre", {STRING_32} "novembre", {STRING_32} "décembre">>,
-				<<{STRING_32} "janv.", {STRING_32} "févr.", {STRING_32} "mars", {STRING_32} "avr.", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juil.", {STRING_32} "août", {STRING_32} "sept.", {STRING_32} "oct.", {STRING_32} "nov.", {STRING_32} "déc.">>)
+				<<{STRING_32} "janvier", {STRING_32} "f%/233/vrier", {STRING_32} "mars", {STRING_32} "avril", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juillet", {STRING_32} "ao%/251/t", {STRING_32} "septembre", {STRING_32} "octobre", {STRING_32} "novembre", {STRING_32} "d%/233/cembre">>,
+				<<{STRING_32} "janv.", {STRING_32} "f%/233/vr.", {STRING_32} "mars", {STRING_32} "avr.", {STRING_32} "mai", {STRING_32} "juin", {STRING_32} "juil.", {STRING_32} "ao%/251/t", {STRING_32} "sept.", {STRING_32} "oct.", {STRING_32} "nov.", {STRING_32} "d%/233/c.">>)
 			Result.set_am_pm ({STRING_32} "AM", {STRING_32} "PM")
 		end
 
@@ -376,16 +378,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("he_IL", "he")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "%/8206/-", {STRING_32} "%/8206/+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/8207/#,##0.00%/160/%/8207/¤;%/8207/-#,##0.00%/160/%/8207/¤")
-			Result.set_currency ({STRING_32} "ILS", {STRING_32} "₪", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/8207/#,##0.00%/160/%/8207/%/164/;%/8207/-#,##0.00%/160/%/8207/%/164/")
+			Result.set_currency ({STRING_32} "ILS", {STRING_32} "%/8362/", 2)
 			Result.set_date_patterns ({STRING_32} "d.M.y",
-				{STRING_32} "d בMMM y",
-				{STRING_32} "d בMMMM y")
+				{STRING_32} "d %/1489/MMM y",
+				{STRING_32} "d %/1489/MMMM y")
 			Result.set_time_patterns ({STRING_32} "H:mm", {STRING_32} "H:mm:ss", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "ינואר", {STRING_32} "פברואר", {STRING_32} "מרץ", {STRING_32} "אפריל", {STRING_32} "מאי", {STRING_32} "יוני", {STRING_32} "יולי", {STRING_32} "אוגוסט", {STRING_32} "ספטמבר", {STRING_32} "אוקטובר", {STRING_32} "נובמבר", {STRING_32} "דצמבר">>,
-				<<{STRING_32} "ינו׳", {STRING_32} "פבר׳", {STRING_32} "מרץ", {STRING_32} "אפר׳", {STRING_32} "מאי", {STRING_32} "יוני", {STRING_32} "יולי", {STRING_32} "אוג׳", {STRING_32} "ספט׳", {STRING_32} "אוק׳", {STRING_32} "נוב׳", {STRING_32} "דצמ׳">>)
+				<<{STRING_32} "%/1497/%/1504/%/1493/%/1488/%/1512/", {STRING_32} "%/1508/%/1489/%/1512/%/1493/%/1488/%/1512/", {STRING_32} "%/1502/%/1512/%/1509/", {STRING_32} "%/1488/%/1508/%/1512/%/1497/%/1500/", {STRING_32} "%/1502/%/1488/%/1497/", {STRING_32} "%/1497/%/1493/%/1504/%/1497/", {STRING_32} "%/1497/%/1493/%/1500/%/1497/", {STRING_32} "%/1488/%/1493/%/1490/%/1493/%/1505/%/1496/", {STRING_32} "%/1505/%/1508/%/1496/%/1502/%/1489/%/1512/", {STRING_32} "%/1488/%/1493/%/1511/%/1496/%/1493/%/1489/%/1512/", {STRING_32} "%/1504/%/1493/%/1489/%/1502/%/1489/%/1512/", {STRING_32} "%/1491/%/1510/%/1502/%/1489/%/1512/">>,
+				<<{STRING_32} "%/1497/%/1504/%/1493/%/1523/", {STRING_32} "%/1508/%/1489/%/1512/%/1523/", {STRING_32} "%/1502/%/1512/%/1509/", {STRING_32} "%/1488/%/1508/%/1512/%/1523/", {STRING_32} "%/1502/%/1488/%/1497/", {STRING_32} "%/1497/%/1493/%/1504/%/1497/", {STRING_32} "%/1497/%/1493/%/1500/%/1497/", {STRING_32} "%/1488/%/1493/%/1490/%/1523/", {STRING_32} "%/1505/%/1508/%/1496/%/1523/", {STRING_32} "%/1488/%/1493/%/1511/%/1523/", {STRING_32} "%/1504/%/1493/%/1489/%/1523/", {STRING_32} "%/1491/%/1510/%/1502/%/1523/">>)
 			Result.set_am_pm ({STRING_32} "AM", {STRING_32} "PM")
 		end
 
@@ -394,9 +396,9 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("it_IT", "it")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 2)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 2)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "dd/MM/yy",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
@@ -412,17 +414,17 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("ja_JP", "ja")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
-			Result.set_currency ({STRING_32} "JPY", {STRING_32} "￥", 0)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
+			Result.set_currency ({STRING_32} "JPY", {STRING_32} "%/65509/", 0)
 			Result.set_date_patterns ({STRING_32} "y/MM/dd",
 				{STRING_32} "y/MM/dd",
-				{STRING_32} "y年M月d日")
+				{STRING_32} "y%/24180/M%/26376/d%/26085/")
 			Result.set_time_patterns ({STRING_32} "H:mm", {STRING_32} "H:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "1月", {STRING_32} "2月", {STRING_32} "3月", {STRING_32} "4月", {STRING_32} "5月", {STRING_32} "6月", {STRING_32} "7月", {STRING_32} "8月", {STRING_32} "9月", {STRING_32} "10月", {STRING_32} "11月", {STRING_32} "12月">>,
-				<<{STRING_32} "1月", {STRING_32} "2月", {STRING_32} "3月", {STRING_32} "4月", {STRING_32} "5月", {STRING_32} "6月", {STRING_32} "7月", {STRING_32} "8月", {STRING_32} "9月", {STRING_32} "10月", {STRING_32} "11月", {STRING_32} "12月">>)
-			Result.set_am_pm ({STRING_32} "午前", {STRING_32} "午後")
+				<<{STRING_32} "1%/26376/", {STRING_32} "2%/26376/", {STRING_32} "3%/26376/", {STRING_32} "4%/26376/", {STRING_32} "5%/26376/", {STRING_32} "6%/26376/", {STRING_32} "7%/26376/", {STRING_32} "8%/26376/", {STRING_32} "9%/26376/", {STRING_32} "10%/26376/", {STRING_32} "11%/26376/", {STRING_32} "12%/26376/">>,
+				<<{STRING_32} "1%/26376/", {STRING_32} "2%/26376/", {STRING_32} "3%/26376/", {STRING_32} "4%/26376/", {STRING_32} "5%/26376/", {STRING_32} "6%/26376/", {STRING_32} "7%/26376/", {STRING_32} "8%/26376/", {STRING_32} "9%/26376/", {STRING_32} "10%/26376/", {STRING_32} "11%/26376/", {STRING_32} "12%/26376/">>)
+			Result.set_am_pm ({STRING_32} "%/21320/%/21069/", {STRING_32} "%/21320/%/24460/")
 		end
 
 	locale_ko_kr: SIMPLE_I18N_LOCALE_DATA
@@ -430,26 +432,26 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("ko_KR", "ko")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
-			Result.set_currency ({STRING_32} "KRW", {STRING_32} "₩", 0)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
+			Result.set_currency ({STRING_32} "KRW", {STRING_32} "%/8361/", 0)
 			Result.set_date_patterns ({STRING_32} "yy. M. d.",
 				{STRING_32} "y. M. d.",
-				{STRING_32} "y년 MMMM d일")
+				{STRING_32} "y%/45380/ MMMM d%/51068/")
 			Result.set_time_patterns ({STRING_32} "a h:mm", {STRING_32} "a h:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "1월", {STRING_32} "2월", {STRING_32} "3월", {STRING_32} "4월", {STRING_32} "5월", {STRING_32} "6월", {STRING_32} "7월", {STRING_32} "8월", {STRING_32} "9월", {STRING_32} "10월", {STRING_32} "11월", {STRING_32} "12월">>,
-				<<{STRING_32} "1월", {STRING_32} "2월", {STRING_32} "3월", {STRING_32} "4월", {STRING_32} "5월", {STRING_32} "6월", {STRING_32} "7월", {STRING_32} "8월", {STRING_32} "9월", {STRING_32} "10월", {STRING_32} "11월", {STRING_32} "12월">>)
-			Result.set_am_pm ({STRING_32} "오전", {STRING_32} "오후")
+				<<{STRING_32} "1%/50900/", {STRING_32} "2%/50900/", {STRING_32} "3%/50900/", {STRING_32} "4%/50900/", {STRING_32} "5%/50900/", {STRING_32} "6%/50900/", {STRING_32} "7%/50900/", {STRING_32} "8%/50900/", {STRING_32} "9%/50900/", {STRING_32} "10%/50900/", {STRING_32} "11%/50900/", {STRING_32} "12%/50900/">>,
+				<<{STRING_32} "1%/50900/", {STRING_32} "2%/50900/", {STRING_32} "3%/50900/", {STRING_32} "4%/50900/", {STRING_32} "5%/50900/", {STRING_32} "6%/50900/", {STRING_32} "7%/50900/", {STRING_32} "8%/50900/", {STRING_32} "9%/50900/", {STRING_32} "10%/50900/", {STRING_32} "11%/50900/", {STRING_32} "12%/50900/">>)
+			Result.set_am_pm ({STRING_32} "%/50724/%/51204/", {STRING_32} "%/50724/%/54980/")
 		end
 
 	locale_nb_no: SIMPLE_I18N_LOCALE_DATA
 			-- nb_NO, from CLDR locale "nb".
 		do
 			create Result.make ("nb_NO", "nb")
-			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "−", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤;-#,##0.00%/160/¤")
+			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "%/8722/", {STRING_32} "+",
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/;-#,##0.00%/160/%/164/")
 			Result.set_currency ({STRING_32} "NOK", {STRING_32} "kr", 2)
 			Result.set_date_patterns ({STRING_32} "dd.MM.y",
 				{STRING_32} "d. MMM y",
@@ -466,9 +468,9 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("nl_NL", "nl")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤%/160/#,##0.00;¤%/160/-#,##0.00")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/%/160/#,##0.00;%/164/%/160/-#,##0.00")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "dd-MM-y",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
@@ -484,16 +486,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("pl_PL", "pl")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 2)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "PLN", {STRING_32} "zł", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 2)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "PLN", {STRING_32} "z%/322/", 2)
 			Result.set_date_patterns ({STRING_32} "d.MM.y",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "stycznia", {STRING_32} "lutego", {STRING_32} "marca", {STRING_32} "kwietnia", {STRING_32} "maja", {STRING_32} "czerwca", {STRING_32} "lipca", {STRING_32} "sierpnia", {STRING_32} "września", {STRING_32} "października", {STRING_32} "listopada", {STRING_32} "grudnia">>,
-				<<{STRING_32} "sty", {STRING_32} "lut", {STRING_32} "mar", {STRING_32} "kwi", {STRING_32} "maj", {STRING_32} "cze", {STRING_32} "lip", {STRING_32} "sie", {STRING_32} "wrz", {STRING_32} "paź", {STRING_32} "lis", {STRING_32} "gru">>)
+				<<{STRING_32} "stycznia", {STRING_32} "lutego", {STRING_32} "marca", {STRING_32} "kwietnia", {STRING_32} "maja", {STRING_32} "czerwca", {STRING_32} "lipca", {STRING_32} "sierpnia", {STRING_32} "wrze%/347/nia", {STRING_32} "pa%/378/dziernika", {STRING_32} "listopada", {STRING_32} "grudnia">>,
+				<<{STRING_32} "sty", {STRING_32} "lut", {STRING_32} "mar", {STRING_32} "kwi", {STRING_32} "maj", {STRING_32} "cze", {STRING_32} "lip", {STRING_32} "sie", {STRING_32} "wrz", {STRING_32} "pa%/378/", {STRING_32} "lis", {STRING_32} "gru">>)
 			Result.set_am_pm ({STRING_32} "AM", {STRING_32} "PM")
 		end
 
@@ -502,15 +504,15 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("pt_BR", "pt")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤%/160/#,##0.00")
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/%/160/#,##0.00")
 			Result.set_currency ({STRING_32} "BRL", {STRING_32} "R$", 2)
 			Result.set_date_patterns ({STRING_32} "dd/MM/y",
 				{STRING_32} "d 'de' MMM 'de' y",
 				{STRING_32} "d 'de' MMMM 'de' y")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "janeiro", {STRING_32} "fevereiro", {STRING_32} "março", {STRING_32} "abril", {STRING_32} "maio", {STRING_32} "junho", {STRING_32} "julho", {STRING_32} "agosto", {STRING_32} "setembro", {STRING_32} "outubro", {STRING_32} "novembro", {STRING_32} "dezembro">>,
+				<<{STRING_32} "janeiro", {STRING_32} "fevereiro", {STRING_32} "mar%/231/o", {STRING_32} "abril", {STRING_32} "maio", {STRING_32} "junho", {STRING_32} "julho", {STRING_32} "agosto", {STRING_32} "setembro", {STRING_32} "outubro", {STRING_32} "novembro", {STRING_32} "dezembro">>,
 				<<{STRING_32} "jan.", {STRING_32} "fev.", {STRING_32} "mar.", {STRING_32} "abr.", {STRING_32} "mai.", {STRING_32} "jun.", {STRING_32} "jul.", {STRING_32} "ago.", {STRING_32} "set.", {STRING_32} "out.", {STRING_32} "nov.", {STRING_32} "dez.">>)
 			Result.set_am_pm ({STRING_32} "AM", {STRING_32} "PM")
 		end
@@ -520,15 +522,15 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("pt_PT", "pt-PT")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 2)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "EUR", {STRING_32} "€", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 2)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "EUR", {STRING_32} "%/8364/", 2)
 			Result.set_date_patterns ({STRING_32} "dd/MM/yy",
 				{STRING_32} "dd/MM/y",
 				{STRING_32} "d 'de' MMMM 'de' y")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "janeiro", {STRING_32} "fevereiro", {STRING_32} "março", {STRING_32} "abril", {STRING_32} "maio", {STRING_32} "junho", {STRING_32} "julho", {STRING_32} "agosto", {STRING_32} "setembro", {STRING_32} "outubro", {STRING_32} "novembro", {STRING_32} "dezembro">>,
+				<<{STRING_32} "janeiro", {STRING_32} "fevereiro", {STRING_32} "mar%/231/o", {STRING_32} "abril", {STRING_32} "maio", {STRING_32} "junho", {STRING_32} "julho", {STRING_32} "agosto", {STRING_32} "setembro", {STRING_32} "outubro", {STRING_32} "novembro", {STRING_32} "dezembro">>,
 				<<{STRING_32} "jan.", {STRING_32} "fev.", {STRING_32} "mar.", {STRING_32} "abr.", {STRING_32} "mai.", {STRING_32} "jun.", {STRING_32} "jul.", {STRING_32} "ago.", {STRING_32} "set.", {STRING_32} "out.", {STRING_32} "nov.", {STRING_32} "dez.">>)
 			Result.set_am_pm ({STRING_32} "a.m.", {STRING_32} "p.m.")
 		end
@@ -538,16 +540,16 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("ru_RU", "ru")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "не%/160/число", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "RUB", {STRING_32} "₽", 2)
+				{STRING_32} "%/8734/", {STRING_32} "%/1085/%/1077/%/160/%/1095/%/1080/%/1089/%/1083/%/1086/", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "RUB", {STRING_32} "%/8381/", 2)
 			Result.set_date_patterns ({STRING_32} "dd.MM.y",
-				{STRING_32} "d MMM y%/8239/'г'.",
-				{STRING_32} "d MMMM y%/8239/'г'.")
+				{STRING_32} "d MMM y%/8239/'%/1075/'.",
+				{STRING_32} "d MMMM y%/8239/'%/1075/'.")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "января", {STRING_32} "февраля", {STRING_32} "марта", {STRING_32} "апреля", {STRING_32} "мая", {STRING_32} "июня", {STRING_32} "июля", {STRING_32} "августа", {STRING_32} "сентября", {STRING_32} "октября", {STRING_32} "ноября", {STRING_32} "декабря">>,
-				<<{STRING_32} "янв.", {STRING_32} "февр.", {STRING_32} "мар.", {STRING_32} "апр.", {STRING_32} "мая", {STRING_32} "июн.", {STRING_32} "июл.", {STRING_32} "авг.", {STRING_32} "сент.", {STRING_32} "окт.", {STRING_32} "нояб.", {STRING_32} "дек.">>)
+				<<{STRING_32} "%/1103/%/1085/%/1074/%/1072/%/1088/%/1103/", {STRING_32} "%/1092/%/1077/%/1074/%/1088/%/1072/%/1083/%/1103/", {STRING_32} "%/1084/%/1072/%/1088/%/1090/%/1072/", {STRING_32} "%/1072/%/1087/%/1088/%/1077/%/1083/%/1103/", {STRING_32} "%/1084/%/1072/%/1103/", {STRING_32} "%/1080/%/1102/%/1085/%/1103/", {STRING_32} "%/1080/%/1102/%/1083/%/1103/", {STRING_32} "%/1072/%/1074/%/1075/%/1091/%/1089/%/1090/%/1072/", {STRING_32} "%/1089/%/1077/%/1085/%/1090/%/1103/%/1073/%/1088/%/1103/", {STRING_32} "%/1086/%/1082/%/1090/%/1103/%/1073/%/1088/%/1103/", {STRING_32} "%/1085/%/1086/%/1103/%/1073/%/1088/%/1103/", {STRING_32} "%/1076/%/1077/%/1082/%/1072/%/1073/%/1088/%/1103/">>,
+				<<{STRING_32} "%/1103/%/1085/%/1074/.", {STRING_32} "%/1092/%/1077/%/1074/%/1088/.", {STRING_32} "%/1084/%/1072/%/1088/.", {STRING_32} "%/1072/%/1087/%/1088/.", {STRING_32} "%/1084/%/1072/%/1103/", {STRING_32} "%/1080/%/1102/%/1085/.", {STRING_32} "%/1080/%/1102/%/1083/.", {STRING_32} "%/1072/%/1074/%/1075/.", {STRING_32} "%/1089/%/1077/%/1085/%/1090/.", {STRING_32} "%/1086/%/1082/%/1090/.", {STRING_32} "%/1085/%/1086/%/1103/%/1073/.", {STRING_32} "%/1076/%/1077/%/1082/.">>)
 			Result.set_am_pm ({STRING_32} "AM", {STRING_32} "PM")
 		end
 
@@ -555,9 +557,9 @@ feature {NONE} -- Locales
 			-- sv_SE, from CLDR locale "sv".
 		do
 			create Result.make ("sv_SE", "sv")
-			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "−", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
+			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "%/8722/", {STRING_32} "+",
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
 			Result.set_currency ({STRING_32} "SEK", {STRING_32} "kr", 2)
 			Result.set_date_patterns ({STRING_32} "y-MM-dd",
 				{STRING_32} "d MMM y",
@@ -574,17 +576,17 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("tr_TR", "tr")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} ".", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
-			Result.set_currency ({STRING_32} "TRY", {STRING_32} "₺", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
+			Result.set_currency ({STRING_32} "TRY", {STRING_32} "%/8378/", 2)
 			Result.set_date_patterns ({STRING_32} "d.MM.y",
 				{STRING_32} "d MMM y",
 				{STRING_32} "d MMMM y")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "Ocak", {STRING_32} "Şubat", {STRING_32} "Mart", {STRING_32} "Nisan", {STRING_32} "Mayıs", {STRING_32} "Haziran", {STRING_32} "Temmuz", {STRING_32} "Ağustos", {STRING_32} "Eylül", {STRING_32} "Ekim", {STRING_32} "Kasım", {STRING_32} "Aralık">>,
-				<<{STRING_32} "Oca", {STRING_32} "Şub", {STRING_32} "Mar", {STRING_32} "Nis", {STRING_32} "May", {STRING_32} "Haz", {STRING_32} "Tem", {STRING_32} "Ağu", {STRING_32} "Eyl", {STRING_32} "Eki", {STRING_32} "Kas", {STRING_32} "Ara">>)
-			Result.set_am_pm ({STRING_32} "ÖÖ", {STRING_32} "ÖS")
+				<<{STRING_32} "Ocak", {STRING_32} "%/350/ubat", {STRING_32} "Mart", {STRING_32} "Nisan", {STRING_32} "May%/305/s", {STRING_32} "Haziran", {STRING_32} "Temmuz", {STRING_32} "A%/287/ustos", {STRING_32} "Eyl%/252/l", {STRING_32} "Ekim", {STRING_32} "Kas%/305/m", {STRING_32} "Aral%/305/k">>,
+				<<{STRING_32} "Oca", {STRING_32} "%/350/ub", {STRING_32} "Mar", {STRING_32} "Nis", {STRING_32} "May", {STRING_32} "Haz", {STRING_32} "Tem", {STRING_32} "A%/287/u", {STRING_32} "Eyl", {STRING_32} "Eki", {STRING_32} "Kas", {STRING_32} "Ara">>)
+			Result.set_am_pm ({STRING_32} "%/214/%/214/", {STRING_32} "%/214/S")
 		end
 
 	locale_uk_ua: SIMPLE_I18N_LOCALE_DATA
@@ -592,17 +594,17 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("uk_UA", "uk")
 			Result.set_number_symbols ({STRING_32} ",", {STRING_32} "%/160/", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/¤")
-			Result.set_currency ({STRING_32} "UAH", {STRING_32} "₴", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "#,##0.00%/160/%/164/")
+			Result.set_currency ({STRING_32} "UAH", {STRING_32} "%/8372/", 2)
 			Result.set_date_patterns ({STRING_32} "dd.MM.yy",
-				{STRING_32} "d MMM y%/8239/'р'.",
-				{STRING_32} "d MMMM y%/8239/'р'.")
+				{STRING_32} "d MMM y%/8239/'%/1088/'.",
+				{STRING_32} "d MMMM y%/8239/'%/1088/'.")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1}, {0}")
 			Result.set_month_names (
-				<<{STRING_32} "січня", {STRING_32} "лютого", {STRING_32} "березня", {STRING_32} "квітня", {STRING_32} "травня", {STRING_32} "червня", {STRING_32} "липня", {STRING_32} "серпня", {STRING_32} "вересня", {STRING_32} "жовтня", {STRING_32} "листопада", {STRING_32} "грудня">>,
-				<<{STRING_32} "січ.", {STRING_32} "лют.", {STRING_32} "бер.", {STRING_32} "квіт.", {STRING_32} "трав.", {STRING_32} "черв.", {STRING_32} "лип.", {STRING_32} "серп.", {STRING_32} "вер.", {STRING_32} "жовт.", {STRING_32} "лист.", {STRING_32} "груд.">>)
-			Result.set_am_pm ({STRING_32} "дп", {STRING_32} "пп")
+				<<{STRING_32} "%/1089/%/1110/%/1095/%/1085/%/1103/", {STRING_32} "%/1083/%/1102/%/1090/%/1086/%/1075/%/1086/", {STRING_32} "%/1073/%/1077/%/1088/%/1077/%/1079/%/1085/%/1103/", {STRING_32} "%/1082/%/1074/%/1110/%/1090/%/1085/%/1103/", {STRING_32} "%/1090/%/1088/%/1072/%/1074/%/1085/%/1103/", {STRING_32} "%/1095/%/1077/%/1088/%/1074/%/1085/%/1103/", {STRING_32} "%/1083/%/1080/%/1087/%/1085/%/1103/", {STRING_32} "%/1089/%/1077/%/1088/%/1087/%/1085/%/1103/", {STRING_32} "%/1074/%/1077/%/1088/%/1077/%/1089/%/1085/%/1103/", {STRING_32} "%/1078/%/1086/%/1074/%/1090/%/1085/%/1103/", {STRING_32} "%/1083/%/1080/%/1089/%/1090/%/1086/%/1087/%/1072/%/1076/%/1072/", {STRING_32} "%/1075/%/1088/%/1091/%/1076/%/1085/%/1103/">>,
+				<<{STRING_32} "%/1089/%/1110/%/1095/.", {STRING_32} "%/1083/%/1102/%/1090/.", {STRING_32} "%/1073/%/1077/%/1088/.", {STRING_32} "%/1082/%/1074/%/1110/%/1090/.", {STRING_32} "%/1090/%/1088/%/1072/%/1074/.", {STRING_32} "%/1095/%/1077/%/1088/%/1074/.", {STRING_32} "%/1083/%/1080/%/1087/.", {STRING_32} "%/1089/%/1077/%/1088/%/1087/.", {STRING_32} "%/1074/%/1077/%/1088/.", {STRING_32} "%/1078/%/1086/%/1074/%/1090/.", {STRING_32} "%/1083/%/1080/%/1089/%/1090/.", {STRING_32} "%/1075/%/1088/%/1091/%/1076/.">>)
+			Result.set_am_pm ({STRING_32} "%/1076/%/1087/", {STRING_32} "%/1087/%/1087/")
 		end
 
 	locale_zh_cn: SIMPLE_I18N_LOCALE_DATA
@@ -610,17 +612,17 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("zh_CN", "zh")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "NaN", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
-			Result.set_currency ({STRING_32} "CNY", {STRING_32} "¥", 2)
+				{STRING_32} "%/8734/", {STRING_32} "NaN", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
+			Result.set_currency ({STRING_32} "CNY", {STRING_32} "%/165/", 2)
 			Result.set_date_patterns ({STRING_32} "y/M/d",
-				{STRING_32} "y年M月d日",
-				{STRING_32} "y年M月d日")
+				{STRING_32} "y%/24180/M%/26376/d%/26085/",
+				{STRING_32} "y%/24180/M%/26376/d%/26085/")
 			Result.set_time_patterns ({STRING_32} "HH:mm", {STRING_32} "HH:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "一月", {STRING_32} "二月", {STRING_32} "三月", {STRING_32} "四月", {STRING_32} "五月", {STRING_32} "六月", {STRING_32} "七月", {STRING_32} "八月", {STRING_32} "九月", {STRING_32} "十月", {STRING_32} "十一月", {STRING_32} "十二月">>,
-				<<{STRING_32} "1月", {STRING_32} "2月", {STRING_32} "3月", {STRING_32} "4月", {STRING_32} "5月", {STRING_32} "6月", {STRING_32} "7月", {STRING_32} "8月", {STRING_32} "9月", {STRING_32} "10月", {STRING_32} "11月", {STRING_32} "12月">>)
-			Result.set_am_pm ({STRING_32} "上午", {STRING_32} "下午")
+				<<{STRING_32} "%/19968/%/26376/", {STRING_32} "%/20108/%/26376/", {STRING_32} "%/19977/%/26376/", {STRING_32} "%/22235/%/26376/", {STRING_32} "%/20116/%/26376/", {STRING_32} "%/20845/%/26376/", {STRING_32} "%/19971/%/26376/", {STRING_32} "%/20843/%/26376/", {STRING_32} "%/20061/%/26376/", {STRING_32} "%/21313/%/26376/", {STRING_32} "%/21313/%/19968/%/26376/", {STRING_32} "%/21313/%/20108/%/26376/">>,
+				<<{STRING_32} "1%/26376/", {STRING_32} "2%/26376/", {STRING_32} "3%/26376/", {STRING_32} "4%/26376/", {STRING_32} "5%/26376/", {STRING_32} "6%/26376/", {STRING_32} "7%/26376/", {STRING_32} "8%/26376/", {STRING_32} "9%/26376/", {STRING_32} "10%/26376/", {STRING_32} "11%/26376/", {STRING_32} "12%/26376/">>)
+			Result.set_am_pm ({STRING_32} "%/19978/%/21320/", {STRING_32} "%/19979/%/21320/")
 		end
 
 	locale_zh_tw: SIMPLE_I18N_LOCALE_DATA
@@ -628,24 +630,24 @@ feature {NONE} -- Locales
 		do
 			create Result.make ("zh_TW", "zh-Hant")
 			Result.set_number_symbols ({STRING_32} ".", {STRING_32} ",", {STRING_32} "-", {STRING_32} "+",
-				{STRING_32} "∞", {STRING_32} "非數值", 1)
-			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "¤#,##0.00")
+				{STRING_32} "%/8734/", {STRING_32} "%/38750/%/25976/%/20540/", 1)
+			Result.set_number_patterns ({STRING_32} "#,##0.###", {STRING_32} "%/164/#,##0.00")
 			Result.set_currency ({STRING_32} "TWD", {STRING_32} "$", 2)
 			Result.set_date_patterns ({STRING_32} "y/M/d",
-				{STRING_32} "y年M月d日",
-				{STRING_32} "y年M月d日")
+				{STRING_32} "y%/24180/M%/26376/d%/26085/",
+				{STRING_32} "y%/24180/M%/26376/d%/26085/")
 			Result.set_time_patterns ({STRING_32} "Bh:mm", {STRING_32} "Bh:mm:ss", {STRING_32} "{1} {0}")
 			Result.set_month_names (
-				<<{STRING_32} "1月", {STRING_32} "2月", {STRING_32} "3月", {STRING_32} "4月", {STRING_32} "5月", {STRING_32} "6月", {STRING_32} "7月", {STRING_32} "8月", {STRING_32} "9月", {STRING_32} "10月", {STRING_32} "11月", {STRING_32} "12月">>,
-				<<{STRING_32} "1月", {STRING_32} "2月", {STRING_32} "3月", {STRING_32} "4月", {STRING_32} "5月", {STRING_32} "6月", {STRING_32} "7月", {STRING_32} "8月", {STRING_32} "9月", {STRING_32} "10月", {STRING_32} "11月", {STRING_32} "12月">>)
-			Result.set_am_pm ({STRING_32} "上午", {STRING_32} "下午")
-			Result.add_day_period (720, 780, {STRING_32} "中午")
-			Result.add_day_period (780, 1140, {STRING_32} "下午")
-			Result.add_day_period (1140, 1440, {STRING_32} "晚上")
-			Result.add_day_period (0, 0, {STRING_32} "午夜")
-			Result.add_day_period (300, 480, {STRING_32} "清晨")
-			Result.add_day_period (480, 720, {STRING_32} "上午")
-			Result.add_day_period (0, 300, {STRING_32} "凌晨")
+				<<{STRING_32} "1%/26376/", {STRING_32} "2%/26376/", {STRING_32} "3%/26376/", {STRING_32} "4%/26376/", {STRING_32} "5%/26376/", {STRING_32} "6%/26376/", {STRING_32} "7%/26376/", {STRING_32} "8%/26376/", {STRING_32} "9%/26376/", {STRING_32} "10%/26376/", {STRING_32} "11%/26376/", {STRING_32} "12%/26376/">>,
+				<<{STRING_32} "1%/26376/", {STRING_32} "2%/26376/", {STRING_32} "3%/26376/", {STRING_32} "4%/26376/", {STRING_32} "5%/26376/", {STRING_32} "6%/26376/", {STRING_32} "7%/26376/", {STRING_32} "8%/26376/", {STRING_32} "9%/26376/", {STRING_32} "10%/26376/", {STRING_32} "11%/26376/", {STRING_32} "12%/26376/">>)
+			Result.set_am_pm ({STRING_32} "%/19978/%/21320/", {STRING_32} "%/19979/%/21320/")
+			Result.add_day_period (720, 780, {STRING_32} "%/20013/%/21320/")
+			Result.add_day_period (780, 1140, {STRING_32} "%/19979/%/21320/")
+			Result.add_day_period (1140, 1440, {STRING_32} "%/26202/%/19978/")
+			Result.add_day_period (0, 0, {STRING_32} "%/21320/%/22812/")
+			Result.add_day_period (300, 480, {STRING_32} "%/28165/%/26216/")
+			Result.add_day_period (480, 720, {STRING_32} "%/19978/%/21320/")
+			Result.add_day_period (0, 300, {STRING_32} "%/20940/%/26216/")
 		end
 
 end

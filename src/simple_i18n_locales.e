@@ -151,10 +151,10 @@ feature -- Operating system
 		do
 			if {PLATFORM}.is_windows then
 				l_id := (create {I18N_HOST_LOCALE_IMP}).default_locale_id
-				Result := l_id.language.as_string_8
+				Result := ascii_of (l_id.language)
 				if not l_id.region.is_empty then
 					Result.append_character ('_')
-					Result.append (l_id.region.as_string_8)
+					Result.append (ascii_of (l_id.region))
 				end
 			else
 				Result := environment_locale_name
@@ -177,9 +177,22 @@ feature {NONE} -- Implementation
 			create Result.make_empty
 			across << "LC_ALL", "LC_NUMERIC", "LANG" >> as ic_variable loop
 				if Result.is_empty and then attached l_environment.item (ic_variable) as al_value then
-					Result := al_value.as_string_8
+					Result := ascii_of (al_value)
 				end
 			end
+		end
+
+	ascii_of (a_text: READABLE_STRING_GENERAL): STRING_8
+			-- `a_text''s ASCII characters (a locale name is only ASCII; anything else is dropped).
+		do
+			create Result.make (a_text.count)
+			across 1 |..| a_text.count as ic loop
+				if a_text.code (ic) < 128 then
+					Result.append_character (a_text [ic].to_character_8)
+				end
+			end
+		ensure
+			ascii: across Result as ic_char all ic_char.code < 128 end
 		end
 
 	is_letters (a_text: READABLE_STRING_8): BOOLEAN

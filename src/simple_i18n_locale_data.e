@@ -37,13 +37,13 @@ feature {NONE} -- Initialization
 			create group_separator.make_from_string (",")
 			create minus_sign.make_from_string ("-")
 			create plus_sign.make_from_string ("+")
-			create infinity.make_from_string ("∞")
+			create infinity.make_from_string ("%/8734/")
 			create not_a_number.make_from_string ("NaN")
 			minimum_grouping_digits := 1
 			create decimal_pattern.make_from_string ("#,##0.###")
-			create currency_pattern.make_from_string ({STRING_32} "¤#,##0.00")
+			create currency_pattern.make_from_string ({STRING_32} "%/164/#,##0.00")
 			create currency_code.make_from_string ("XXX")
-			create currency_symbol.make_from_string ({STRING_32} "¤")
+			create currency_symbol.make_from_string ({STRING_32} "%/164/")
 			currency_digits := 2
 			create short_date_pattern.make_from_string ("y-MM-dd")
 			create medium_date_pattern.make_from_string ("y-MM-dd")

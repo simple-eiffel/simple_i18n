@@ -380,10 +380,12 @@ feature {NONE} -- Class text
 			Result.append ({STRING_32} "%T%TNumbers use CLDR's %"latn%" numbering system. Currency is each locale's%N")
 			Result.append ({STRING_32} "%T%Town current currency in CLDR's standard currency format. Patterns are%N")
 			Result.append ({STRING_32} "%T%TCLDR's own; the bidirectional marks of the Hebrew and Arabic data are kept%N")
-			Result.append ({STRING_32} "%T%Tas CLDR has them. Invisible characters are written as %%/code/ escapes.%N")
+			Result.append ({STRING_32} "%T%Tas CLDR has them. Every character outside ASCII is written as a%N")
+			Result.append ({STRING_32} "%T%T%%/code/ escape (its Unicode code point), so the compiler reads the%N")
+			Result.append ({STRING_32} "%T%Tsame text whatever encoding it takes the file to be in.%N")
 			Result.append ({STRING_32} "%T]%"%N")
 			Result.append ({STRING_32} "%Tcldr_version: %"" + version + "%"%N")
-			Result.append ({STRING_32} "%Tcldr_license: %"Unicode License v3 (SPDX-License-Identifier: Unicode-3.0), Copyright (c) 1991-2026 Unicode, Inc.; full text in LICENSE-CLDR.txt%"%N")
+			Result.append ({STRING_32} "%Tcldr_license: %"Unicode License v3 (SPDX-License-Identifier: Unicode-3.0), " + cldr_copyright + "; full text in LICENSE-CLDR.txt%"%N")
 			Result.append ({STRING_32} "%Tgenerated_by: %"tools/cldr_generator%"%N%N")
 			Result.append ({STRING_32} "class%N%TSIMPLE_I18N_LOCALE_TABLE%N%N")
 			Result.append ({STRING_32} "feature -- Access%N%N")
@@ -414,8 +416,10 @@ feature {NONE} -- Class text
 		end
 
 	literal (a_text: READABLE_STRING_32): STRING_32
-			-- Eiffel manifest STRING_32 for `a_text'; invisible and spacing
-			-- characters become %/code/ escapes so the source shows them.
+			-- Eiffel manifest STRING_32 for `a_text', in ASCII only: every other character
+			-- becomes a %/code/ escape. The compiler reads a source file without a byte order
+			-- mark as Latin-1, so a literal "€" would become three characters (the mojibake this
+			-- table replaces); escapes read the same whatever the file's encoding is taken as.
 		local
 			i: INTEGER
 			l_code: NATURAL_32
@@ -439,11 +443,9 @@ feature {NONE} -- Class text
 		end
 
 	is_escaped_code (a_code: NATURAL_32): BOOLEAN
-			-- Is `a_code' a control, space, or format character, written as an escape?
+			-- Is `a_code' written as an escape: a control character, or anything not ASCII?
 		do
-			Result := a_code < 32 or (a_code >= 127 and a_code <= 160) or a_code = 0xAD or a_code = 0x061C
-				or (a_code >= 0x2000 and a_code <= 0x200F) or (a_code >= 0x2028 and a_code <= 0x202F)
-				or (a_code >= 0x205F and a_code <= 0x206F) or a_code = 0x3000 or a_code = 0xFEFF
+			Result := a_code < 32 or a_code >= 127
 		end
 
 	feature_name (a_name: STRING_8): STRING_8
@@ -460,6 +462,27 @@ feature {NONE} -- Class text
 		end
 
 feature {NONE} -- JSON access
+
+	cldr_copyright: STRING_32
+			-- The copyright line of CLDR's own LICENSE (cldr-core/package/LICENSE), in ASCII
+			-- ("Copyright (c) 2004-2026 Unicode, Inc."); the generator stops if it has none.
+		local
+			l_path: STRING_32
+		once
+			create Result.make_empty
+			l_path := cldr_root.twin
+			l_path.append_string_general ("/cldr-core/package/LICENSE")
+			across (create {SIMPLE_FILES}).read_text_utf_8 (l_path).split ('%N') as ic_line loop
+				if Result.is_empty and then ic_line.starts_with ({STRING_32} "Copyright") then
+					Result := ic_line.twin
+					Result.replace_substring_all ({STRING_32} "%/169/", {STRING_32} "(c)")
+					Result.adjust
+				end
+			end
+			if Result.is_empty or else across Result as ic_char some ic_char.natural_32_code >= 127 end then
+				fail ({STRING_32} "no ASCII copyright line in " + l_path)
+			end
+		end
 
 	parent_locales: SIMPLE_JSON_OBJECT
 			-- CLDR's parentLocales map (supplemental/parentLocales.json), child to parent.
