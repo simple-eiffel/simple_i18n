@@ -38,6 +38,7 @@ feature {NONE} -- Initialization
 			run_test (agent tests.test_en_001_for_english_outside_the_us, "test_en_001_for_english_outside_the_us")
 			run_test (agent tests.test_es_419_for_latin_american_spanish, "test_es_419_for_latin_american_spanish")
 			run_test (agent tests.test_currency_follows_the_region, "test_currency_follows_the_region")
+			run_test (agent tests.test_system_locale_name_comes_from_the_os, "test_system_locale_name_comes_from_the_os")
 			run_test (agent tests.test_os_style_names_resolve, "test_os_style_names_resolve")
 			run_test (agent tests.test_every_table_locale_formats, "test_every_table_locale_formats")
 
