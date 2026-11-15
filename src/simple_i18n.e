@@ -7,7 +7,10 @@ note
 		- .mo file loading via I18N_LOCALE_MANAGER
 		- Context-aware translations
 		- Full plural form support (not just English-like)
-		- Locale-aware date/time/number/currency formatting via ISE formatters
+		- Locale-aware date/time/number/currency formatting from simple_i18n's own
+		  CLDR table (SIMPLE_I18N_LOCALE_TABLE, about 30 locales); the operating
+		  system gives only the locale's name; an unlisted one formats as its
+		  language's locale, and an unknown language as en_US (`is_fallback_locale')
 		- System locale detection
 	]"
 	author: "Larry Rix"
@@ -31,14 +34,14 @@ create
 feature {NONE} -- Initialization
 
 	make
-			-- Create i18n helper with system locale.
+			-- Create i18n helper with system locale. The operating system gives only the
+			-- locale's name; every format comes from simple_i18n's own CLDR table.
 		do
 			create translations.make (50)
-			create {I18N_HOST_LOCALE_IMP} host_locale
-			current_locale_id := host_locale.system_locale_id
-			create locale_info.make
-			initialize_locale_info
-			initialize_formatters
+			create locales
+			system_locale_code := locales.system_locale_name
+			current_locale_id := locale_id_of (system_locale_code)
+			select_locale_data (system_locale_code)
 		end
 
 	make_with_locale (a_locale_code: STRING)
@@ -47,11 +50,10 @@ feature {NONE} -- Initialization
 			locale_code_not_empty: not a_locale_code.is_empty
 		do
 			create translations.make (50)
-			create {I18N_HOST_LOCALE_IMP} host_locale
-			create current_locale_id.make_from_string (a_locale_code)
-			create locale_info.make
-			initialize_locale_info
-			initialize_formatters
+			create locales
+			system_locale_code := locales.system_locale_name
+			current_locale_id := locale_id_of (a_locale_code)
+			select_locale_data (a_locale_code)
 		end
 
 	make_from_directory (a_translations_dir: STRING)
@@ -61,11 +63,10 @@ feature {NONE} -- Initialization
 			directory_not_empty: not a_translations_dir.is_empty
 		do
 			create translations.make (50)
-			create {I18N_HOST_LOCALE_IMP} host_locale
-			current_locale_id := host_locale.system_locale_id
-			create locale_info.make
-			initialize_locale_info
-			initialize_formatters
+			create locales
+			system_locale_code := locales.system_locale_name
+			current_locale_id := locale_id_of (system_locale_code)
+			select_locale_data (system_locale_code)
 
 			-- Create locale manager from directory
 			create locale_manager.make (a_translations_dir)
@@ -123,9 +124,8 @@ feature -- Locale Management
 		require
 			locale_code_not_empty: not a_locale_code.is_empty
 		do
-			create current_locale_id.make_from_string (a_locale_code)
-			initialize_locale_info
-			initialize_formatters
+			current_locale_id := locale_id_of (a_locale_code)
+			select_locale_data (a_locale_code)
 
 			-- Update full locale from manager if available
 			if attached locale_manager as lm and then lm.has_translations (current_locale_id) then
@@ -136,14 +136,14 @@ feature -- Locale Management
 		end
 
 	has_locale (a_locale_code: STRING): BOOLEAN
-			-- Is the specified locale available?
+			-- Is the specified locale available: in the CLDR table, or with .mo translations?
 		require
 			locale_code_not_empty: not a_locale_code.is_empty
 		local
 			l_id: I18N_LOCALE_ID
 		do
-			create l_id.make_from_string (a_locale_code)
-			Result := host_locale.is_available (l_id)
+			l_id := locale_id_of (a_locale_code)
+			Result := locales.is_known (a_locale_code)
 			if not Result and attached locale_manager as lm then
 				Result := lm.has_translations (l_id)
 			end
@@ -407,156 +407,154 @@ feature -- String Formatting
 			result_not_void: Result /= Void
 		end
 
-feature -- Date/Time Formatting (via ISE formatters)
+feature -- Date/Time Formatting (CLDR)
 
 	format_date (a_date: SIMPLE_DATE): STRING_32
-			-- Format date according to current locale using ISE formatter.
+			-- `a_date' in the locale's long date pattern, for example "14 novembre 2026".
 		require
 			date_not_void: a_date /= Void
 		do
-			if attached date_formatter as df then
-				Result := df.format_date (a_date.to_date)
-			else
-				Result := a_date.to_date.formatted_out (locale_info.long_date_format.to_string_8)
-			end
+			Result := date_patterns.formatted (locale_data.long_date_pattern, a_date.year.max (0), a_date.month, a_date.day, 0, 0, 0, locale_data)
+		ensure
+			result_not_void: Result /= Void
+		end
+
+	format_short_date (a_date: SIMPLE_DATE): STRING_32
+			-- `a_date' in the locale's short date pattern, for example "14/11/2026".
+		require
+			date_not_void: a_date /= Void
+		do
+			Result := date_patterns.formatted (locale_data.short_date_pattern, a_date.year.max (0), a_date.month, a_date.day, 0, 0, 0, locale_data)
 		ensure
 			result_not_void: Result /= Void
 		end
 
 	format_time (a_time: SIMPLE_TIME): STRING_32
-			-- Format time according to current locale using ISE formatter.
+			-- `a_time' in the locale's medium time pattern (with seconds).
 		require
 			time_not_void: a_time /= Void
 		do
-			if attached date_formatter as df then
-				Result := df.format_time (a_time.to_time)
-			else
-				Result := a_time.to_time.formatted_out (locale_info.long_time_format.to_string_8)
-			end
+			Result := date_patterns.formatted (locale_data.medium_time_pattern, 2000, 1, 1, a_time.hour, a_time.minute, a_time.second, locale_data)
+		ensure
+			result_not_void: Result /= Void
+		end
+
+	format_short_time (a_time: SIMPLE_TIME): STRING_32
+			-- `a_time' in the locale's short time pattern (no seconds).
+		require
+			time_not_void: a_time /= Void
+		do
+			Result := date_patterns.formatted (locale_data.short_time_pattern, 2000, 1, 1, a_time.hour, a_time.minute, a_time.second, locale_data)
 		ensure
 			result_not_void: Result /= Void
 		end
 
 	format_date_time (a_date_time: SIMPLE_DATE_TIME): STRING_32
-			-- Format date and time according to current locale using ISE formatter.
+			-- `a_date_time': its long date and medium time, joined by the locale's pattern.
 		require
 			date_time_not_void: a_date_time /= Void
 		do
-			if attached date_formatter as df then
-				Result := df.format_date_time (a_date_time.to_date_time)
-			else
-				Result := format_date (a_date_time.date)
-				Result.append_character (' ')
-				Result.append (format_time (a_date_time.time))
-			end
+			Result := date_patterns.joined (locale_data.date_time_pattern, format_date (a_date_time.date), format_time (a_date_time.time))
 		ensure
 			result_not_void: Result /= Void
 		end
 
-feature -- Number Formatting (via ISE formatters)
+feature -- Number Formatting (CLDR)
 
 	format_number (a_value: DOUBLE): STRING_32
-			-- Format number with locale-specific decimal separator.
-		local
-			l_str: STRING_32
+			-- `a_value' in the locale's decimal pattern: its separators and grouping, and as
+			-- many fraction digits as needed up to the pattern's maximum (CLDR's is 3).
 		do
-			if attached value_formatter as vf then
-				Result := vf.format_real_64 (a_value)
-			else
-				l_str := a_value.out.to_string_32
-				l_str.replace_substring_all (".", locale_info.value_decimal_separator)
-				Result := l_str
-			end
+			Result := decimal_number_pattern.formatted_real (a_value, needed_fraction_digits (a_value), locale_data, "")
 		ensure
 			result_not_void: Result /= Void
 		end
 
 	format_integer (a_value: INTEGER): STRING_32
-			-- Format integer with locale-specific thousands separator.
-		local
-			l_str: STRING_32
-			l_sep: STRING_32
-			i, l_len: INTEGER
-			l_result: STRING_32
+			-- `a_value' with the locale's group separator and grouping.
 		do
-			if attached value_formatter as vf then
-				Result := vf.format_integer_32 (a_value)
-			else
-				l_str := a_value.abs.out.to_string_32
-				l_sep := locale_info.value_group_separator
-				l_len := l_str.count
-				create l_result.make (l_len + l_len // 3)
-				if a_value < 0 then
-					l_result.append_character ('-')
-				end
-				from i := 1 until i > l_len loop
-					if i > 1 and then (l_len - i + 1) \\ 3 = 0 then
-						l_result.append (l_sep)
-					end
-					l_result.append_character (l_str.item (i))
-					i := i + 1
-				end
-				Result := l_result
-			end
+			Result := decimal_number_pattern.formatted_integer (a_value, locale_data, "")
 		ensure
 			result_not_void: Result /= Void
 		end
 
 	format_currency (a_value: DOUBLE): STRING_32
-			-- Format currency value with locale-specific symbol.
+			-- `a_value' in the requested region's currency (`currency_code'), written the way
+			-- `formatting_locale_name' writes it, with the currency's digits: "1 234,50 €" in
+			-- fr_FR, "1 234,50 CHF" in fr_CH, "€1,234.50" in en_IE.
 		do
-			if attached currency_formatter as cf then
-				Result := cf.format_currency (a_value)
-			else
-				Result := locale_info.currency_symbol.twin
-				Result.append (format_number (a_value))
-			end
+			Result := currency_number_pattern.formatted_real (a_value, currency_digits, locale_data, currency_symbol)
 		ensure
 			result_not_void: Result /= Void
 		end
 
 feature -- Locale Information
 
+	formatting_locale_name: STRING_8
+			-- The CLDR table locale every format comes from: the requested locale's own; else
+			-- its language's (de_DE for de_AT); else `Fallback_locale_name'.
+		do
+			Result := locale_data.name
+		end
+
+	is_fallback_locale: BOOLEAN
+			-- Are the formats another locale's than the one requested: its language's
+			-- (de_AT gives de_DE's) or, for a language the table lacks, en_US's?
+			-- `formatting_locale_name' says which.
+
+	Fallback_locale_name: STRING = "en_US"
+			-- Locale whose formats are used for a locale the table does not know.
+
+	cldr_version: STRING
+			-- Version of CLDR the table was generated from.
+		do
+			Result := locales.table.Cldr_version
+		end
+
 	decimal_separator: STRING_32
 			-- Locale-specific decimal separator.
 		do
-			Result := locale_info.value_decimal_separator
+			Result := locale_data.decimal_separator
 		end
 
 	thousands_separator: STRING_32
-			-- Locale-specific thousands separator.
+			-- Locale-specific group separator (for example U+202F in fr_FR).
 		do
-			Result := locale_info.value_group_separator
+			Result := locale_data.group_separator
 		end
 
 	currency_symbol: STRING_32
-			-- Locale-specific currency symbol.
-		do
-			Result := locale_info.currency_symbol
-		end
+			-- Symbol of `currency_code' as the formatting locale writes it.
+
+	currency_code: STRING_32
+			-- ISO 4217 code of the requested region's currency (the formatting locale's own
+			-- when the request names no region, or an area such as 419; "XXX" for none).
+
+	currency_digits: INTEGER
+			-- Fraction digits of `currency_code'.
 
 	date_format: STRING_32
-			-- Locale-specific date format pattern.
+			-- The locale's long date pattern, in CLDR's syntax (for example "d MMMM y").
 		do
-			Result := locale_info.long_date_format
+			Result := locale_data.long_date_pattern
 		end
 
 	time_format: STRING_32
-			-- Locale-specific time format pattern.
+			-- The locale's medium time pattern, in CLDR's syntax (for example "HH:mm:ss").
 		do
-			Result := locale_info.long_time_format
+			Result := locale_data.medium_time_pattern
 		end
 
 	short_date_format: STRING_32
-			-- Locale-specific short date format pattern.
+			-- The locale's short date pattern, in CLDR's syntax (for example "dd/MM/y").
 		do
-			Result := locale_info.short_date_format
+			Result := locale_data.short_date_pattern
 		end
 
 	short_time_format: STRING_32
-			-- Locale-specific short time format pattern.
+			-- The locale's short time pattern, in CLDR's syntax (for example "HH:mm").
 		do
-			Result := locale_info.short_time_format
+			Result := locale_data.short_time_pattern
 		end
 
 feature -- Status Report
@@ -564,7 +562,7 @@ feature -- Status Report
 	is_system_locale: BOOLEAN
 			-- Is using the system default locale?
 		do
-			Result := current_locale_id.is_equal (host_locale.system_locale_id)
+			Result := current_locale_id.name.same_string (locale_id_of (system_locale_code).name)
 		end
 
 	has_mo_translations: BOOLEAN
@@ -578,11 +576,14 @@ feature {NONE} -- Implementation
 	translations: HASH_TABLE [I18N_DICTIONARY_ENTRY, STRING_32]
 			-- Translation entries indexed by key (in-memory)
 
-	host_locale: I18N_HOST_LOCALE
-			-- Host system locale information
+	locales: SIMPLE_I18N_LOCALES
+			-- The CLDR table and the operating system's locale name.
 
-	locale_info: I18N_LOCALE_INFO
-			-- Current locale formatting information
+	system_locale_code: STRING_8
+			-- The locale name the operating system gave at creation.
+
+	locale_data: SIMPLE_I18N_LOCALE_DATA
+			-- The table data every format comes from.
 
 	locale_manager: detachable I18N_LOCALE_MANAGER
 			-- Manager for loading translations from .mo files
@@ -590,29 +591,81 @@ feature {NONE} -- Implementation
 	full_locale: detachable I18N_LOCALE
 			-- Full locale object from manager (includes dictionary and formatters)
 
-	date_formatter: detachable I18N_DATE_FORMATTER
-			-- ISE date formatter for current locale
+	decimal_number_pattern: SIMPLE_I18N_NUMBER_PATTERN
+			-- The locale's decimal pattern, read.
 
-	value_formatter: detachable I18N_VALUE_FORMATTER
-			-- ISE number formatter for current locale
+	currency_number_pattern: SIMPLE_I18N_NUMBER_PATTERN
+			-- The locale's currency pattern, read.
 
-	currency_formatter: detachable I18N_CURRENCY_FORMATTER
-			-- ISE currency formatter for current locale
-
-	initialize_locale_info
-			-- Initialize locale info from host if available.
-		do
-			if host_locale.is_available (current_locale_id) then
-				locale_info := host_locale.create_locale_info (current_locale_id)
-			end
+	date_patterns: SIMPLE_I18N_DATE_PATTERN
+			-- The CLDR date and time pattern interpreter.
+		once
+			create Result
 		end
 
-	initialize_formatters
-			-- Initialize ISE formatters.
+	select_locale_data (a_code: READABLE_STRING_GENERAL)
+			-- Take the table data for `a_code': its own, its language's, or en_US's.
+		local
+			l_name: STRING_8
 		do
-			create date_formatter.make (locale_info)
-			create value_formatter.make (locale_info)
-			create currency_formatter.make (locale_info)
+			l_name := locales.resolved_name (a_code)
+			is_fallback_locale := not locales.is_listed (a_code)
+			locale_data := locales.data (l_name)
+			create decimal_number_pattern.make (locale_data.decimal_pattern)
+			if attached locales.region_currency (a_code) as al_currency then
+				currency_code := al_currency.code
+				currency_digits := al_currency.digits
+			else
+				currency_code := locale_data.currency_code
+				currency_digits := locale_data.currency_digits
+			end
+			currency_symbol := locale_data.symbol_for (currency_code)
+			create currency_number_pattern.make (locale_data.currency_pattern_for (currency_symbol))
+		ensure
+			fallback_when_not_listed: is_fallback_locale = not locales.is_listed (a_code)
+			en_us_for_unknown_language: not locales.is_known (a_code) implies formatting_locale_name.same_string (Fallback_locale_name)
+		end
+
+	locale_id_of (a_code: READABLE_STRING_GENERAL): I18N_LOCALE_ID
+			-- The locale id named by `a_code' ("fr_FR.UTF-8@euro" gives fr_FR): its language
+			-- and region; the bare language when it has no region.
+		local
+			l_parts: TUPLE [language, script, region: STRING_8]
+			l_name: STRING_8
+		do
+			l_parts := locales.code_parts (a_code)
+			l_name := l_parts.language.twin
+			if l_name.is_empty then
+				l_name := Fallback_locale_name.twin
+			elseif not l_parts.region.is_empty then
+				l_name.append_character ('_')
+				l_name.append (l_parts.region)
+			end
+			create Result.make_from_string (l_name)
+		end
+
+	needed_fraction_digits (a_value: DOUBLE): INTEGER
+			-- Fewest fraction digits, between the decimal pattern's minimum and maximum, that
+			-- show `a_value' rounded to the maximum (1.5 needs 1, 2.0 none, 1.23456 three).
+		local
+			l_scaled, l_unit: DOUBLE
+			l_max: INTEGER
+		do
+			l_max := decimal_number_pattern.maximum_fraction_digits
+			Result := l_max
+			if a_value.is_nan or a_value.abs > 1.0e12 then
+				Result := decimal_number_pattern.minimum_fraction_digits
+			else
+				l_scaled := (a_value.abs * (10.0 ^ l_max)).rounded_real_64
+				from l_unit := 10.0 until Result <= decimal_number_pattern.minimum_fraction_digits
+					or else l_scaled - (l_scaled / l_unit).floor_real_64 * l_unit /= 0.0
+				loop
+					Result := Result - 1
+					l_unit := l_unit * 10.0
+				end
+			end
+		ensure
+			in_range: Result >= decimal_number_pattern.minimum_fraction_digits and Result <= decimal_number_pattern.maximum_fraction_digits
 		end
 
 	reduce_plural (a_count: INTEGER): INTEGER
@@ -648,9 +701,8 @@ feature {NONE} -- Implementation
 
 invariant
 	translations_not_void: translations /= Void
-	host_locale_not_void: host_locale /= Void
+	locales_not_void: locales /= Void
 	current_locale_id_not_void: current_locale_id /= Void
-	locale_info_not_void: locale_info /= Void
 
 note
 	copyright: "Copyright (c) 2024-2025, Larry Rix"

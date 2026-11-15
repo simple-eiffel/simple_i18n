@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-22-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-22-0 http://www.eiffel.com/developers/xml/configuration-1-22-0.xsd" name="cldr_generator" uuid="96A4B6BA-7EEA-4BAB-907A-4E014BF32AA4">
+	<description>Development tool: generates SIMPLE_I18N_LOCALE_TABLE from the CLDR JSON packages. Not part of the simple_i18n library.</description>
+	<target name="cldr_generator">
+		<root class="CLDR_GENERATOR" feature="make"/>
+		<capability>
+			<concurrency support="scoop" use="thread"/>
+			<void_safety support="all"/>
+		</capability>
+		<file_rule>
+			<exclude>/EIFGENs$</exclude>
+		</file_rule>
+		<option warning="warning" syntax="provisional" manifest_array_type="mismatch_warning">
+			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
+		</option>
+		<setting name="console_application" value="true"/>
+		<setting name="dead_code_removal" value="feature"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="simple_i18n" location="..\..\simple_i18n.ecf"/>
+		<library name="simple_json" location="$SIMPLE_EIFFEL/simple_json/simple_json.ecf"/>
+		<library name="simple_file" location="$SIMPLE_EIFFEL/simple_file/simple_file.ecf"/>
+		<cluster name="cldr_generator" location=".\"/>
+	</target>
+</system>
