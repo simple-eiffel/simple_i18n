@@ -226,6 +226,31 @@ feature -- Tests: the CLDR table (own locale data)
 			assert_text ("now fr_FR", "fr_FR", l.formatting_locale_name)
 		end
 
+	test_language_first_fallback
+			-- Larry, 2026-11-14, "Language first": an unlisted locale formats as its language's
+			-- table locale, visibly; only an unknown language goes to en_US.
+		local
+			l: SIMPLE_I18N
+		do
+			create l.make_with_locale ("de_AT")
+			assert_true ("de_AT is a fallback", l.is_fallback_locale)
+			assert_text ("de_AT formats as", "de_DE", l.formatting_locale_name)
+			assert_text ("de_AT name kept", "de_AT", l.locale_name)
+			assert_text ("de_AT number", "1.234,5", l.format_number (1234.5))
+			create l.make_with_locale ("fr_BE.UTF-8")
+			assert_text ("fr_BE formats as", "fr_FR", l.formatting_locale_name)
+			assert_text ("fr_BE number", {STRING_32} "1%/8239/234,5", l.format_number (1234.5))
+			create l.make_with_locale ("en_IE")
+			assert_text ("en_IE formats as", "en_US", l.formatting_locale_name)
+			assert_true ("en_IE is still a fallback", l.is_fallback_locale)
+			create l.make_with_locale ("zh_Hant_HK")
+			assert_text ("script first", "zh_TW", l.formatting_locale_name)
+			create l.make_with_locale ("de_CH")
+			assert_false ("a listed locale is its own", l.is_fallback_locale)
+			assert_text ("de_CH", "de_CH", l.formatting_locale_name)
+			assert_true ("has_locale by language", l.has_locale ("de_AT"))
+		end
+
 	test_os_style_names_resolve
 			-- The forms an operating system gives a name in.
 		local

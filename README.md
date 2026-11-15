@@ -99,7 +99,7 @@ end
 | `currency_symbol`, `currency_code` | Locale currency |
 | `date_format`, `short_date_format`, `time_format`, `short_time_format` | CLDR patterns |
 | `formatting_locale_name` | The table locale formats come from |
-| `is_fallback_locale` | True when the table lacks the locale and en_US is used |
+| `is_fallback_locale` | True when the formats are another locale's: the language's, or en_US's |
 | `cldr_version` | CLDR release of the table |
 
 ## Locale Data
@@ -110,9 +110,12 @@ Linux and macOS. The operating system supplies only the locale's name (Windows'
 user default locale; `LC_ALL`, `LC_NUMERIC` or `LANG` elsewhere). Names such as
 `fr_FR.UTF-8@euro`, `pt-BR` or a bare `fr` resolve to a table locale.
 
-A locale the table does not have formats as `en_US`, and the program can see
-that: `is_fallback_locale` is true and `formatting_locale_name` is `"en_US"`,
-while `locale_name` still gives the name that was asked for.
+A locale the table does not list formats as its language's table locale,
+the way CLDR's parent chain ends at the language: `de_AT` formats as `de_DE`,
+`fr_BE` as `fr_FR`, `zh_Hant_HK` as `zh_TW` ("language first", Larry's ruling).
+Only a language the table lacks formats as `en_US`. The program can see which
+was used: `is_fallback_locale` is true and `formatting_locale_name` names the
+table locale, while `locale_name` still gives the name that was asked for.
 
 The table's 30 locales: ar_SA, cs_CZ, da_DK, de_CH, de_DE, el_GR, en_AU, en_CA,
 en_GB, en_US, es_ES, es_MX, fi_FI, fr_CA, fr_FR, he_IL, it_IT, ja_JP, ko_KR,

@@ -57,17 +57,18 @@ feature -- Access
 		end
 
 	table_name (a_code: READABLE_STRING_GENERAL): detachable STRING_8
-			-- Table locale named by `a_code', or Void if the table has none.
+			-- Table locale for `a_code', or Void if the table has none for its language.
+			-- Language first (Larry, 2026-11-14): the locale itself when the table lists it;
+			-- else, as CLDR's parent chain ends at the language, the language's (and script's)
+			-- default locale, so de_AT formats as de_DE and fr_BE as fr_FR.
 		local
 			l_parts: like code_parts
 		do
 			l_parts := code_parts (a_code)
-			if not l_parts.region.is_empty then
-				if table.locales.has (l_parts.language + "_" + l_parts.region) then
-					Result := l_parts.language + "_" + l_parts.region
-				end
-			elseif not l_parts.script.is_empty then
-				Result := table.language_defaults.item (l_parts.language + "_" + l_parts.script)
+			if not l_parts.region.is_empty and then table.locales.has (l_parts.language + "_" + l_parts.region) then
+				Result := l_parts.language + "_" + l_parts.region
+			elseif not l_parts.script.is_empty and then attached table.language_defaults.item (l_parts.language + "_" + l_parts.script) as al_name then
+				Result := al_name
 			elseif not l_parts.language.is_empty then
 				Result := table.language_defaults.item (l_parts.language)
 			end
@@ -89,9 +90,25 @@ feature -- Access
 		end
 
 	is_known (a_code: READABLE_STRING_GENERAL): BOOLEAN
-			-- Does the table have a locale for `a_code'?
+			-- Does the table have a locale for `a_code''s language?
 		do
 			Result := table_name (a_code) /= Void
+		end
+
+	is_listed (a_code: READABLE_STRING_GENERAL): BOOLEAN
+			-- Is `a_code' itself one of the table's locales (a bare language counts as its
+			-- default, CLDR's default content: "fr" is fr_FR)?
+		local
+			l_parts: like code_parts
+		do
+			l_parts := code_parts (a_code)
+			if l_parts.region.is_empty then
+				Result := is_known (a_code)
+			else
+				Result := table.locales.has (l_parts.language + "_" + l_parts.region)
+			end
+		ensure
+			listed_is_known: Result implies is_known (a_code)
 		end
 
 	code_parts (a_code: READABLE_STRING_GENERAL): TUPLE [language, script, region: STRING_8]

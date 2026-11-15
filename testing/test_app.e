@@ -34,6 +34,7 @@ feature {NONE} -- Initialization
 			run_test (agent tests.test_fr_fr_has_no_mojibake, "test_fr_fr_has_no_mojibake")
 			run_test (agent tests.test_de_de_ja_jp_es_es, "test_de_de_ja_jp_es_es")
 			run_test (agent tests.test_unknown_locale_falls_back_visibly, "test_unknown_locale_falls_back_visibly")
+			run_test (agent tests.test_language_first_fallback, "test_language_first_fallback")
 			run_test (agent tests.test_os_style_names_resolve, "test_os_style_names_resolve")
 			run_test (agent tests.test_every_table_locale_formats, "test_every_table_locale_formats")
 

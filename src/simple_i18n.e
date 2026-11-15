@@ -9,8 +9,8 @@ note
 		- Full plural form support (not just English-like)
 		- Locale-aware date/time/number/currency formatting from simple_i18n's own
 		  CLDR table (SIMPLE_I18N_LOCALE_TABLE, about 30 locales); the operating
-		  system gives only the locale's name, and an unknown one formats as en_US
-		  (`is_fallback_locale')
+		  system gives only the locale's name; an unlisted one formats as its
+		  language's locale, and an unknown language as en_US (`is_fallback_locale')
 		- System locale detection
 	]"
 	author: "Larry Rix"
@@ -490,14 +490,16 @@ feature -- Number Formatting (CLDR)
 feature -- Locale Information
 
 	formatting_locale_name: STRING_8
-			-- The CLDR table locale every format comes from: the requested locale's own, or
-			-- `Fallback_locale_name' when the table has none for it.
+			-- The CLDR table locale every format comes from: the requested locale's own; else
+			-- its language's (de_DE for de_AT); else `Fallback_locale_name'.
 		do
 			Result := locale_data.name
 		end
 
 	is_fallback_locale: BOOLEAN
-			-- Did the table have no locale for the requested one, so that formats are en_US's?
+			-- Are the formats another locale's than the one requested: its language's
+			-- (de_AT gives de_DE's) or, for a language the table lacks, en_US's?
+			-- `formatting_locale_name' says which.
 
 	Fallback_locale_name: STRING = "en_US"
 			-- Locale whose formats are used for a locale the table does not know.
@@ -603,18 +605,18 @@ feature {NONE} -- Implementation
 		end
 
 	select_locale_data (a_code: READABLE_STRING_GENERAL)
-			-- Take the table data for `a_code', or en_US's when the table has none.
+			-- Take the table data for `a_code': its own, its language's, or en_US's.
 		local
 			l_name: STRING_8
 		do
 			l_name := locales.resolved_name (a_code)
-			is_fallback_locale := not locales.is_known (a_code)
+			is_fallback_locale := not locales.is_listed (a_code)
 			locale_data := locales.data (l_name)
 			create decimal_number_pattern.make (locale_data.decimal_pattern)
 			create currency_number_pattern.make (locale_data.currency_pattern)
 		ensure
-			fallback_when_unknown: is_fallback_locale = not locales.is_known (a_code)
-			fallback_is_en_us: is_fallback_locale implies formatting_locale_name.same_string (Fallback_locale_name)
+			fallback_when_not_listed: is_fallback_locale = not locales.is_listed (a_code)
+			en_us_for_unknown_language: not locales.is_known (a_code) implies formatting_locale_name.same_string (Fallback_locale_name)
 		end
 
 	locale_id_of (a_code: READABLE_STRING_GENERAL): I18N_LOCALE_ID
@@ -694,7 +696,6 @@ invariant
 	translations_not_void: translations /= Void
 	locales_not_void: locales /= Void
 	current_locale_id_not_void: current_locale_id /= Void
-	fallback_is_en_us: is_fallback_locale implies formatting_locale_name.same_string (Fallback_locale_name)
 
 note
 	copyright: "Copyright (c) 2024-2025, Larry Rix"
