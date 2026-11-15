@@ -316,6 +316,26 @@ feature -- Tests: the CLDR table (own locale data)
 			assert_text ("no region: the locale's own", "EUR", l.currency_code)
 		end
 
+	test_system_locale_name_comes_from_the_os
+			-- The OS gives a usable name; on macOS it comes from the current locale
+			-- (NSLocale), with or without LANG.
+		local
+			l_locales: SIMPLE_I18N_LOCALES
+			l_name: STRING_8
+		do
+			create l_locales
+			l_name := l_locales.system_locale_name
+			print ("    system locale name: " + l_name + "%N")
+			assert_false ("not empty", l_name.is_empty)
+			if {PLATFORM}.is_mac then
+				assert_false ("macOS current locale read", l_locales.mac_locale_name.is_empty)
+				assert_text ("macOS name first", l_locales.mac_locale_name, l_name)
+				assert_false ("macOS name has a language", l_locales.code_parts (l_name).language.is_empty)
+			else
+				assert_true ("no macOS name elsewhere", l_locales.mac_locale_name.is_empty)
+			end
+		end
+
 	test_os_style_names_resolve
 			-- The forms an operating system gives a name in.
 		local

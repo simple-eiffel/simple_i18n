@@ -177,7 +177,10 @@ feature -- Operating system
 
 	system_locale_name: STRING_8
 			-- The user's locale name as the operating system gives it, for
-			-- example "en_US" or "fr_FR.UTF-8"; "C" when none is set.
+			-- example "en_US" or "fr_FR.UTF-8"; "C" when none is set. Windows: the user
+			-- default locale; macOS: the current locale (NSLocale.currentLocale), since a
+			-- program started from the Finder has no LANG, then the environment; elsewhere
+			-- LC_ALL, LC_NUMERIC or LANG.
 		local
 			l_id: I18N_LOCALE_ID
 		do
@@ -189,13 +192,48 @@ feature -- Operating system
 					Result.append (ascii_of (l_id.region))
 				end
 			else
-				Result := environment_locale_name
+				if {PLATFORM}.is_mac then
+					Result := mac_locale_name
+				else
+					create Result.make_empty
+				end
+				if Result.is_empty then
+					Result := environment_locale_name
+				end
 			end
 			if Result.is_empty then
 				Result := "C"
 			end
 		ensure
 			not_empty: not Result.is_empty
+		end
+
+feature -- Operating system (macOS)
+
+	mac_locale_name: STRING_8
+			-- macOS's current locale identifier ("en_US"); empty elsewhere or when it has none.
+		local
+			l_buffer: MANAGED_POINTER
+			l_count: INTEGER
+		do
+			create l_buffer.make (Mac_name_capacity)
+			l_count := c_mac_locale_name (l_buffer.item, Mac_name_capacity)
+			if l_count > 0 and l_count < Mac_name_capacity then
+				Result := ascii_of ((create {C_STRING}.make_by_pointer_and_count (l_buffer.item, l_count)).string)
+			else
+				create Result.make_empty
+			end
+		ensure
+			ascii: across Result as ic_char all ic_char.code < 128 end
+		end
+
+	Mac_name_capacity: INTEGER = 128
+			-- Room for a locale identifier, with its NUL.
+
+	c_mac_locale_name (a_buffer: POINTER; a_capacity: INTEGER): INTEGER
+			-- macOS's current locale identifier into `a_buffer'; its length, or 0.
+		external "C inline use %"simple_i18n_locale.h%""
+		alias "return si_mac_locale_name ((char *) $a_buffer, (int) $a_capacity);"
 		end
 
 feature {NONE} -- Implementation

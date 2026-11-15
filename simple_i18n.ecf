@@ -18,6 +18,12 @@
 		</option>
 		<setting name="console_application" value="true"/>
 		<setting name="dead_code_removal" value="feature"/>
+		<external_include location="$(SIMPLE_EIFFEL)/simple_i18n/Clib"/>
+		<external_linker_flag value="-framework CoreFoundation">
+			<condition>
+				<platform value="macintosh"/>
+			</condition>
+		</external_linker_flag>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="simple_datetime" location="$SIMPLE_EIFFEL/simple_datetime/simple_datetime.ecf"/>
 		<library name="i18n" location="$ISE_LIBRARY\library\i18n\i18n.ecf"/>
